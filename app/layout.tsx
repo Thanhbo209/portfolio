@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import Navbar from "@/components/layout/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,9 +9,8 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
-  description:
-    "Portfolio pages with showcases of techstack, project and profile",
+  title: "Thanh's Portfolio",
+  description: "Portfolio with showcases of techstack, project and profile",
 };
 
 export default function RootLayout({
@@ -29,10 +27,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="navbar-wrapper">
-            <Navbar />
-          </div>
-
           {children}
         </ThemeProvider>
       </body>
