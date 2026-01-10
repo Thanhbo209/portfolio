@@ -44,6 +44,7 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
 }
 
 :root {
@@ -127,15 +128,62 @@
 /* Navbar */
 
 .navbar {
-  @apply sticky top-0 z-50 w-full
-         bg-transparent backdrop-blur flex
-         supports-backdrop-filter:bg-background;
+  @apply fixed top-6 left-1/2 z-40
+         -translate-x-1/2
+         backdrop-blur-3xl
+         bg-accent/20
+         rounded-xl
+         shadow-lg;
 }
 
 .navbar-inner {
-  @apply flex w-full items-center justify-between px-8 py-4;
+  @apply max-w-5xl w-full flex items-center justify-between px-10 py-2;
+}
+
+.navbar-logo {
+  @apply text-xl font-semibold tracking-wide;
 }
 
 .navbar-items {
-  @apply flex justify-center items-center gap-6;
+  @apply flex items-center gap-6;
+}
+
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(14deg);
+  }
+  30% {
+    transform: rotate(-8deg);
+  }
+  45% {
+    transform: rotate(14deg);
+  }
+  60% {
+    transform: rotate(-4deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-wave {
+  animation: wave 1.2s ease-in-out;
+  transform-origin: 70% 70%;
 }
