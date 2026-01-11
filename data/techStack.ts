@@ -13,7 +13,7 @@ export const TECH_STACK: TechStackItem[] = [
     icon: "/tech/nodejs.png",
   },
   {
-    name: "Express",
+    name: "Express.js",
     icon: "/tech/express-js.png",
   },
   {

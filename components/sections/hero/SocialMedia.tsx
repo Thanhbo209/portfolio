@@ -1,8 +1,10 @@
+import { Button } from "@/components/ui/button";
 import { HERO_SOCIALS } from "@/data/heroData";
+import { Download } from "lucide-react";
 
 const SocialMedia = () => {
   return (
-    <div className="flex flex-col items-center justify-center gap-4 bg-accent/50 p-6 rounded-xl backdrop-blur-sm text-center">
+    <div className="flex flex-col items-start justify-center gap-4 bg-accent/30 p-6 rounded-xl backdrop-blur-sm text-center">
       {/* Title */}
       <h3 className="text-sm uppercase tracking-wider text-primary/60">
         Social Media
@@ -24,7 +26,7 @@ const SocialMedia = () => {
                 flex items-center justify-center
                 w-10 h-10
                 rounded-lg
-                text-accent
+                text-white
                 transition
                 hover:text-white
                 hover:scale-110
@@ -35,6 +37,10 @@ const SocialMedia = () => {
             </a>
           );
         })}
+        <Button className="rounded-md hover:scale-105 cursor-pointer">
+          <Download />
+          <p> Resume</p>
+        </Button>
       </div>
     </div>
   );
