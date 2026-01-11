@@ -4,14 +4,14 @@ import { Download } from "lucide-react";
 
 const SocialMedia = () => {
   return (
-    <div className="flex flex-col items-start justify-center gap-4 bg-accent/30 p-6 rounded-xl backdrop-blur-sm text-center">
+    <div className="flex flex-col items-start justify-center gap-4 bg-accent/30 p-6 rounded-xl backdrop-blur-3xl text-center">
       {/* Title */}
       <h3 className="text-sm uppercase tracking-wider text-primary/60">
         Social Media
       </h3>
 
       {/* Social Icons */}
-      <div className="flex flex-wrap justify-center gap-4 mt-2">
+      <div className="flex flex-wrap gap-4 mt-2">
         {HERO_SOCIALS.map((social) => {
           const Icon = social.icon;
 

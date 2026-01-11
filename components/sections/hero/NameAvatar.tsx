@@ -46,7 +46,7 @@ const NameAvatar = () => {
               </span>
             </h1>
             <p className="text-sm md:text-base text-primary/70 tracking-wide">
-              IT Student · Web & Software Developer
+              IT Student · Practical Fullstack Developer
             </p>
           </div>
         </div>

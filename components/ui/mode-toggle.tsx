@@ -20,7 +20,7 @@ export function ModeToggle() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="inline-flex h-9 w-9 items-center justify-center rounded-full border cursor-pointer">
+      <DropdownMenuTrigger className="inline-flex h-9 w-9 items-center justify-center rounded-full border cursor-pointer transition-colors duration-300">
         {resolvedTheme === "dark" ? (
           <Moon className="h-5 w-5" />
         ) : (
@@ -28,7 +28,7 @@ export function ModeToggle() {
         )}
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="start">
         <DropdownMenuItem onClick={() => setTheme("light")}>
           Light
         </DropdownMenuItem>

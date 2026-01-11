@@ -18,7 +18,7 @@ const item = {
 
 const TechStack = () => (
   <motion.div
-    className="flex-1 flex flex-col gap-4 bg-accent/30 p-6 rounded-xl backdrop-blur-sm"
+    className="flex-1 flex flex-col gap-4 bg-accent/40 p-6 rounded-xl backdrop-blur-3xl shadow-md"
     variants={container}
     initial="hidden"
     whileInView="show"
