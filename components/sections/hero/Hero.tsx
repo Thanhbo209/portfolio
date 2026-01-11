@@ -11,12 +11,12 @@ const fadeInUp = {
 
 const Hero = () => {
   return (
-    <section className="relative h-screen w-full overflow-x-hidden pt-20">
+    <section className="relative min-h-screen w-full pt-10 max-xl:pt-30">
       {/* Spotlight background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         <Spotlight
           className="-top-60 -left-40 w-[120%] opacity-60"
-          fill="#e68e0c"
+          fill="purple"
         />
         <Spotlight
           className="top-20 left-[60%] w-[80%] rotate-12 opacity-40"
@@ -24,16 +24,16 @@ const Hero = () => {
         />
         <Spotlight
           className="top-[30%] -left-50 w-[70%] rotate-6 opacity-30"
-          fill="#3b82f6"
+          fill="blue"
         />
         <Spotlight
           className="bottom-[-30%] right-[-20%] w-[90%] rotate-[-8deg] opacity-25"
-          fill="#ec4899"
+          fill="pink"
         />
       </div>
 
       {/* Hero content */}
-      <div className="relative z-10 min-h-[calc(100vh-6rem)] flex items-center justify-center ">
+      <div className="relative z-10 min-h-[calc(100vh-6rem)] flex items-center justify-center max-xl:w-[90vw] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl w-full h-full">
           {/* LEFT COLUMN */}
           <motion.div

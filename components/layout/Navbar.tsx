@@ -16,7 +16,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-7 left-1/2 transform max-xl:w-[90vw] -translate-x-1/2 max-w-7xl bg-accent/40 z-50 shadow-xl rounded-lg">
+    <header className="fixed top-7 left-1/2 max-xl:w-[90vw] -translate-x-1/2 max-w-7xl bg-accent/70 z-100  rounded-full px-3">
       <div className="flex justify-between items-center px-6 gap-30 py-3">
         {/* Logo */}
         <div>
@@ -38,7 +38,9 @@ const Navbar = () => {
               {item.label}
             </Link>
           ))}
-          <ModeToggle />
+          <div className="px-3">
+            <ModeToggle />
+          </div>
         </div>
 
         {/* Mobile menu button */}
@@ -58,22 +60,26 @@ const Navbar = () => {
 
       {/* Mobile dropdown menu */}
       <div
-        className={`md:hidden absolute top-full left-0 w-full bg-sidebar shadow-md transition-all duration-300 overflow-hidden ${
+        className={`md:hidden absolute top-full left-0 w-full rounded-xl mt-3 bg-sidebar shadow-md transition-all duration-300 overflow-hidden ${
           isOpen ? "max-h-screen py-6" : "max-h-0 py-0"
         }`}
       >
-        <div className="flex flex-col items-start pl-8 gap-4">
+        <div className="flex flex-col items-start pl-6 gap-4">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className="text-lg font-thin text-primary hover:text-sidebar-foreground transition"
+              className="text-lg font-thin text-primary hover:text-sidebar-foreground transition-colors duration-200"
             >
               {item.label}
             </Link>
           ))}
-          <ModeToggle />
+
+          {/* ModeToggle cố định, không ảnh hưởng layout */}
+          <div className="mt-4">
+            <ModeToggle />
+          </div>
         </div>
       </div>
     </header>
