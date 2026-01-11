@@ -9,7 +9,7 @@ export const TECH_STACK: TechStackItem[] = [
     icon: "/tech/typescript.png",
   },
   {
-    name: "Node.js",
+    name: "Node",
     icon: "/tech/nodejs.png",
   },
   {
@@ -21,7 +21,7 @@ export const TECH_STACK: TechStackItem[] = [
     icon: "/tech/react.png",
   },
   {
-    name: "Next.js",
+    name: "Next",
     icon: "/tech/nextjs2.png",
   },
   {

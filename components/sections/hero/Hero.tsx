@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import NameAvatar from "@/components/sections/hero/NameAvatar";
+import NameAvatar from "@/components/sections/hero/Profile";
 import SocialMedia from "@/components/sections/hero/SocialMedia";
 import TechStack from "@/components/sections/hero/TechStack";
 import { Spotlight } from "@/components/ui/spotlight";

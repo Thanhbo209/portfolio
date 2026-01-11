@@ -38,8 +38,10 @@ const TechStack = () => (
             src={tech.icon}
             alt={tech.name}
             width={46}
-            height={40}
-            className="object-contain group-hover:scale-110 transition-transform"
+            height={46}
+            className={`object-contain group-hover:scale-115 transition-transform ${
+              tech.name === "Next.js" ? "bg-black rounded-full p-0.5" : ""
+            }`}
           />
           <span className="text-xs font-semibold text-foreground text-center">
             {tech.name}
