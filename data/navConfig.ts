@@ -7,5 +7,5 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "Blog", href: "/blog" },
   { label: "Project", href: "/project" },
-  { label: "My CV", href: "/mycv" },
+  { label: "Contact", href: "/contact" },
 ];

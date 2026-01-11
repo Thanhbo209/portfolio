@@ -8,7 +8,10 @@ export default function Home() {
       <Navbar />
 
       {/* Main content */}
-      <main className="relative" style={{ minHeight: "calc(100vh - 80px)" }}>
+      <main
+        className="relative scrollbar-custom"
+        style={{ minHeight: "calc(100vh - 80px)" }}
+      >
         <Hero />
       </main>
     </>

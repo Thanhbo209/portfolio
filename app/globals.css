@@ -61,7 +61,7 @@
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
+  --accent: oklch(82.032% 0.00009 271.152);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
@@ -126,27 +126,6 @@
 }
 
 /* Navbar */
-
-.navbar {
-  @apply fixed top-6 left-1/2 z-40
-         -translate-x-1/2
-         backdrop-blur-3xl
-         bg-accent/20
-         rounded-xl
-         shadow-lg;
-}
-
-.navbar-inner {
-  @apply max-w-5xl w-full flex items-center justify-between px-10 py-2;
-}
-
-.navbar-logo {
-  @apply text-xl font-semibold tracking-wide;
-}
-
-.navbar-items {
-  @apply flex items-center gap-6;
-}
 
 @keyframes spotlight {
   0% {

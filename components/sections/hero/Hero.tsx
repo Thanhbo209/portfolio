@@ -4,9 +4,6 @@ import NameAvatar from "@/components/sections/hero/NameAvatar";
 import SocialMedia from "@/components/sections/hero/SocialMedia";
 import TechStack from "@/components/sections/hero/TechStack";
 import { Spotlight } from "@/components/ui/spotlight";
-import { HERO_DESCRIPTION } from "@/data/heroData";
-import React from "react";
-
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -14,7 +11,7 @@ const fadeInUp = {
 
 const Hero = () => {
   return (
-    <section className="relative h-screen w-full overflow-x-hidden pt-30">
+    <section className="relative h-screen w-full overflow-x-hidden pt-20">
       {/* Spotlight background */}
       <div className="absolute inset-0">
         <Spotlight
@@ -36,35 +33,21 @@ const Hero = () => {
       </div>
 
       {/* Hero content */}
-      <div className="relative z-10 min-h-[calc(100vh-6rem)] flex items-center justify-center px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-7xl w-full h-full">
+      <div className="relative z-10 min-h-[calc(100vh-6rem)] flex items-center justify-center ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl w-full h-full">
           {/* LEFT COLUMN */}
           <motion.div
-            className="h-full flex flex-col justify-between bg-accent/50 backdrop-blur-3xl p-6 rounded-xl"
+            className="h-full flex flex-col justify-between bg-accent/30 backdrop-blur-3xl p-6 rounded-xl"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeInUp}
           >
             <NameAvatar />
-
-            <div className="flex flex-col h-full items-start bg-accent/50 p-6 rounded-xl">
-              <h3 className="text-sm  uppercase tracking-wider text-primary/60">
-                About me
-              </h3>
-              <p className="text-md md:text-md font-thin text-foreground leading-relaxed">
-                {HERO_DESCRIPTION.split("\n").map((line, index) => (
-                  <React.Fragment key={index}>
-                    {line}
-                    <br />
-                  </React.Fragment>
-                ))}
-              </p>
-            </div>
           </motion.div>
 
           {/* RIGHT COLUMN */}
-          <div className="h-full flex flex-col gap-6">
+          <div className="h-full flex flex-col gap-6 justify-between">
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0, transition: { duration: 0.6 } }}

@@ -16,13 +16,15 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-background/70 backdrop-blur-md shadow-sm">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+    <header className="fixed top-7 left-1/2 transform max-xl:w-[90vw] -translate-x-1/2 max-w-7xl bg-accent/40 z-50 shadow-xl rounded-lg">
+      <div className="flex justify-between items-center px-6 gap-30 py-3">
         {/* Logo */}
         <div>
-          <h1 className={`text-2xl font-bold ${offsideFont.className}`}>
+          <span
+            className={`text-2xl max-xl:text-sm font-bold ${offsideFont.className}`}
+          >
             THANH PHAM
-          </h1>
+          </span>
         </div>
 
         {/* Desktop nav */}
@@ -56,17 +58,17 @@ const Navbar = () => {
 
       {/* Mobile dropdown menu */}
       <div
-        className={`md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-md shadow-md transition-all duration-300 overflow-hidden ${
+        className={`md:hidden absolute top-full left-0 w-full bg-sidebar shadow-md transition-all duration-300 overflow-hidden ${
           isOpen ? "max-h-screen py-6" : "max-h-0 py-0"
         }`}
       >
-        <div className="flex flex-col items-start pl-6 gap-4">
+        <div className="flex flex-col items-start pl-8 gap-4">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className="text-lg font-semibold text-primary hover:text-accent transition"
+              className="text-lg font-thin text-primary hover:text-sidebar-foreground transition"
             >
               {item.label}
             </Link>

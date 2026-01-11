@@ -2,11 +2,11 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export const HERO_DESCRIPTION = `
-👉 Hey! I’m Thanh, a Software student passionate about creating web applications. 
+ Hey! I’m Thanh, a Software student passionate about creating applications. 
 
-👉 I enjoy experimenting with React, Next.js, and Tailwind CSS to build interactive and responsive projects.
+ I enjoy experimenting  to build interactive and responsive projects.
 
-👉 I love learning new technologies, solving problems creatively, and collaborating on meaningful projects.
+ I love learning new technologies, solving problems creatively, and collaborating on meaningful projects.
 `;
 
 export type SocialLink = {
