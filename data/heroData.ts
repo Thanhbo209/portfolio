@@ -6,7 +6,7 @@ export const HERO_DESCRIPTION = `
 
  I enjoy experimenting  to build interactive and responsive projects.
 
- I love learning new technologies, solving problems creatively, and collaborating on meaningful projects.
+ I love learning new technologies, solving problems creatively, and collaborating on modern projects.
 `;
 
 export type SocialLink = {
@@ -27,12 +27,12 @@ export const HERO_SOCIALS: SocialLink[] = [
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/pham-thanh-49b4b4308/",
     icon: Linkedin,
-    bgColor: "bg-blue-400/80",
+    bgColor: "bg-blue-500/80",
   },
   {
     label: "Email",
     href: "mailto:your@email.com",
     icon: Mail,
-    bgColor: "bg-red-400/70",
+    bgColor: "bg-red-600/90",
   },
 ];

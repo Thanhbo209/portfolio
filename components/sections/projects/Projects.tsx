@@ -1,6 +1,7 @@
 import { PinContainer } from "@/components/ui/3d-pin";
 import { projects } from "@/data/project";
 import { ArrowDownRightFromSquareIcon } from "lucide-react";
+import Image from "next/image";
 
 const Projects = () => {
   return (
@@ -18,10 +19,12 @@ const Projects = () => {
           >
             <PinContainer title={link} href={link}>
               <div className="relative flex  items-center justify-center sm:w-142.5 w-[80vw] overflow-hidden h-[30vh] mb-10">
-                <img
+                <Image
                   src={img}
                   alt={title}
                   className="z-10 absolute -bottom-28 rounded-md"
+                  width={1000}
+                  height={1000}
                 />
               </div>
               <h1 className="font-bold lg:text-2xl text-foreground md:text-xl text-base line-clamp-1 mb-2">
@@ -40,7 +43,13 @@ const Projects = () => {
                       key={icon}
                       style={{ transform: `translateX(-${5 * index * 2}px)` }}
                     >
-                      <img src={icon} alt={icon} className="p-2" />
+                      <Image
+                        src={icon}
+                        alt={icon}
+                        className="p-2"
+                        height={90}
+                        width={90}
+                      />
                     </div>
                   ))}
                 </div>
