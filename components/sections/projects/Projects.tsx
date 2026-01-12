@@ -7,11 +7,10 @@ const Projects = () => {
   return (
     <div className="py-20 bg-background">
       <h1 className="heading ">
-        A small selection of{" "}
-        <span className="text-sky-300">recent projects</span>
+        A small selection of <span className="text-sky-300">my projects</span>
       </h1>
 
-      <div className="flex flex-wrap items-center justify-center  p-4 gap-x-24 gap-y-8 mt-10">
+      <div className="flex flex-wrap items-center justify-center  p-4 gap-x-24 gap-y-8">
         {projects.map(({ id, title, des, img, iconLists, link }) => (
           <div
             key={id}
