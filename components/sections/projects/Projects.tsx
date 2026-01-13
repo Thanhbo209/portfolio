@@ -15,7 +15,7 @@ const Projects = () => {
           My Small Collection Of <span className="text-blue-300">Projects</span>
         </h1>
         <p className="text-foreground/60 text-lg max-w-2xl mx-auto">
-          A collection of my recent work and side projects
+          My recent work and side projects
         </p>
       </div>
 
