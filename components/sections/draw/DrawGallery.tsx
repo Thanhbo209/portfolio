@@ -36,29 +36,47 @@ export default function DrawGallery() {
       .catch(() => setLoading(false));
   }, []);
 
-  const handleMouseDown = (e: React.MouseEvent, id: string) => {
+  const handleStart = (
+    clientX: number,
+    clientY: number,
+    id: string,
+    currentTarget: EventTarget & Element
+  ) => {
     const drawing = drawings.find((d) => d._id === id);
     if (!drawing) return;
 
-    const rect = e.currentTarget.getBoundingClientRect();
-    const parent = e.currentTarget.parentElement?.getBoundingClientRect();
+    const rect = currentTarget.getBoundingClientRect();
+    const parent = currentTarget.parentElement?.getBoundingClientRect();
     if (!parent) return;
 
     setDraggedId(id);
     setDragOffset({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
+      x: clientX - rect.left,
+      y: clientY - rect.top,
     });
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseDown = (e: React.MouseEvent, id: string) => {
+    handleStart(e.clientX, e.clientY, id, e.currentTarget);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent, id: string) => {
+    const touch = e.touches[0];
+    handleStart(touch.clientX, touch.clientY, id, e.currentTarget);
+  };
+
+  const handleMove = (
+    clientX: number,
+    clientY: number,
+    currentTarget: EventTarget & Element
+  ) => {
     if (!draggedId) return;
 
-    const container = e.currentTarget.getBoundingClientRect();
+    const container = currentTarget.getBoundingClientRect();
     const x =
-      ((e.clientX - container.left - dragOffset.x) / container.width) * 100;
+      ((clientX - container.left - dragOffset.x) / container.width) * 100;
     const y =
-      ((e.clientY - container.top - dragOffset.y) / container.height) * 100;
+      ((clientY - container.top - dragOffset.y) / container.height) * 100;
 
     setDrawings((prev) =>
       prev.map((d) =>
@@ -73,8 +91,27 @@ export default function DrawGallery() {
     );
   };
 
-  const handleMouseUp = () => {
+  const handleMouseMove = (e: React.MouseEvent) => {
+    handleMove(e.clientX, e.clientY, e.currentTarget);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (e.touches.length > 0) {
+      const touch = e.touches[0];
+      handleMove(touch.clientX, touch.clientY, e.currentTarget);
+    }
+  };
+
+  const handleEnd = () => {
     setDraggedId(null);
+  };
+
+  const handleMouseUp = () => {
+    handleEnd();
+  };
+
+  const handleTouchEnd = () => {
+    handleEnd();
   };
 
   if (loading) {
@@ -115,7 +152,7 @@ export default function DrawGallery() {
   }
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-8">
+    <div className="w-full max-w-7xl mx-auto px-4 py-8" id="gallery">
       <div className="mb-6 text-center">
         <h2 className="heading text-blue-300">Gallery</h2>
         <p className="text-gray-600 mb-1">
@@ -128,6 +165,8 @@ export default function DrawGallery() {
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
         {/* Grid pattern background */}
         <div className="absolute inset-0 opacity-10">
@@ -158,6 +197,7 @@ export default function DrawGallery() {
                   : "transform 0.2s, box-shadow 0.2s",
             }}
             onMouseDown={(e) => handleMouseDown(e, drawing._id)}
+            onTouchStart={(e) => handleTouchStart(e, drawing._id)}
           >
             <div className="relative w-full h-full rounded-lg overflow-hidden border-4 border-white bg-white transform rotate-0 hover:rotate-1 transition-transform">
               <Image
