@@ -45,7 +45,7 @@ export default function ContactSection() {
             transition={{ delay: 0.2 }}
             className="text-4xl md:text-5xl font-bold  mb-4"
           >
-            Let&apos;s Work Together
+            Let&apos;s <span className="text-blue-300">Work</span> Together
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -73,7 +73,7 @@ export default function ContactSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="flex items-start gap-4 p-4 rounded-lg transition-colors"
+              className="flex items-start gap-4 p-4 rounded-lg shadow-md bg-accent/30  transition-colors"
             >
               <div className="p-2 rounded-full border">
                 <Briefcase className="w-5 h-5 text-blue-300" />
@@ -89,7 +89,7 @@ export default function ContactSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6 }}
-              className="flex items-start gap-4 p-4 rounded-lg  transition-colors"
+              className="flex items-start gap-4 p-4 rounded-lg shadow-md bg-accent/30 transition-colors"
             >
               <div className="p-2 rounded-full border">
                 <MapPin className="w-5 h-5 text-blue-300" />
