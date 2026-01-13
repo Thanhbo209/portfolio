@@ -6,7 +6,7 @@ import { Mail, MapPin, Briefcase, Copy, Check } from "lucide-react";
 
 // Mock social data - replace with your actual data
 const HERO_SOCIALS = [
-  { icon: Mail, label: "Email", href: "mailto:your.email@example.com" },
+  { icon: Mail, label: "Email", href: "mailto:thanhagar123@gmail.com" },
   { icon: MapPin, label: "Location", href: "#" },
 ];
 

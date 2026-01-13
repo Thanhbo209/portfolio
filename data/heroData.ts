@@ -31,7 +31,7 @@ export const HERO_SOCIALS: SocialLink[] = [
   },
   {
     label: "Email",
-    href: "mailto:thanhagar123@gmail.com?subject=Internship Opportunity&body=Hi Thanh,",
+    href: "mailto:thanhagar123@gmail.com",
     icon: Mail,
     bgColor: "bg-red-600/90",
   },

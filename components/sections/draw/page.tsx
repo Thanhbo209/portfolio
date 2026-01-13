@@ -1,4 +1,5 @@
 "use client";
+
 import DrawCanvas from "@/components/sections/draw/DrawCanvas";
 
 export default function DrawPage() {
@@ -14,18 +15,18 @@ export default function DrawPage() {
       <div className="relative z-10 max-w-4xl w-full">
         {/* Header Section */}
         <div className="text-center mb-8 space-y-3">
-          <h1 className="text-4xl md:text-5xl font-bold bg-blue-300 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-5xl font-bold bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
             Draw Something For Me
           </h1>
 
-          <p className="text-gray-600 text-lg max-w-md mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg max-w-md mx-auto">
             Leave your creative mark on my portfolio. Every drawing makes it
             special!
           </p>
         </div>
 
         {/* Canvas Container */}
-        <div className="bg-background rounded-2xl shadow-2xl p-6 md:p-8 border ">
+        <div className="bg-background rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 border border-gray-200 dark:border-gray-700">
           <DrawCanvas />
         </div>
       </div>

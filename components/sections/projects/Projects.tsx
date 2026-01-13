@@ -23,10 +23,10 @@ const Projects = () => {
         {projects.map(({ id, title, des, img, iconLists, link }) => (
           <div
             key={id}
-            className="sm:h-164 h-100 lg:min-h-[32.5]  items-center flex justify-center sm:w-142.5 w-[80vw]"
+            className="sm:h-164 h-100 lg:min-h-[32.5] max-lg:mt-30 items-center flex justify-center sm:w-142.5 w-[80vw]"
           >
             <PinContainer title={link} href={link}>
-              <div className="relative flex  items-center justify-center sm:w-142.5 w-[80vw] overflow-hidden h-[32vh] mb-10">
+              <div className="relative flex  items-center  justify-center sm:w-142.5 w-[80vw] overflow-hidden h-[32vh] mb-10">
                 <Image
                   src={img}
                   alt={title}
