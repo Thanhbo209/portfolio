@@ -1,3 +1,4 @@
+"use client";
 import { PinContainer } from "@/components/ui/3d-pin";
 import { projects } from "@/data/project";
 import { ArrowDownRightFromSquareIcon } from "lucide-react";
@@ -5,10 +6,18 @@ import Image from "next/image";
 
 const Projects = () => {
   return (
-    <div className="py-20 bg-background">
-      <h1 className="heading ">
-        A small selection of <span className="text-sky-300">my projects</span>
-      </h1>
+    <section className="py-20 px-4" id="projects">
+      <div className="text-center mb-16">
+        <h2 className="text-sm uppercase tracking-wider text-primary/60 mb-3">
+          Portfolio
+        </h2>
+        <h1 className="heading  lg:text-6xl font-bold text-foreground mb-4">
+          My Small Collection Of <span className="text-blue-300">Projects</span>
+        </h1>
+        <p className="text-foreground/60 text-lg max-w-2xl mx-auto">
+          A collection of my recent work and side projects
+        </p>
+      </div>
 
       <div className="flex flex-wrap items-center justify-center  p-4 gap-x-24 gap-y-8">
         {projects.map(({ id, title, des, img, iconLists, link }) => (
@@ -17,11 +26,11 @@ const Projects = () => {
             className="sm:h-164 h-100 lg:min-h-[32.5]  items-center flex justify-center sm:w-142.5 w-[80vw]"
           >
             <PinContainer title={link} href={link}>
-              <div className="relative flex  items-center justify-center sm:w-142.5 w-[80vw] overflow-hidden h-[30vh] mb-10">
+              <div className="relative flex  items-center justify-center sm:w-142.5 w-[80vw] overflow-hidden h-[32vh] mb-10">
                 <Image
                   src={img}
                   alt={title}
-                  className="z-10 absolute -bottom-28 rounded-md"
+                  className="z-10 absolute rounded-md"
                   width={1000}
                   height={1000}
                 />
@@ -38,7 +47,7 @@ const Projects = () => {
                 <div className="flex items-center ">
                   {iconLists.map((icon, index) => (
                     <div
-                      className="border border-white/20 rounded-full bg-black lg:w-10 w-8 h-8 flex justify-center items-center"
+                      className="border-2 border-white/20 rounded-full bg-black lg:w-10 w-8 h-8 flex justify-center items-center"
                       key={icon}
                       style={{ transform: `translateX(-${5 * index * 2}px)` }}
                     >
@@ -67,7 +76,7 @@ const Projects = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

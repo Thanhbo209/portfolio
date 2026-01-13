@@ -1,11 +1,10 @@
 export type NavItem = {
   label: string;
-  href: string;
+  id: string;
 };
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "Blog", href: "/blog" },
-  { label: "Project", href: "/project" },
-  { label: "Contact", href: "/contact" },
+  { label: "Home", id: "home" },
+  { label: "Projects", id: "projects" },
+  { label: "Contact", id: "contact" },
 ];

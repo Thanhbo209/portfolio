@@ -3,11 +3,11 @@ export const projects = [
     id: 1,
     title: "Task Tracking App - Tracking your daily habits",
     des: "Explore the wonders of our task tracking web application.",
-    img: "/p1.svg",
+    img: "/task-tracking.png",
     iconLists: [
       "/re.svg",
       "/tail.svg",
-      "/tech/express-js.png",
+      "/tech/expressjs-light.svg",
       "/tech/nodejs.png",
     ],
     link: "https://coinsnipe-kappa.vercel.app/",
