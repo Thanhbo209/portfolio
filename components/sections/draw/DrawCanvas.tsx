@@ -30,9 +30,37 @@ export default function DrawCanvas() {
     return () => window.removeEventListener("resize", updateCanvasSize);
   }, []);
 
+  const getPoint = (
+    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
+  ) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return { x: 0, y: 0 };
+
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    if ("touches" in e) {
+      const touch = e.touches[0];
+      return {
+        x: (touch.clientX - rect.left) * scaleX,
+        y: (touch.clientY - rect.top) * scaleY,
+      };
+    }
+
+    return {
+      x: (e.nativeEvent.offsetX * canvas.width) / rect.width,
+      y: (e.nativeEvent.offsetY * canvas.height) / rect.height,
+    };
+  };
+
   const startDraw = (
     e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
   ) => {
+    if ("touches" in e) {
+      e.preventDefault();
+    }
+
     const ctx = canvasRef.current?.getContext("2d");
     if (!ctx) return;
 
@@ -46,6 +74,11 @@ export default function DrawCanvas() {
     e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
   ) => {
     if (!isDrawing) return;
+
+    if ("touches" in e) {
+      e.preventDefault();
+    }
+
     const ctx = canvasRef.current?.getContext("2d");
     if (!ctx) return;
 
@@ -63,31 +96,6 @@ export default function DrawCanvas() {
     const point = getPoint(e);
     ctx.lineTo(point.x, point.y);
     ctx.stroke();
-  };
-
-  const getPoint = (
-    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
-  ) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return { x: 0, y: 0 };
-
-    const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width / rect.width;
-    const scaleY = canvas.height / rect.height;
-
-    if ("touches" in e) {
-      e.preventDefault();
-      const touch = e.touches[0];
-      return {
-        x: (touch.clientX - rect.left) * scaleX,
-        y: (touch.clientY - rect.top) * scaleY,
-      };
-    }
-
-    return {
-      x: e.nativeEvent.offsetX,
-      y: e.nativeEvent.offsetY,
-    };
   };
 
   const endDraw = () => setIsDrawing(false);
@@ -155,7 +163,7 @@ export default function DrawCanvas() {
   };
 
   return (
-    <div className="flex flex-col gap-4 items-center">
+    <div className="flex flex-col gap-4 items-center" ref={containerRef}>
       {/* Tools */}
       <div className="flex flex-wrap gap-3 items-center justify-center">
         {/* Tool Selection */}
@@ -222,13 +230,16 @@ export default function DrawCanvas() {
         ref={canvasRef}
         width={400}
         height={350}
-        className={`border-2 rounded-lg mb-3 bg-white shadow-lg ${
+        className={`border-2 rounded-lg mb-3 bg-white shadow-lg touch-none ${
           tool === "eraser" ? "cursor-cell" : "cursor-crosshair"
         }`}
         onMouseDown={startDraw}
         onMouseMove={draw}
         onMouseUp={endDraw}
         onMouseLeave={endDraw}
+        onTouchStart={startDraw}
+        onTouchMove={draw}
+        onTouchEnd={endDraw}
       />
 
       <Button
