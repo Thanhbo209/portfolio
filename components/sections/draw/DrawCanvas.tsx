@@ -1,27 +1,50 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 
 export default function DrawCanvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [color, setColor] = useState("#000000");
   const [size, setSize] = useState(4);
   const [tool, setTool] = useState<"pen" | "eraser">("pen");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [canvasSize, setCanvasSize] = useState({ width: 650, height: 600 });
 
-  const startDraw = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  useEffect(() => {
+    const updateCanvasSize = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.offsetWidth;
+        const maxWidth = 650;
+        const width = Math.min(containerWidth - 32, maxWidth);
+        const height = Math.round(width * (600 / 650));
+        setCanvasSize({ width, height });
+      }
+    };
+
+    updateCanvasSize();
+    window.addEventListener("resize", updateCanvasSize);
+    return () => window.removeEventListener("resize", updateCanvasSize);
+  }, []);
+
+  const startDraw = (
+    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
+  ) => {
     const ctx = canvasRef.current?.getContext("2d");
     if (!ctx) return;
 
+    const point = getPoint(e);
     ctx.beginPath();
-    ctx.moveTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+    ctx.moveTo(point.x, point.y);
     setIsDrawing(true);
   };
 
-  const draw = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const draw = (
+    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
+  ) => {
     if (!isDrawing) return;
     const ctx = canvasRef.current?.getContext("2d");
     if (!ctx) return;
@@ -37,8 +60,34 @@ export default function DrawCanvas() {
     }
 
     ctx.lineCap = "round";
-    ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+    const point = getPoint(e);
+    ctx.lineTo(point.x, point.y);
     ctx.stroke();
+  };
+
+  const getPoint = (
+    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
+  ) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return { x: 0, y: 0 };
+
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    if ("touches" in e) {
+      e.preventDefault();
+      const touch = e.touches[0];
+      return {
+        x: (touch.clientX - rect.left) * scaleX,
+        y: (touch.clientY - rect.top) * scaleY,
+      };
+    }
+
+    return {
+      x: e.nativeEvent.offsetX,
+      y: e.nativeEvent.offsetY,
+    };
   };
 
   const endDraw = () => setIsDrawing(false);
@@ -49,7 +98,7 @@ export default function DrawCanvas() {
     const ctx = canvas.getContext("2d");
     ctx?.clearRect(0, 0, canvas.width, canvas.height);
     toast.info("Canvas cleared!", {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 2000,
     });
   };
@@ -66,8 +115,8 @@ export default function DrawCanvas() {
     const isEmpty = !imageData.data.some((channel) => channel !== 0);
 
     if (isEmpty) {
-      toast.warning("Please draw something first!", {
-        position: "top-right",
+      toast.warning("Please draw something first! 🎨", {
+        position: "bottom-right",
         autoClose: 3000,
       });
       return;
@@ -90,16 +139,16 @@ export default function DrawCanvas() {
       }
 
       toast.success("Your drawing has been sent! ❤️", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 3000,
       });
       clearCanvas();
-    } catch (e) {
+    } catch (error) {
       toast.error("Failed to send drawing. Please try again.", {
         position: "bottom-right",
         autoClose: 3000,
       });
-      console.log(e);
+      console.log(error);
     } finally {
       setIsSubmitting(false);
     }
@@ -171,8 +220,8 @@ export default function DrawCanvas() {
       {/* Canvas */}
       <canvas
         ref={canvasRef}
-        width={650}
-        height={600}
+        width={400}
+        height={350}
         className={`border-2 rounded-lg mb-3 bg-white shadow-lg ${
           tool === "eraser" ? "cursor-cell" : "cursor-crosshair"
         }`}

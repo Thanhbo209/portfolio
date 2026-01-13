@@ -41,7 +41,7 @@ export default function LearningTimeline() {
                   {/* Content */}
                   <div
                     className={`w-5/12 ${
-                      isEven ? "text-right pr-8" : "text-left pl-8"
+                      isEven ? "text-right pr-8" : "text-left pr-8"
                     }`}
                   >
                     <span
