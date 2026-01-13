@@ -2,11 +2,11 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export const HERO_DESCRIPTION = `
- Hey! I’m Thanh, a Software student passionate about creating applications. 
+ I’m a Information Technology student with a strong interest in building clean user interfaces and solid backend logic 
 
- I enjoy experimenting  to build interactive and responsive projects.
+ Through personal projects, I’ve learned how frontend and backend work together to create smooth user experiences
 
- I love learning new technologies, solving problems creatively, and collaborating on modern projects.
+ I’m currently seeking an Intern/Fresher Web Developer position where I can learn fast, grow my skills, and contribute to real-world projects
 `;
 
 export type SocialLink = {
@@ -31,7 +31,7 @@ export const HERO_SOCIALS: SocialLink[] = [
   },
   {
     label: "Email",
-    href: "mailto:your@email.com",
+    href: "mailto:thanhagar123@gmail.com?subject=Internship Opportunity&body=Hi Thanh,",
     icon: Mail,
     bgColor: "bg-red-600/90",
   },

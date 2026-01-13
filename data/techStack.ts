@@ -1,6 +1,8 @@
 export type TechStackItem = {
   name: string;
   icon: string;
+  iconLight?: string;
+  iconDark?: string;
 };
 
 export const TECH_STACK: TechStackItem[] = [
@@ -14,7 +16,9 @@ export const TECH_STACK: TechStackItem[] = [
   },
   {
     name: "Express.js",
-    icon: "/tech/express-js.png",
+    iconLight: "/tech/expressjs-dark.svg",
+    iconDark: "/tech/expressjs-light.svg",
+    icon: "/tech/expressjs-dark.svg", // fallback
   },
   {
     name: "React",
@@ -27,5 +31,13 @@ export const TECH_STACK: TechStackItem[] = [
   {
     name: "Tailwind CSS",
     icon: "/tech/tailwind2.png",
+  },
+  {
+    name: "MongoDB",
+    icon: "/tech/mongodb.svg",
+  },
+  {
+    name: "SupaBase",
+    icon: "/tech/supabase.svg",
   },
 ];

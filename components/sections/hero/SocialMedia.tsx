@@ -4,7 +4,7 @@ import { Download } from "lucide-react";
 
 const SocialMedia = () => {
   return (
-    <div className="flex flex-col items-start justify-center gap-4 bg-accent/30 p-6 rounded-xl backdrop-blur-3xl text-center">
+    <div className="flex flex-col items-start justify-center gap-4 border p-6 rounded-xl backdrop-blur-3xl text-center shadow-md">
       {/* Title */}
       <h3 className="text-sm uppercase tracking-wider text-primary/60">
         Connect with me

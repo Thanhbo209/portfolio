@@ -11,7 +11,10 @@ const fadeInUp = {
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen w-full pt-10 max-xl:pt-30">
+    <section
+      className="relative min-h-screen w-full pt-10 max-xl:pt-30"
+      id="home"
+    >
       {/* Spotlight background */}
       <div className="absolute inset-0 overflow-hidden">
         <Spotlight
@@ -37,7 +40,7 @@ const Hero = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl w-full h-full">
           {/* LEFT COLUMN */}
           <motion.div
-            className="h-full flex flex-col justify-between bg-accent/30 backdrop-blur-3xl p-6 rounded-xl"
+            className="h-full flex flex-col justify-between border backdrop-blur-3xl p-6 rounded-xl"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
@@ -47,8 +50,10 @@ const Hero = () => {
           </motion.div>
 
           {/* RIGHT COLUMN */}
-          <div className="h-full flex flex-col gap-6 justify-between">
+          {/* RIGHT COLUMN */}
+          <div className="h-full flex flex-col min-h-0">
             <motion.div
+              className="flex-1 min-h-0"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0, transition: { duration: 0.6 } }}
               viewport={{ once: true, amount: 0.3 }}

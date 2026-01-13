@@ -21,7 +21,7 @@ const NameAvatar = () => {
   }, [isFlipped]);
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 md:gap-8 w-full">
+    <div className="flex flex-col md:flex-row gap-6 md:gap-8 w-full rounded-xl">
       <div className="flex flex-col gap-4">
         {/* LEFT COLUMN */}
         <div className="flex flex-col md:flex-row items-center gap-6">
@@ -88,18 +88,19 @@ const NameAvatar = () => {
                 👋
               </span>
             </h1>
-            <p className="text-sm text-primary/70">
-              Student · Aspiring{" "}
+            <p className="text-sm text-primary/70 leading-relaxed">
+              · Student Aspiring{" "}
               <span className="text-sky-500 font-semibold">
                 Practical Full-Stack{" "}
               </span>
               Developer
+              <br />· Focused on real-world projects
             </p>
           </div>
         </div>
 
         {/* ABOUT */}
-        <div className="relative bg-accent/10 p-6 rounded-xl">
+        <div className="relative bg-accent/25 p-8 rounded-xl">
           <h3 className="text-sm uppercase tracking-wider text-primary/60 mb-2">
             About me
           </h3>
