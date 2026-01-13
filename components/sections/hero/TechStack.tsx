@@ -51,7 +51,7 @@ const TechStack = () => {
           return (
             <motion.div
               key={tech.name}
-              className="group flex flex-col items-center justify-center aspect-square gap-4 rounded-xl transition"
+              className="group flex flex-col items-center justify-center aspect-square gap-3 rounded-xl transition"
               variants={item}
             >
               <Image
