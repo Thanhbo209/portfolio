@@ -20,4 +20,12 @@ export const projects = [
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg"],
     link: "https://coinsnipe-kappa.vercel.app/",
   },
+  {
+    id: 3,
+    title: "Education Portal - Learn and Grow",
+    des: "A platform to manage your classes and improve knowledge.",
+    img: "/education-portal.jpg",
+    iconLists: ["/react.png", "/tail.svg", "/ts.svg", "/expressjs-light.svg"],
+    link: "https://education-frontend-swart.vercel.app/",
+  },
 ];
