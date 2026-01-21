@@ -40,4 +40,8 @@ export const TECH_STACK: TechStackItem[] = [
     name: "SupaBase",
     icon: "/tech/supabase.svg",
   },
+  {
+    name: "PostgreSQL",
+    icon: "/tech/PostgresSQL.svg",
+  },
 ];

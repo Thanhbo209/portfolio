@@ -25,7 +25,13 @@ export const projects = [
     title: "Education Portal - Learn and Grow",
     des: "A platform to manage your classes and improve knowledge.",
     img: "/education-portal.jpg",
-    iconLists: ["/react.png", "/tail.svg", "/ts.svg", "/expressjs-light.svg"],
+    iconLists: [
+      "/tech/react.png",
+      "/tail.svg",
+      "/ts.svg",
+      "/tech/expressjs-light.svg",
+      "/tech/PostgresSQL.svg",
+    ],
     link: "https://education-frontend-swart.vercel.app/",
   },
 ];
