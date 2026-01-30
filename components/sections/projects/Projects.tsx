@@ -20,7 +20,7 @@ const Projects = () => {
       </div>
 
       <div className="flex flex-wrap items-center justify-center  p-4 gap-x-24 gap-y-8">
-        {projects.map(({ id, title, des, img, iconLists, link }) => (
+        {projects.map(({ id, title, timeline, des, img, iconLists, link }) => (
           <div
             key={id}
             className="sm:h-164 h-100 lg:min-h-[32.5] max-lg:mt-30 items-center flex justify-center sm:w-142.5 w-[80vw]"
@@ -35,9 +35,12 @@ const Projects = () => {
                   height={1000}
                 />
               </div>
-              <h1 className="font-bold lg:text-2xl text-foreground md:text-xl text-base line-clamp-1 mb-2">
-                {title}
-              </h1>
+              <div className="flex flex-col mb-2">
+                <h1 className="font-bold lg:text-2xl text-foreground md:text-xl text-base line-clamp-1 mb-2">
+                  {title}
+                </h1>
+                <span className="text-muted-foreground">{timeline}</span>{" "}
+              </div>
 
               <p className="lg:text-xl lg:font-thin text-foreground font-light text-sm line-clamp-2">
                 {des}

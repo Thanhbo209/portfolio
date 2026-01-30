@@ -31,7 +31,9 @@ export default function DrawCanvas() {
   }, []);
 
   const getPoint = (
-    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
+    e:
+      | React.MouseEvent<HTMLCanvasElement>
+      | React.TouchEvent<HTMLCanvasElement>,
   ) => {
     const canvas = canvasRef.current;
     if (!canvas) return { x: 0, y: 0 };
@@ -55,7 +57,9 @@ export default function DrawCanvas() {
   };
 
   const startDraw = (
-    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
+    e:
+      | React.MouseEvent<HTMLCanvasElement>
+      | React.TouchEvent<HTMLCanvasElement>,
   ) => {
     if ("touches" in e) {
       e.preventDefault();
@@ -71,7 +75,9 @@ export default function DrawCanvas() {
   };
 
   const draw = (
-    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
+    e:
+      | React.MouseEvent<HTMLCanvasElement>
+      | React.TouchEvent<HTMLCanvasElement>,
   ) => {
     if (!isDrawing) return;
 
@@ -105,10 +111,6 @@ export default function DrawCanvas() {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     ctx?.clearRect(0, 0, canvas.width, canvas.height);
-    toast.info("Canvas cleared!", {
-      position: "bottom-right",
-      autoClose: 2000,
-    });
   };
 
   const submitDrawing = async () => {
@@ -123,8 +125,9 @@ export default function DrawCanvas() {
     const isEmpty = !imageData.data.some((channel) => channel !== 0);
 
     if (isEmpty) {
-      toast.warning("Please draw something first! 🎨", {
-        position: "bottom-right",
+      toast.warning("Please draw something first!", {
+        position: "top-right",
+        theme: "dark",
         autoClose: 3000,
       });
       return;
@@ -146,14 +149,15 @@ export default function DrawCanvas() {
         throw new Error("Failed to submit drawing");
       }
 
-      toast.success("Your drawing has been sent! ❤️", {
-        position: "bottom-right",
+      toast.success("Your drawing has been sent! ", {
+        position: "top-right",
+        theme: "dark",
         autoClose: 3000,
       });
       clearCanvas();
     } catch (error) {
       toast.error("Failed to send drawing. Please try again.", {
-        position: "bottom-right",
+        position: "top-right",
         autoClose: 3000,
       });
       console.log(error);

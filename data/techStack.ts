@@ -56,4 +56,8 @@ export const TECH_STACK: TechStackItem[] = [
     name: "SupaBase",
     icon: "/tech/supabase.svg",
   },
+  {
+    name: "Git",
+    icon: "/tech/Git.svg",
+  },
 ];

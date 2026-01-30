@@ -25,7 +25,7 @@ export const HERO_SOCIALS: SocialLink[] = [
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/pham-thanh-49b4b4308/",
+    href: "https://www.linkedin.com/in/phmthanh/",
     icon: Linkedin,
     bgColor: "bg-blue-500/80",
   },

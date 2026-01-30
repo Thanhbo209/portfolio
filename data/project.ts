@@ -1,6 +1,7 @@
 export const projects = [
   {
     id: 1,
+    timeline: "2025 - Present",
     title: "WorkSense - Tracking your daily habits",
     des: "Explore the wonders of our task tracking web application.",
     img: "/worksense.png",
@@ -9,6 +10,7 @@ export const projects = [
   },
   {
     id: 2,
+    timeline: " October 2025 - December 2025",
     title: "CoinSnipe - Crypto Dashboard",
     des: "Find your favourite cryptocurrency faster and explore all about the crypto market.",
     img: "/cryptodashboard.png",
@@ -17,6 +19,7 @@ export const projects = [
   },
   {
     id: 3,
+    timeline: "2025 - Present",
     title: "Education Portal - Learn and Grow",
     des: "A platform to manage your classes and improve knowledge.",
     img: "/education-classroom.jpg",
