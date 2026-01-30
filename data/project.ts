@@ -1,22 +1,17 @@
 export const projects = [
   {
     id: 1,
-    title: "Task Tracking App - Tracking your daily habits",
+    title: "WorkSense - Tracking your daily habits",
     des: "Explore the wonders of our task tracking web application.",
-    img: "/task-tracking.png",
-    iconLists: [
-      "/re.svg",
-      "/tail.svg",
-      "/tech/expressjs-light.svg",
-      "/tech/nodejs.png",
-    ],
-    link: "https://coinsnipe-kappa.vercel.app/",
+    img: "/worksense.png",
+    iconLists: ["/next.svg", "/tail.svg", "/tech/mongodb.svg", "/ts.svg"],
+    link: "",
   },
   {
     id: 2,
     title: "CoinSnipe - Crypto Dashboard",
     des: "Find your favourite cryptocurrency faster and explore all about the crypto market.",
-    img: "/coinsnipe.png",
+    img: "/cryptodashboard.png",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg"],
     link: "https://coinsnipe-kappa.vercel.app/",
   },
@@ -24,7 +19,7 @@ export const projects = [
     id: 3,
     title: "Education Portal - Learn and Grow",
     des: "A platform to manage your classes and improve knowledge.",
-    img: "/education-portal.jpg",
+    img: "/education-classroom.jpg",
     iconLists: [
       "/tech/react.png",
       "/tail.svg",

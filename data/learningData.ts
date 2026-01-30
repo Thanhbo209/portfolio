@@ -24,9 +24,18 @@ export const LEARNING_STEPS: LearningStep[] = [
   },
   {
     label: "Advanced Next.js patterns",
-    highlight: true,
+  },
+  {
+    label: "Caching",
+  },
+  {
+    label: "Databases (SQL & NoSQL)",
+  },
+  {
+    label: "CI/CD",
   },
   {
     label: "Loading...",
+    highlight: true,
   },
 ];

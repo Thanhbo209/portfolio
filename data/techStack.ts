@@ -11,7 +11,19 @@ export const TECH_STACK: TechStackItem[] = [
     icon: "/tech/typescript.png",
   },
   {
-    name: "Node",
+    name: "JavaScript",
+    icon: "/tech/JavaScript.svg",
+  },
+  {
+    name: "Java",
+    icon: "/tech/Java.svg",
+  },
+  {
+    name: "Spring",
+    icon: "/tech/Spring.svg",
+  },
+  {
+    name: "Node.js",
     icon: "/tech/nodejs.png",
   },
   {
@@ -21,11 +33,11 @@ export const TECH_STACK: TechStackItem[] = [
     icon: "/tech/expressjs-dark.svg", // fallback
   },
   {
-    name: "React",
+    name: "ReactJS",
     icon: "/tech/react.png",
   },
   {
-    name: "Next",
+    name: "Next.js",
     icon: "/tech/nextjs2.png",
   },
   {
@@ -37,11 +49,11 @@ export const TECH_STACK: TechStackItem[] = [
     icon: "/tech/mongodb.svg",
   },
   {
-    name: "SupaBase",
-    icon: "/tech/supabase.svg",
-  },
-  {
     name: "PostgreSQL",
     icon: "/tech/PostgresSQL.svg",
+  },
+  {
+    name: "SupaBase",
+    icon: "/tech/supabase.svg",
   },
 ];
