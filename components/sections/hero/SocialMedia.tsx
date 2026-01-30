@@ -40,9 +40,14 @@ const SocialMedia = () => {
         })}
 
         {/* Resume Button */}
-        <Button className="rounded-lg hover:scale-105 active:scale-95 transition-all duration-200 text-xs sm:text-sm px-3 sm:px-4 py-2 h-9 sm:h-10">
-          <Download className="w-4 h-4 sm:w-5 sm:h-5" />
-          <span className="ml-1 sm:ml-2">Resume</span>
+        <Button
+          asChild
+          className="rounded-lghover:scale-105 active:scale-95 transition-all duration-200 text-xs sm:text-sm px-3 sm:px-4 py-2 h-9 sm:h-10"
+        >
+          <a href="/cv/Thanh_Resume.pdf" download className="flex">
+            <Download className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="ml-1 sm:ml-2">Resume (.pdf)</span>
+          </a>
         </Button>
       </div>
     </div>
