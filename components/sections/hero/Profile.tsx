@@ -8,6 +8,7 @@ import cowAnimation from "@/public/animation/cow-eating-grass.json";
 import grass from "@/public/animation/grass.json";
 import loveHands from "@/public/animation/love-hands.json";
 import { motion } from "framer-motion";
+import Certificate from "@/components/sections/hero/Certificate";
 
 const NameAvatar = () => {
   const [isWaving, setIsWaving] = useState(false);
@@ -124,6 +125,10 @@ const NameAvatar = () => {
               className="absolute -bottom-7 right-14 w-14"
             />
           </div>
+        </div>
+        {/* CERTIFICATE */}
+        <div className="mt-6">
+          <Certificate />
         </div>
       </div>
     </div>
