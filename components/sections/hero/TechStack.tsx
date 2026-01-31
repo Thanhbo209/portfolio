@@ -2,18 +2,19 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { TECH_STACK } from "@/data/techStack";
+import { TECH_STACK_SECTIONS } from "@/data/techStack";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+
 const container = {
   hidden: {},
   show: {
-    transition: { staggerChildren: 0.1 },
+    transition: { staggerChildren: 0.08 },
   },
 };
 
 const item = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 12 },
   show: { opacity: 1, y: 0 },
 };
 
@@ -29,7 +30,7 @@ const TechStack = () => {
 
   return (
     <motion.div
-      className="flex-1 max-md:mb-6 flex flex-col gap-4 border p-6 rounded-xl backdrop-blur-3xl shadow-md"
+      className="flex-1 flex flex-col gap-6 border p-6 rounded-xl backdrop-blur-3xl shadow-md"
       variants={container}
       initial="hidden"
       whileInView="show"
@@ -39,38 +40,47 @@ const TechStack = () => {
         Tech Stack
       </h3>
 
-      <div className="grid grid-cols-3 sm:grid-cols-5 gap-1">
-        {TECH_STACK.map((tech) => {
-          const iconSrc =
-            tech.name === "Express.js"
-              ? theme === "dark"
-                ? "/tech/expressjs-light.svg"
-                : "/tech/expressjs-dark.svg"
-              : tech.icon;
+      {TECH_STACK_SECTIONS.map((section) => (
+        <div key={section.category} className="flex flex-col gap-3">
+          {/* Section title */}
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-semibold text-muted-foreground uppercase">
+              {section.title}
+            </span>
+            <div className="flex-1 h-px bg-border" />
+          </div>
 
-          return (
-            <motion.div
-              key={tech.name}
-              className="group flex flex-col items-center justify-center aspect-square gap-4 rounded-xl transition"
-              variants={item}
-            >
-              <Image
-                src={iconSrc}
-                alt={tech.name}
-                width={46}
-                height={46}
-                className={`object-contain transition-transform group-hover:scale-110 ${
-                  tech.name === "Next" ? "bg-black rounded-full p-0.5" : ""
-                }`}
-              />
+          {/* Tech grid */}
+          <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+            {section.items.map((tech) => {
+              const iconSrc =
+                theme === "dark"
+                  ? (tech.iconDark ?? tech.icon)
+                  : (tech.iconLight ?? tech.icon);
 
-              <span className="text-xs font-semibold text-foreground text-center">
-                {tech.name}
-              </span>
-            </motion.div>
-          );
-        })}
-      </div>
+              return (
+                <motion.div
+                  key={tech.name}
+                  variants={item}
+                  className="group flex flex-col items-center justify-center aspect-square gap-2 rounded-xl hover:bg-muted/40 transition"
+                >
+                  <Image
+                    src={iconSrc}
+                    alt={tech.name}
+                    width={42}
+                    height={42}
+                    className="object-contain transition-transform group-hover:scale-110"
+                  />
+
+                  <span className="text-[14px] font-bold text-foreground text-center">
+                    {tech.name}
+                  </span>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
     </motion.div>
   );
 };

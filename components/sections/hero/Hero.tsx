@@ -11,7 +11,7 @@ const fadeInUp = {
 
 const Hero = () => {
   return (
-    <section className="relative  w-full pt-30" id="home">
+    <section className="relative  w-full pb-30 pt-30" id="home">
       {/* Spotlight background */}
       <div className="absolute inset-0 overflow-hidden">
         <Spotlight

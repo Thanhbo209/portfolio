@@ -14,10 +14,13 @@ export const LEARNING_STEPS: LearningStep[] = [
     label: "React & Tailwind CSS (component-based)",
   },
   {
-    label: "Building real-world projects",
+    label: "Node.js & Express.js",
   },
   {
     label: "REST APIs & authentication",
+  },
+  {
+    label: "Building real-world projects",
   },
   {
     label: "Git, GitHub & collaborative workflow",
@@ -35,7 +38,7 @@ export const LEARNING_STEPS: LearningStep[] = [
     label: "CI/CD",
   },
   {
-    label: "Loading...",
+    label: "And More...",
     highlight: true,
   },
 ];

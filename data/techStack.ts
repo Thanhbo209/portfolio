@@ -1,3 +1,5 @@
+export type TechCategory = "frontend" | "backend" | "database" | "tool" | "ide";
+
 export type TechStackItem = {
   name: string;
   icon: string;
@@ -5,59 +7,54 @@ export type TechStackItem = {
   iconDark?: string;
 };
 
-export const TECH_STACK: TechStackItem[] = [
+export type TechStackSection = {
+  title: string;
+  category: TechCategory;
+  items: TechStackItem[];
+};
+
+export const TECH_STACK_SECTIONS: TechStackSection[] = [
   {
-    name: "TypeScript",
-    icon: "/tech/typescript.png",
+    title: "Frontend",
+    category: "frontend",
+    items: [
+      { name: "TypeScript", icon: "/tech/typescript.png" },
+      { name: "JavaScript", icon: "/tech/JavaScript.svg" },
+      { name: "ReactJS", icon: "/tech/react.png" },
+      { name: "Next.js", icon: "/tech/nextjs2.png" },
+      { name: "Tailwind CSS", icon: "/tech/tailwind2.png" },
+    ],
   },
+
   {
-    name: "JavaScript",
-    icon: "/tech/JavaScript.svg",
+    title: "Backend",
+    category: "backend",
+    items: [
+      { name: "Node.js", icon: "/tech/nodejs.png" },
+      {
+        name: "Express.js",
+        iconLight: "/tech/expressjs-dark.svg",
+        iconDark: "/tech/expressjs-light.svg",
+        icon: "/tech/expressjs-dark.svg",
+      },
+      { name: "Java", icon: "/tech/Java.svg" },
+      { name: "Spring", icon: "/tech/Spring.svg" },
+    ],
   },
+
   {
-    name: "Java",
-    icon: "/tech/Java.svg",
+    title: "Database",
+    category: "database",
+    items: [
+      { name: "MongoDB", icon: "/tech/mongodb.svg" },
+      { name: "PostgreSQL", icon: "/tech/PostgresSQL.svg" },
+      { name: "SupaBase", icon: "/tech/supabase.svg" },
+    ],
   },
+
   {
-    name: "Spring",
-    icon: "/tech/Spring.svg",
-  },
-  {
-    name: "Node.js",
-    icon: "/tech/nodejs.png",
-  },
-  {
-    name: "Express.js",
-    iconLight: "/tech/expressjs-dark.svg",
-    iconDark: "/tech/expressjs-light.svg",
-    icon: "/tech/expressjs-dark.svg", // fallback
-  },
-  {
-    name: "ReactJS",
-    icon: "/tech/react.png",
-  },
-  {
-    name: "Next.js",
-    icon: "/tech/nextjs2.png",
-  },
-  {
-    name: "Tailwind CSS",
-    icon: "/tech/tailwind2.png",
-  },
-  {
-    name: "MongoDB",
-    icon: "/tech/mongodb.svg",
-  },
-  {
-    name: "PostgreSQL",
-    icon: "/tech/PostgresSQL.svg",
-  },
-  {
-    name: "SupaBase",
-    icon: "/tech/supabase.svg",
-  },
-  {
-    name: "Git",
-    icon: "/tech/Git.svg",
+    title: "Tools",
+    category: "tool",
+    items: [{ name: "Git", icon: "/tech/Git.svg" }],
   },
 ];
