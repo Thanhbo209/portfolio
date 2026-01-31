@@ -21,7 +21,7 @@ const Certificate = () => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className="flex flex-col gap-4  \ rounded-xl backdrop-blur-3xl shadow-md"
+      className="flex flex-col gap-4  rounded-xl backdrop-blur-3xl shadow-md"
     >
       <h3 className="text-sm uppercase tracking-wider text-primary/60">
         Certificates
