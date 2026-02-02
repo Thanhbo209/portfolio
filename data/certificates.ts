@@ -7,8 +7,8 @@ type CertificateItem = {
 export const CERTIFICATES: CertificateItem[] = [
   {
     title: "Toeics",
-    issuer: "Band 850+ / Upcoming",
-    year: "2026",
+    issuer: "Aim: 850+ / Recent Mock Test: 775",
+    year: "2026 - Present",
     logo: "/certificates/toeic.png",
   },
   {
