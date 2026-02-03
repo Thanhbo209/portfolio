@@ -37,8 +37,6 @@ export const TECH_STACK_SECTIONS: TechStackSection[] = [
         iconDark: "/tech/expressjs-light.svg",
         icon: "/tech/expressjs-dark.svg",
       },
-      { name: "Java", icon: "/tech/Java.svg" },
-      { name: "Spring", icon: "/tech/Spring.svg" },
     ],
   },
 
