@@ -23,6 +23,9 @@ export const TECH_STACK_SECTIONS: TechStackSection[] = [
       { name: "ReactJS", icon: "/tech/react.png" },
       { name: "Next.js", icon: "/tech/nextjs2.png" },
       { name: "Tailwind CSS", icon: "/tech/tailwind2.png" },
+      { name: "Vite.js", icon: "/tech/vite.js.svg" },
+      { name: "HTML", icon: "/tech/HTML5.svg" },
+      { name: "CSS", icon: "/tech/CSS3.svg" },
     ],
   },
 
@@ -37,6 +40,7 @@ export const TECH_STACK_SECTIONS: TechStackSection[] = [
         iconDark: "/tech/expressjs-light.svg",
         icon: "/tech/expressjs-dark.svg",
       },
+      { name: "Spring", icon: "/tech/spring.svg" },
     ],
   },
 
@@ -53,6 +57,13 @@ export const TECH_STACK_SECTIONS: TechStackSection[] = [
   {
     title: "Tools",
     category: "tool",
-    items: [{ name: "Git", icon: "/tech/Git.svg" }],
+    items: [
+      { name: "Git", icon: "/tech/Git.svg" },
+      { name: "Docker", icon: "/tech/Docker.svg" },
+      {
+        name: "Visual Studio Code",
+        icon: "/tech/Visual Studio Code (VS Code).svg",
+      },
+    ],
   },
 ];

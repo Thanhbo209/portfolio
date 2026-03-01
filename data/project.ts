@@ -1,12 +1,12 @@
 export const projects = [
   {
     id: 1,
-    timeline: "2025 - Present",
-    title: "WorkSense - Tracking your daily habits",
-    des: "Explore the wonders of our task tracking web application.",
-    img: "/worksense.png",
-    iconLists: ["/next.svg", "/tail.svg", "/tech/mongodb.svg", "/ts.svg"],
-    link: "",
+    timeline: "February 2026 - March 2026",
+    title: "Resume Analyzer - AI-Powered Resume Analysis",
+    des: "Leverage AI to analyze and enhance your resume for better job prospects.",
+    img: "/resume-tracking.jpg",
+    iconLists: ["/tech/react.png", "/tail.svg", "/ts.svg"],
+    link: "https://ai-powered-resume-tracking.vercel.app/",
   },
   {
     id: 2,

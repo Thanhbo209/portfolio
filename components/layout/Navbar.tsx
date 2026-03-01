@@ -49,7 +49,7 @@ export default function Navbar() {
       <div className="flex justify-between items-center gap-30 px-6 py-3">
         {/* Logo */}
         <span
-          className={`text-2xl max-xl:text-sm font-bold ${offsideFont.className}`}
+          className={`text-sm max-xl:text-sm font-bold ${offsideFont.className}`}
         >
           THANH PHAM
         </span>
