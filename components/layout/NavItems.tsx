@@ -45,7 +45,7 @@ export default function NavItems() {
           key={item.id}
           onClick={() => scrollToSection(item.id)}
           className="
-            relative text-sm font-medium transition-colors duration-300
+            relative text-sm font-bold transition-colors duration-300
             hover:text-primary
             after:absolute after:-bottom-1 after:left-1/2 after:h-0.5 after:w-0
             after:bg-primary after:transition-all after:duration-300

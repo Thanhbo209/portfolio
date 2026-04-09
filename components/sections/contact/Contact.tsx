@@ -2,21 +2,15 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Briefcase, Copy, Check } from "lucide-react";
-
-// Mock social data - replace with your actual data
-const HERO_SOCIALS = [
-  { icon: Mail, label: "Email", href: "mailto:thanhagar123@gmail.com" },
-  { icon: MapPin, label: "Location", href: "#" },
-];
+import { Mail, MapPin, Briefcase, Copy, Check, Phone } from "lucide-react";
+import { CONTACT_INFO } from "@/data/contactInfo";
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
-  const emailAddress = "thanhagar123@gmail.com";
 
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(emailAddress);
+      await navigator.clipboard.writeText(CONTACT_INFO.emailAddress);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
@@ -80,7 +74,9 @@ export default function ContactSection() {
               </div>
               <div>
                 <h3 className="font-semibold mb-1">Available For</h3>
-                <p className="text-slate-500">Internship (3–6 months)</p>
+                <p className="text-slate-500">
+                  Internship (3–6 months) / Fresher
+                </p>
               </div>
             </motion.div>
 
@@ -95,8 +91,8 @@ export default function ContactSection() {
                 <MapPin className="w-5 h-5 text-blue-300" />
               </div>
               <div>
-                <h3 className="font-semibold  mb-1">Location</h3>
-                <p className="text-slate-500">Remote / On-site (flexible)</p>
+                <h3 className="font-semibold  mb-1">Work Location</h3>
+                <p className="text-slate-500">Flexible</p>
               </div>
             </motion.div>
           </div>
@@ -112,7 +108,9 @@ export default function ContactSection() {
             <div className="flex items-center justify-between p-4 rounded-lg border-2">
               <div className="flex items-center gap-3 ">
                 <Mail className="w-5 h-5 text-blue-300" />
-                <span className=" font-medium">{emailAddress}</span>
+                <span className=" font-medium">
+                  {CONTACT_INFO.emailAddress}
+                </span>
               </div>
               <button
                 onClick={copyToClipboard}
@@ -136,6 +134,36 @@ export default function ContactSection() {
             </div>
           </motion.div>
 
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.65 }}
+            className="mb-6"
+          >
+            <div className="flex items-center justify-between p-4 rounded-lg border-2">
+              <div className="flex items-center gap-3 ">
+                <Phone className="w-5 h-5 text-blue-300" />
+                <span className=" font-medium">{CONTACT_INFO.phoneNumber}</span>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.65 }}
+            className="mb-6"
+          >
+            <div className="flex items-center justify-between p-4 rounded-lg border-2">
+              <div className="flex items-center gap-3 ">
+                <MapPin className="w-5 h-5 text-blue-300" />
+                <span className=" font-medium">{CONTACT_INFO.location}</span>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Contact Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -145,7 +173,7 @@ export default function ContactSection() {
             className="mb-8"
           >
             <a
-              href={`mailto:${emailAddress}`}
+              href={`mailto:${CONTACT_INFO.emailAddress}`}
               className="group  flex items-center justify-center gap-3 w-full bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl hover:scale-101"
             >
               <Mail className="w-5 h-5" />
@@ -155,53 +183,17 @@ export default function ContactSection() {
               </span>
             </a>
           </motion.div>
-
-          {/* Divider */}
-          <div className="relative my-8">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t "></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-4 ">Or connect via</span>
-            </div>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          {/* Footer Note */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.8 }}
-            className="flex justify-center gap-4"
+            transition={{ delay: 0.9 }}
+            className="text-center text-sm mt-8"
           >
-            {HERO_SOCIALS.map((social) => {
-              const Icon = social.icon;
-
-              return (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="group p-4 rounded-lg  transition-all duration-300"
-                >
-                  <Icon className="w-6 h-6 transition-transform group-hover:scale-110" />
-                </a>
-              );
-            })}
-          </motion.div>
+            Usually respond within 24 hours
+          </motion.p>
         </motion.div>
-
-        {/* Footer Note */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.9 }}
-          className="text-center text-sm mt-8"
-        >
-          Usually respond within 24 hours
-        </motion.p>
       </motion.div>
     </section>
   );

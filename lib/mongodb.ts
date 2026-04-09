@@ -1,7 +1,6 @@
 import mongoose, { Mongoose } from "mongoose";
 
 const MONGODB_URI = process.env.MONGODB_URI;
-
 if (!MONGODB_URI) {
   throw new Error("Please define the MONGODB_URI in .env.local");
 }
@@ -18,10 +17,15 @@ declare global {
 const cached: MongooseCache = global.mongoose ?? { conn: null, promise: null };
 
 export async function connectDB(): Promise<Mongoose> {
+  console.log("MONGODB_URI:", process.env.MONGODB_URI); // thêm dòng này
+
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI as string);
+    cached.promise = mongoose.connect(MONGODB_URI as string).catch((err) => {
+      cached.promise = null;
+      throw err;
+    });
   }
 
   cached.conn = await cached.promise;

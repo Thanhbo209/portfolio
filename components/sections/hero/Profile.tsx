@@ -43,11 +43,11 @@ const NameAvatar = () => {
                 style={{ backfaceVisibility: "hidden" }}
               >
                 <Image
-                  src="/avatar2.jpg"
+                  src="/avatar.jpg"
                   alt="Thanh Pham"
                   fill
                   priority
-                  className="rounded-full border-4 border-foreground/40 p-1 object-cover"
+                  className="rounded-full border-3 border-foreground/40 p-0.5 object-cover"
                 />
               </div>
 
@@ -71,14 +71,14 @@ const NameAvatar = () => {
           </div>
 
           {/* INTRO */}
-          <div className="flex flex-col items-center md:items-start gap-2">
+          <div className="flex flex-col items-center md:items-start gap-1">
             <h3 className="text-xs uppercase tracking-wider text-primary/60">
               Profile
             </h3>
             <h1 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
               Hello, I’m Thanh
               <span
-                className={`text-3xl cursor-pointer ${
+                className={`text-5xl cursor-pointer ${
                   isWaving ? "animate-wave" : ""
                 }`}
                 onClick={() => {
@@ -89,13 +89,9 @@ const NameAvatar = () => {
                 👋
               </span>
             </h1>
-            <p className="text-sm text-primary/70 leading-relaxed">
-              · Student Aspiring{" "}
-              <span className="text-sky-500 font-semibold">
-                Practical Full-Stack{" "}
-              </span>
+            <p className="text-md text-primary/70 leading-relaxed">
+              <span className="text-chart-3 font-semibold">Full-Stack </span>
               Developer
-              <br />· Focused on real-world projects
             </p>
           </div>
         </div>

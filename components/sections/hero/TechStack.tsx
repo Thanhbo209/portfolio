@@ -23,6 +23,7 @@ const TechStack = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
@@ -51,7 +52,7 @@ const TechStack = () => {
           </div>
 
           {/* Tech grid */}
-          <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+          <div className="grid grid-cols-3  sm:grid-cols-5 gap-3">
             {section.items.map((tech) => {
               const iconSrc =
                 theme === "dark"
@@ -69,10 +70,10 @@ const TechStack = () => {
                     alt={tech.name}
                     width={42}
                     height={42}
-                    className="object-contain transition-transform group-hover:scale-110"
+                    className="object-contain p-1 rounded-md transition-transform group-hover:scale-110"
                   />
 
-                  <span className="text-[14px] font-bold text-foreground text-center">
+                  <span className="text-[14px] font-semibold text-foreground text-center">
                     {tech.name}
                   </span>
                 </motion.div>
