@@ -3,7 +3,7 @@ import ContactSection from "@/components/sections/contact/Contact";
 import DrawGallery from "@/components/sections/draw/DrawGallery";
 import DrawPage from "@/components/sections/draw/page";
 import Hero from "@/components/sections/hero/Hero";
-import WorkExperience from "@/components/sections/learning/WorkExperience";
+import WorkExperience from "@/components/sections/experience/WorkExperience";
 import Projects from "@/components/sections/projects/Projects";
 
 export default function Home() {
