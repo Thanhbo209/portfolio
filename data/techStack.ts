@@ -43,7 +43,7 @@ export const TECH_STACK_SECTIONS: TechStackSection[] = [
       { name: "Tailwind CSS", icon: "/tech/tailwind2.png" },
       { name: "HTML", icon: "/tech/HTML5.svg" },
       { name: "CSS", icon: "/tech/CSS3.svg" },
-      { name: "Vite", icon: "/tech/vite.js.svg" },
+      { name: "Vite", icon: "/tech/Vite.js.svg" },
     ],
   },
   {
