@@ -26,7 +26,7 @@ export const TECH_STACK_SECTIONS: TechStackSection[] = [
       { name: "TypeScript", icon: "/tech/typescript.png" },
       { name: "JavaScript", icon: "/tech/JavaScript.svg" },
       { name: "Java", icon: "/tech/Java.svg" },
-      { name: "Python", icon: "/tech/Python.svg" },
+      // { name: "Python", icon: "/tech/Python.svg" },
     ],
   },
   {
@@ -67,7 +67,7 @@ export const TECH_STACK_SECTIONS: TechStackSection[] = [
       { name: "MongoDB", icon: "/tech/mongodb.svg" },
       { name: "PostgreSQL", icon: "/tech/PostgresSQL.svg" },
       { name: "SupaBase", icon: "/tech/supabase.svg" },
-      { name: "MySQL", icon: "/tech/MySQL.svg" },
+      // { name: "MySQL", icon: "/tech/MySQL.svg" },
     ],
   },
   {
