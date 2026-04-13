@@ -20,11 +20,11 @@ export const CERTIFICATES: CertificateItem[] = [
     logo: "/certificates/toeic.png",
     link: "https://www.ets.org/toeic",
   },
-  {
-    title: "LeetCodes",
-    issuer: "Self Learning",
-    year: "2025 - Present",
-    logo: "/certificates/LeetCode.png",
-    link: "https://leetcode.com/Thanhbo209/",
-  },
+  // {
+  //   title: "LeetCodes",
+  //   issuer: "Self Learning",
+  //   year: "2025 - Present",
+  //   logo: "/certificates/LeetCode.png",
+  //   link: "https://leetcode.com/Thanhbo209/",
+  // },
 ];
