@@ -50,7 +50,7 @@ const Projects = () => {
                 <div className="flex items-center ">
                   {iconLists.map((icon, index) => (
                     <div
-                      className="border-2 border-white/20 rounded-full bg-black lg:w-10 w-8 h-8 flex justify-center items-center"
+                      className="border-2 border-border rounded-full bg-background lg:w-10 w-8 h-8 flex justify-center items-center"
                       key={icon}
                       style={{ transform: `translateX(-${5 * index * 2}px)` }}
                     >
@@ -66,7 +66,7 @@ const Projects = () => {
                 </div>
 
                 <div className="flex justify-center items-center">
-                  <p className="flex lg:text-xl md:text-xs text-sm text-sky-400">
+                  <p className="flex lg:text-xl md:text-xs text-sm text-[#00d9ff]">
                     Live Site
                   </p>
                   <ArrowDownRightFromSquareIcon

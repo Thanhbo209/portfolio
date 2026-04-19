@@ -76,7 +76,7 @@ const NameAvatar = () => {
               Profile
             </h3>
             <h1 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
-              Hello, I’m Thanh
+              Hello, This is <br /> Pham Thanh
               <span
                 className={`text-5xl cursor-pointer ${
                   isWaving ? "animate-wave" : ""
@@ -90,8 +90,8 @@ const NameAvatar = () => {
               </span>
             </h1>
             <p className="text-md text-primary/70 leading-relaxed">
-              <span className="text-chart-3 font-semibold">Full-Stack </span>
-              Developer
+              <span className="text-chart-2 font-semibold">Backend </span>
+              Developer (Full-stack in progress)
             </p>
           </div>
         </div>

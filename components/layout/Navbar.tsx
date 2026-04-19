@@ -22,13 +22,12 @@ export default function Navbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // tránh nhấp nháy khi scroll rất nhỏ
       if (Math.abs(currentScrollY - lastScrollY) < 10) return;
 
       if (currentScrollY > lastScrollY && currentScrollY > 80) {
-        setHidden(true); // scroll xuống
+        setHidden(true);
       } else {
-        setHidden(false); // scroll lên
+        setHidden(false);
       }
 
       setLastScrollY(currentScrollY);
@@ -42,7 +41,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-7 left-1/2 -translate-x-1/2 max-w-7xl
-      bg-card/50 z-100 rounded-md px-3 max-xl:w-[90vw]
+      bg-card z-100 rounded-md px-3 max-xl:w-[90vw]
       transition-all duration-300 ease-in-out
       ${hidden ? "-translate-y-32 opacity-0" : "translate-y-0 opacity-100"}`}
     >

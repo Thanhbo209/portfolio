@@ -8,7 +8,7 @@ export const COMPETENCIES = [
     value: ["System Design", "Microservices", "RESTful API Design"],
   },
   {
-    label: "Best Practices",
-    value: ["Refactoring", "Problem Solving", "Critical Thinking"],
+    label: "Tools & Practices",
+    value: ["Git (branching, merging)", "Code Refactoring", "Debugging"],
   },
 ];

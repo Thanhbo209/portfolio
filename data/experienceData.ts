@@ -15,9 +15,10 @@ export const EXPERIENCES: ExperienceItem[] = [
     type: "Personal Development Experience",
     bullets: [
       "Built full-stack web applications using Next.js, React.js, and MongoDB (MERN stack)",
+      "Implemented JWT-based authentication and protected API routes",
       "Developed dynamic and responsive UIs using TypeScript and modern React patterns (hooks, component-based architecture)",
       "Integrated frontend with backend APIs, managing state, data fetching, and application flow",
-      "Continuously improved code quality through refactoring and adopting best practices",
+      "Deployed applications with environment configuration and production setup",
     ],
     tags: ["Next.js", "React", "TypeScript", "MongoDB", "Node.js"],
   },
@@ -27,7 +28,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     title: "Software Engineering Student",
     type: "Academic Experience",
     bullets: [
-      "Developed desktop, mobile, and web applications using .NET and Spring Boot",
+      "Developed web and backend systems using .NET and Spring Boot",
       "Designed and implemented RESTful APIs for user authentication and data management",
       "Applied MVC architecture and structured backend logic for maintainable systems",
       "Collaborated in team-based projects using Git for version control and code integration",

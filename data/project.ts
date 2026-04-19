@@ -40,19 +40,4 @@ export const projects = [
     ],
     link: "https://coinsnipe-kappa.vercel.app/",
   },
-  {
-    id: 4,
-    timeline: "Jan - Feb 2026",
-    title: "Education Portal - Learn and Grow",
-    des: "A platform to manage your classes and improve knowledge.",
-    img: "/projects/education-classroom.jpg",
-    iconLists: [
-      "/tech/react.png",
-      "/tech/tailwind2.png",
-      "/tech/typescript.png",
-      "/tech/expressjs-light.svg",
-      "/tech/PostgresSQL.svg",
-    ],
-    link: "https://education-frontend-swart.vercel.app/",
-  },
 ];

@@ -14,7 +14,7 @@ export default function MobileMenu({ isOpen, onClose }: Props) {
     const el = document.getElementById(id);
     if (!el) return;
 
-    const yOffset = -120; // offset cho navbar floating
+    const yOffset = -120;
     const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
     window.scrollTo({

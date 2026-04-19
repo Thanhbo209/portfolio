@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { EXPERIENCES } from "@/data/experienceData";
-import { Brain, Briefcase, GraduationCap } from "lucide-react";
 import { EDUCATION } from "@/data/education";
 import { COMPETENCIES } from "@/data/competencies";
 import Image from "next/image";
@@ -34,10 +33,6 @@ export default function WorkExperience() {
               className="rounded-xl border border-border p-5"
             >
               <p className="flex gap-1 text-xl pb-8 font-medium uppercase tracking-widest text-muted-foreground">
-                <GraduationCap
-                  size={25}
-                  className="inline-block mr-1 text-chart-3"
-                />
                 Education
               </p>
 
@@ -75,7 +70,6 @@ export default function WorkExperience() {
               className="rounded-xl border border-border p-5"
             >
               <p className="flex gap-1 text-xl pb-8 font-medium uppercase tracking-widest text-muted-foreground">
-                <Brain size={25} className="inline-block mr-1 text-chart-5" />
                 Core Competencies
               </p>
               <div className="flex flex-col gap-3">
@@ -106,8 +100,7 @@ export default function WorkExperience() {
             className="rounded-xl border border-border p-5"
           >
             <p className="flex gap-1 text-xl font-medium uppercase tracking-widest text-muted-foreground mb-6">
-              <Briefcase size={25} className="inline-block mr-1 text-chart-2" />
-              Work Experience
+              Experience
             </p>
 
             <div className="relative pl-7">
