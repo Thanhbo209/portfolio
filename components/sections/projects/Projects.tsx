@@ -67,7 +67,7 @@ const Projects = () => {
 
                 <div className="flex justify-center items-center">
                   <p className="flex lg:text-xl md:text-xs text-sm text-[#00d9ff]">
-                    Live Site
+                    GitHub
                   </p>
                   <ArrowDownRightFromSquareIcon
                     className="ms-3"

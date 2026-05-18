@@ -55,9 +55,6 @@ export default function WorkExperience() {
                 <span className="text-sm text-muted-foreground">
                   {EDUCATION.period}
                 </span>
-                <span className="text-xs px-2 bg-card py-0.5 rounded-full border border-border">
-                  CGPA {EDUCATION.gpa}
-                </span>
               </div>
             </motion.div>
 
@@ -100,7 +97,7 @@ export default function WorkExperience() {
             className="rounded-xl border border-border p-5"
           >
             <p className="flex gap-1 text-xl font-medium uppercase tracking-widest text-muted-foreground mb-6">
-              Experience
+              Academic Experience
             </p>
 
             <div className="relative pl-7">

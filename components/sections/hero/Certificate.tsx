@@ -34,7 +34,7 @@ const Certificate = () => {
       <div className="flex flex-col gap-3">
         {CERTIFICATES.map((cert) => (
           <motion.div
-            key={cert.title}
+            key={cert.id}
             variants={item}
             className="flex items-start gap-4 p-3 rounded-lg bg-muted/30 hover:bg-muted/50 transition"
           >

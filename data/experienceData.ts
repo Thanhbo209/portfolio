@@ -9,30 +9,42 @@ export type ExperienceItem = {
 
 export const EXPERIENCES: ExperienceItem[] = [
   {
-    period: "Jan 2024 – Present",
+    period: "Sep 2023 – Present", // [cite: 17]
     current: true,
-    title: "Self-Directed Website Developer",
-    type: "Personal Development Experience",
+    title: "Software Engineering Student & Team Contributor", // [cite: 16]
+    type: "Academic & Collaborative Experience", // [cite: 15]
     bullets: [
-      "Built full-stack web applications using Next.js, React.js, and MongoDB (MERN stack)",
-      "Implemented JWT-based authentication and protected API routes",
-      "Developed dynamic and responsive UIs using TypeScript and modern React patterns (hooks, component-based architecture)",
-      "Integrated frontend with backend APIs, managing state, data fetching, and application flow",
-      "Deployed applications with environment configuration and production setup",
+      "Collaborated cross-functionally with university peers on various full-stack applications, utilizing Git workflows including pull requests and actively participating in peer code reviews", // [cite: 18]
+      "Applied structured software development life cycle (SDLC) practices by designing comprehensive test case tables covering integration and performance testing across team projects", // [cite: 19]
+      "Actively learned and implemented enterprise software architecture principles, gaining practical academic experience integrating frontend user interfaces with backend business logic", // [cite: 20]
     ],
-    tags: ["Next.js", "React", "TypeScript", "MongoDB", "Node.js"],
+    tags: [
+      "SDLC",
+      "Git",
+      "Software Testing",
+      "Enterprise Architecture",
+      "Code Reviews",
+    ],
   },
+
   {
-    period: "Sep 2023 – Present",
+    period: "Present",
     current: true,
-    title: "Software Engineering Student",
-    type: "Academic Experience",
+    title: "Software Engineering Intern Candidate",
+    type: "Career Objective",
     bullets: [
-      "Developed web and backend systems using .NET and Spring Boot",
-      "Designed and implemented RESTful APIs for user authentication and data management",
-      "Applied MVC architecture and structured backend logic for maintainable systems",
-      "Collaborated in team-based projects using Git for version control and code integration",
+      "Actively seeking Software Engineering Internship opportunities focused on backend or full-stack development",
+
+      "Continuously strengthening problem-solving, data structures, algorithms, and scalable web application development skills",
+
+      "Building production-oriented projects using React, Node.js, Express, MongoDB, and Python while practicing collaborative Git workflows",
     ],
-    tags: [".NET", "Spring Boot", "REST API", "MVC", "Git"],
+    tags: [
+      "Backend Development",
+      "Full-Stack Development",
+      "React",
+      "Node.js",
+      "Python",
+    ],
   },
 ];

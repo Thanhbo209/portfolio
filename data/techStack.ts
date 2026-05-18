@@ -25,8 +25,8 @@ export const TECH_STACK_SECTIONS: TechStackSection[] = [
     items: [
       { name: "TypeScript", icon: "/tech/typescript.png" },
       { name: "JavaScript", icon: "/tech/JavaScript.svg" },
+      { name: "Python", icon: "/tech/Python.svg" },
       { name: "Java", icon: "/tech/Java.svg" },
-      // { name: "Python", icon: "/tech/Python.svg" },
     ],
   },
   {
@@ -66,6 +66,7 @@ export const TECH_STACK_SECTIONS: TechStackSection[] = [
       { name: "MongoDB", icon: "/tech/mongodb.svg" },
       { name: "PostgreSQL", icon: "/tech/PostgresSQL.svg" },
       { name: "SupaBase", icon: "/tech/supabase.svg" },
+      { name: "Redis", icon: "/tech/Redis.svg" },
       // { name: "MySQL", icon: "/tech/MySQL.svg" },
     ],
   },
@@ -75,19 +76,7 @@ export const TECH_STACK_SECTIONS: TechStackSection[] = [
     items: [
       { name: "Git", icon: "/tech/Git.svg" },
       { name: "Docker", icon: "/tech/Docker.svg" },
-      {
-        name: "AWS",
-        iconLight: "/tech/AWS.svg",
-        iconDark: "/tech/aws-light.svg",
-        icon: "/tech/AWS.svg",
-      },
-      {
-        name: "Vercel",
-        iconLight: "/tech/Vercel.svg",
-        iconDark: "/tech/Vercel-dark.png",
-        icon: "/tech/Vercel.svg",
-      },
-      { name: "VS Code", icon: "/tech/Visual Studio Code (VS Code).svg" },
+      { name: "Postman", icon: "/tech/Postman.svg" },
     ],
   },
 ];

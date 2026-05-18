@@ -1,14 +1,29 @@
 export const COMPETENCIES = [
   {
-    label: "CS Core",
-    value: ["Data Structures & Algorithms", "OOP", "Design Patterns"],
+    label: "Computer Science Fundamentals",
+    value: [
+      "Data Structures & Algorithms",
+      "Object-Oriented Programming",
+      "Database Systems",
+      "Software Testing & QA",
+    ],
   },
   {
-    label: "Architecture & API",
-    value: ["System Design", "Microservices", "RESTful API Design"],
+    label: "Backend & API Development",
+    value: [
+      "RESTful API Design",
+      "JWT Authentication",
+      "Database Modeling",
+      "Backend Integration",
+    ],
   },
   {
-    label: "Tools & Practices",
-    value: ["Git (branching, merging)", "Code Refactoring", "Debugging"],
+    label: "Tools & Engineering Practices",
+    value: [
+      "Git & Pull Request Workflows",
+      "Code Reviews",
+      "Debugging",
+      "Docker & CI/CD Basics",
+    ],
   },
 ];

@@ -4,16 +4,48 @@ export const projects = [
     timeline: "Feb - Mar 2026",
     title: "Resume Analyzer - AI-Powered Resume Analysis",
     des: "Leverage AI to analyze and enhance your resume for better job prospects.",
-    img: "/projects/resume-tracking.jpg",
+    img: "/projects/ai-resume-analytics.png",
     iconLists: [
       "/tech/react.png",
       "/tech/tailwind2.png",
       "/tech/typescript.png",
     ],
-    link: "https://ai-powered-resume-tracking.vercel.app/",
+    link: "https://github.com/Thanhbo209/ai-powered-resume-tracking",
   },
   {
     id: 2,
+    timeline: "Apr - Present 2026",
+    title: "AI-Powered Financial System",
+    des: "AI-powered financial operating system focused on natural-language expense ingestion, hybrid AI parsing, and behavioral financial insights.",
+    img: "/projects/introducing.png",
+    iconLists: [
+      "/tech/react.png",
+      "/tech/expressjs-light.svg",
+      "/tech/PostgresSQL.svg",
+      "/tech/typescript.png",
+      "/tech/nodejs.png",
+      "tech/Redis.svg",
+    ],
+    link: "https://github.com/Thanhbo209/finAI-assistant",
+  },
+
+  {
+    id: 3,
+    timeline: "Apr - Present 2026",
+    title: "Smart Restaurant Analytics System",
+    des: "Restaurant Analytics System built with Spring Boot featuring event-driven analytics and AI-powered natural language to SQL for real-time business insights",
+    img: "/projects/smart-restaurant-analytic.png",
+    iconLists: [
+      "/tech/Java.svg",
+      "/tech/PostgresSQL.svg",
+      "/tech/Redis.svg",
+      "/tech/Spring.svg",
+    ],
+    link: "https://github.com/Thanhbo209/smart-restaurant-analytics",
+  },
+
+  {
+    id: 4,
     timeline: "Mar - Apr 2026",
     title: "Green Cart -  Grocery Shopping",
     des: "A smart grocery platform  that helps you find the best deals.",
@@ -28,7 +60,7 @@ export const projects = [
     link: "https://github.com/Thanhbo209/grocery-ecommerce",
   },
   {
-    id: 3,
+    id: 5,
     timeline: "Oct - Dec 2025",
     title: "CoinSnipe - Crypto Dashboard",
     des: "Find your favourite cryptocurrency faster and explore all about the crypto market.",
@@ -38,6 +70,6 @@ export const projects = [
       "/tech/tailwind2.png",
       "/tech/typescript.png",
     ],
-    link: "https://coinsnipe-kappa.vercel.app/",
+    link: "https://github.com/Thanhbo209/coinsnipe",
   },
 ];
