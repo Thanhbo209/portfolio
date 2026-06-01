@@ -5,42 +5,57 @@ import DrawPage from "@/components/sections/draw/page";
 import Hero from "@/components/sections/hero/Hero";
 import WorkExperience from "@/components/sections/experience/WorkExperience";
 import Projects from "@/components/sections/projects/Projects";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
+
+function SectionDivider() {
+  return (
+    <div className="flex justify-center px-6" aria-hidden="true">
+      <hr className="h-px w-full max-w-4xl border-0 bg-linear-to-r from-transparent via-border to-transparent" />
+    </div>
+  );
+}
 
 export default function Home() {
   return (
     <>
+      <ScrollProgress />
       <Navbar />
 
       <main
-        className="relative scrollbar-custom"
+        className="relative overflow-hidden scrollbar-custom"
         style={{ minHeight: "calc(100vh - 80px)" }}
       >
-        {/* Hero Section */}
-        <section id="hero" className="min-h-screen">
+        <section id="home" className="min-h-screen scroll-mt-28">
           <Hero />
         </section>
 
-        {/* Learning Timeline Section */}
-        <section id="learning" className="py-12 md:py-15">
+        <SectionDivider />
+
+        <section id="learning" className="section-py scroll-mt-28">
           <WorkExperience />
         </section>
 
-        {/* Projects Section */}
-        <section id="projects" className="py-12 md:py-15">
+        <SectionDivider />
+
+        <section id="projects" className="section-py scroll-mt-28">
           <Projects />
         </section>
 
-        {/* Contact Section */}
-        <section id="contact" className="py-12 md:py-15">
+        <SectionDivider />
+
+        <section id="contact" className="section-py scroll-mt-28">
           <ContactSection />
         </section>
-        {/* Gallery Section */}
-        <section id="gallery" className="py-12 md:py-15">
+
+        <SectionDivider />
+
+        <section id="gallery" className="section-py scroll-mt-28">
           <DrawGallery />
         </section>
 
-        {/* Drawing Section */}
-        <section id="draw" className="py-12 md:py-15">
+        <SectionDivider />
+
+        <section id="draw" className="section-py scroll-mt-28">
           <div className="container mx-auto px-4">
             <DrawPage />
           </div>

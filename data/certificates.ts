@@ -25,7 +25,7 @@ export const CERTIFICATES: CertificateItem[] = [
   },
   {
     id: 3,
-    title: "Toeics",
+    title: "TOEIC",
     issuer: "Preparing: 850+ / Recent Mock Test: 855",
     year: "May 2026",
     logo: "/certificates/toeic.png",

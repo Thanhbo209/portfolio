@@ -12,7 +12,8 @@ const geistSans = Geist({
 
 export const metadata: Metadata = {
   title: "Thanh's Portfolio",
-  description: "Portfolio with showcases of techstack, project and profile",
+  description:
+    "Thanh Pham — backend-focused full-stack developer portfolio showcasing AI projects, technical skills, experience, and creative work.",
 };
 
 export default function RootLayout({
@@ -28,7 +29,6 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="dark"
           enableSystem
-          disableTransitionOnChange
         >
           {children}
           <ToastContainer

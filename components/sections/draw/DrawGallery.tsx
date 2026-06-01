@@ -1,217 +1,189 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "motion/react";
+import { scaleIn } from "@/components/motion/variants";
+import { Button } from "@/components/ui/button";
+import { ImageIcon, PencilLine } from "lucide-react";
 
 interface Drawing {
   _id: string;
   image: string;
   x?: number;
   y?: number;
+  rotation?: number;
 }
 
 interface DraggableDrawing extends Drawing {
   x: number;
   y: number;
+  rotation: number;
 }
 
 export default function DrawGallery() {
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const [drawings, setDrawings] = useState<DraggableDrawing[]>([]);
   const [loading, setLoading] = useState(true);
-  const [draggedId, setDraggedId] = useState<string | null>(null);
-  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
 
-  useEffect(() => {
+  const fetchDrawings = () => {
     fetch("/api/draw")
       .then((res) => res.json())
       .then((data: Drawing[]) => {
-        const positioned = data.map((d, i) => ({
-          ...d,
-          x: d.x ?? Math.random() * 60 + 5,
-          y: d.y ?? Math.random() * 60 + 5,
-        }));
+        const positioned = data.map((d) => {
+          // Cache position parameters if not already assigned
+          return {
+            ...d,
+            // Keeping them spaced within the board safely
+            x: d.x ?? Math.floor(Math.random() * 65 + 10),
+            y: d.y ?? Math.floor(Math.random() * 50 + 15),
+            rotation: d.rotation ?? Math.floor(Math.random() * 24 - 12),
+          };
+        });
         setDrawings(positioned);
         setLoading(false);
       })
       .catch(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    fetchDrawings();
+
+    // Auto-refresh gallery in real-time when a new drawing is successfully submitted!
+    window.addEventListener("new-drawing-submitted", fetchDrawings);
+    return () => {
+      window.removeEventListener("new-drawing-submitted", fetchDrawings);
+    };
   }, []);
-
-  const handleStart = (
-    clientX: number,
-    clientY: number,
-    id: string,
-    currentTarget: EventTarget & Element
-  ) => {
-    const drawing = drawings.find((d) => d._id === id);
-    if (!drawing) return;
-
-    const rect = currentTarget.getBoundingClientRect();
-    const parent = currentTarget.parentElement?.getBoundingClientRect();
-    if (!parent) return;
-
-    setDraggedId(id);
-    setDragOffset({
-      x: clientX - rect.left,
-      y: clientY - rect.top,
-    });
-  };
-
-  const handleMouseDown = (e: React.MouseEvent, id: string) => {
-    handleStart(e.clientX, e.clientY, id, e.currentTarget);
-  };
-
-  const handleTouchStart = (e: React.TouchEvent, id: string) => {
-    const touch = e.touches[0];
-    handleStart(touch.clientX, touch.clientY, id, e.currentTarget);
-  };
-
-  const handleMove = (
-    clientX: number,
-    clientY: number,
-    currentTarget: EventTarget & Element
-  ) => {
-    if (!draggedId) return;
-
-    const container = currentTarget.getBoundingClientRect();
-    const x =
-      ((clientX - container.left - dragOffset.x) / container.width) * 100;
-    const y =
-      ((clientY - container.top - dragOffset.y) / container.height) * 100;
-
-    setDrawings((prev) =>
-      prev.map((d) =>
-        d._id === draggedId
-          ? {
-              ...d,
-              x: Math.max(0, Math.min(90, x)),
-              y: Math.max(0, Math.min(90, y)),
-            }
-          : d
-      )
-    );
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    handleMove(e.clientX, e.clientY, e.currentTarget);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (e.touches.length > 0) {
-      const touch = e.touches[0];
-      handleMove(touch.clientX, touch.clientY, e.currentTarget);
-    }
-  };
-
-  const handleEnd = () => {
-    setDraggedId(null);
-  };
-
-  const handleMouseUp = () => {
-    handleEnd();
-  };
-
-  const handleTouchEnd = () => {
-    handleEnd();
-  };
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-125">
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-12 h-12 border-4 border-gray-200 border-t-purple-600 rounded-full animate-spin" />
-          <p className="text-gray-600 text-sm">Loading gallery...</p>
-        </div>
+      <div className="flex items-center justify-center min-h-[400px]">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex flex-col items-center gap-3"
+        >
+          <div className="h-12 w-12 rounded-full border-4 border-muted border-t-emerald-500 animate-spin" />
+          <p className="text-muted-foreground text-sm font-semibold uppercase tracking-wider">
+            Curating gallery...
+          </p>
+        </motion.div>
       </div>
     );
   }
 
   if (drawings.length === 0) {
     return (
-      <div className="flex items-center justify-center min-h-125">
-        <div className="text-center">
-          <svg
-            className="w-24 h-24 mx-auto text-gray-300 mb-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-            />
-          </svg>
-          <p className="text-gray-500 text-lg font-medium">No drawings yet</p>
-          <p className="text-gray-400 text-sm mt-1">
-            Start creating to see your artwork here
+      <div className="flex min-h-[400px] items-center justify-center rounded-lg border p-8 glass-subtle">
+        <div className="text-center max-w-sm">
+          <div className="mx-auto mb-4 flex size-16 items-center justify-center rounded-lg border border-emerald-500/15 bg-emerald-500/10 text-emerald-500">
+            <ImageIcon className="size-8" />
+          </div>
+          <p className="text-foreground font-bold text-lg">No drawings yet</p>
+          <p className="text-muted-foreground text-sm mt-1.5 leading-relaxed">
+            Be the first visitor to pin a sketch to the board.
           </p>
+          <Button className="mt-5" variant="outline" asChild>
+            <a href="#draw">
+              <PencilLine className="size-4" />
+              Open Canvas
+            </a>
+          </Button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-8" id="gallery">
-      <div className="mb-6 text-center">
-        <h2 className="heading text-blue-300">Gallery</h2>
-        <p className="text-gray-600 mb-1">
-          {drawings.length} {drawings.length === 1 ? "drawing" : "drawings"}
+    <div className="w-full max-w-6xl mx-auto px-4 py-8">
+      <div className="mb-8 text-center">
+        <span className="text-xs font-bold uppercase tracking-widest text-glow mb-3 block">
+          Community Board
+        </span>
+        <h2 className="heading text-foreground mb-2">Visitor Gallery</h2>
+        <p className="text-muted-foreground text-sm font-bold uppercase tracking-wider">
+          {drawings.length} {drawings.length === 1 ? "piece" : "pieces"} of visitor art
         </p>
       </div>
 
       <div
-        className="relative w-full h-150 bg-background rounded-2xl border shadow-xl overflow-hidden"
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
+        ref={containerRef}
+        className="relative h-[32rem] w-full cursor-grab overflow-hidden rounded-lg border border-border/80 bg-[#030712] shadow-2xl active:cursor-grabbing sm:h-[42rem]"
       >
-        {/* Grid pattern background */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
           <div
             className="w-full h-full"
             style={{
               backgroundImage:
-                "radial-gradient(circle, #9333ea 1px, transparent 1px)",
-              backgroundSize: "30px 30px",
+                "radial-gradient(circle, #a855f7 1px, transparent 1px)",
+              backgroundSize: "32px 32px",
             }}
           />
         </div>
 
-        {drawings.map((drawing) => (
-          <div
-            key={drawing._id}
-            className={`absolute w-40 border-6 border-blue-300 rounded-xl h-40 cursor-move transition-shadow ${
-              draggedId === drawing._id
-                ? "z-50 shadow-2xl scale-110"
-                : "z-10 shadow-lg hover:shadow-xl"
-            }`}
-            style={{
-              left: `${drawing.x}%`,
-              top: `${drawing.y}%`,
-              transition:
-                draggedId === drawing._id
-                  ? "none"
-                  : "transform 0.2s, box-shadow 0.2s",
-            }}
-            onMouseDown={(e) => handleMouseDown(e, drawing._id)}
-            onTouchStart={(e) => handleTouchStart(e, drawing._id)}
-          >
-            <div className="relative w-full h-full rounded-lg overflow-hidden border-4 border-white bg-white transform rotate-0 hover:rotate-1 transition-transform">
-              <Image
-                src={drawing.image}
-                alt="User drawing"
-                fill
-                className="object-cover pointer-events-none"
-                sizes="160px"
-                draggable={false}
-              />
-            </div>
-          </div>
-        ))}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-emerald-400/40 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-sky-400/35 to-transparent" />
+
+        <AnimatePresence>
+          {drawings.map((drawing, index) => (
+            <motion.div
+              key={drawing._id}
+              drag
+              dragConstraints={containerRef}
+              dragElastic={0.06}
+              dragMomentum={true}
+              dragTransition={{ bounceStiffness: 400, bounceDamping: 25 }}
+              whileHover={{
+                y: -6,
+                rotate: drawing.rotation * 0.45,
+                scale: 1.03,
+              }}
+              whileDrag={{ 
+                scale: 1.08, 
+                rotate: 0,
+                zIndex: 100,
+                boxShadow: "0 25px 50px -12px rgba(0,0,0,0.5)"
+              }}
+              variants={scaleIn}
+              initial="hidden"
+              animate="visible"
+              className="absolute w-36 select-none rounded-lg border border-slate-200/50 bg-white p-2 pb-5 text-slate-800 shadow-md transition-shadow hover:shadow-xl sm:w-44"
+              style={{
+                left: `${drawing.x}%`,
+                top: `${drawing.y}%`,
+                transform: `rotate(${drawing.rotation}deg)`,
+                zIndex: index + 10,
+              }}
+            >
+              {/* Polaroid pushpin or tape decoration */}
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-4 bg-blue-500/15 backdrop-blur-2xs border border-blue-500/20 rotate-[-5deg] rounded-xs opacity-80" />
+
+              <div className="relative w-full aspect-square bg-[#fafafc] rounded-xs border border-slate-200/80 overflow-hidden">
+                <Image
+                  src={drawing.image}
+                  alt="Visitor drawing"
+                  fill
+                  className="object-contain pointer-events-none"
+                  sizes="(max-width: 640px) 144px, 176px"
+                  priority={index > drawings.length - 6} // Prioritize last added ones
+                  draggable={false}
+                />
+              </div>
+
+              <div className="mt-3.5 text-center flex flex-col items-center">
+                <span 
+                  className="font-medium text-[10px] sm:text-xs text-slate-500 font-mono"
+                  style={{ fontFamily: "'Architects Daughter', 'Caveat', cursive, sans-serif" }}
+                >
+                  ✨ Piece #{drawings.length - index}
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
     </div>
   );
 }
+

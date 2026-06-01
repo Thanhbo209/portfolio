@@ -3,7 +3,7 @@ export const projects = [
     id: 1,
     timeline: "Feb - Mar 2026",
     title: "Resume Analyzer - AI-Powered Resume Analysis",
-    des: "Leverage AI to analyze and enhance your resume for better job prospects.",
+    des: "Uses AI to analyze and enhance resumes for stronger job applications.",
     img: "/projects/ai-resume-analytics.png",
     iconLists: [
       "/tech/react.png",
@@ -24,7 +24,7 @@ export const projects = [
       "/tech/PostgresSQL.svg",
       "/tech/typescript.png",
       "/tech/nodejs.png",
-      "tech/Redis.svg",
+      "/tech/Redis.svg",
     ],
     link: "https://github.com/Thanhbo209/finAI-assistant",
   },
@@ -47,8 +47,8 @@ export const projects = [
   {
     id: 4,
     timeline: "Mar - Apr 2026",
-    title: "Green Cart -  Grocery Shopping",
-    des: "A smart grocery platform  that helps you find the best deals.",
+    title: "Green Cart - Grocery Shopping",
+    des: "A smart grocery platform that helps shoppers find better deals.",
     img: "/projects/ecommerce.jpg",
     iconLists: [
       "/tech/react.png",

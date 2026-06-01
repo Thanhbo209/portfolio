@@ -27,7 +27,7 @@ const Certificate = () => {
       viewport={{ once: true }}
       className="flex flex-col gap-4 rounded-xl backdrop-blur-3xl shadow-md"
     >
-      <h3 className="text-sm uppercase tracking-wider text-primary/60">
+      <h3 className="text-xs font-bold uppercase tracking-widest text-primary/60">
         Certificates
       </h3>
 
@@ -36,10 +36,11 @@ const Certificate = () => {
           <motion.div
             key={cert.id}
             variants={item}
-            className="flex items-start gap-4 p-3 rounded-lg bg-muted/30 hover:bg-muted/50 transition"
+            whileHover={{ x: 4 }}
+            className="group flex items-start gap-4 rounded-lg border border-border/55 bg-muted/25 p-3 transition-all duration-300 hover:border-glow/30 hover:bg-muted/45 hover:shadow-md hover:shadow-glow/10"
           >
             {cert.logo && (
-              <div className="w-15 h-15 shrink-0 bg-white flex items-center justify-center rounded-md border">
+              <div className="flex size-15 shrink-0 items-center justify-center rounded-md border bg-white shadow-sm transition-transform group-hover:scale-105">
                 <Image
                   src={cert.logo}
                   alt={cert.title}
@@ -66,7 +67,7 @@ const Certificate = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="w-fit h-7 px-2 text-xs text-muted-foreground hover:text-foreground mt-1 -ml-2"
+                  className="-ml-2 mt-1 h-7 w-fit px-2 text-xs text-muted-foreground hover:text-foreground"
                   asChild
                 >
                   <a href={cert.link} target="_blank" rel="noopener noreferrer">

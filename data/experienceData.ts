@@ -9,14 +9,14 @@ export type ExperienceItem = {
 
 export const EXPERIENCES: ExperienceItem[] = [
   {
-    period: "Sep 2023 – Present", // [cite: 17]
+    period: "Sep 2023 – Present",
     current: true,
-    title: "Software Engineering Student & Team Contributor", // [cite: 16]
-    type: "Academic & Collaborative Experience", // [cite: 15]
+    title: "Software Engineering Student & Team Contributor",
+    type: "Academic & Collaborative Experience",
     bullets: [
-      "Collaborated cross-functionally with university peers on various full-stack applications, utilizing Git workflows including pull requests and actively participating in peer code reviews", // [cite: 18]
-      "Applied structured software development life cycle (SDLC) practices by designing comprehensive test case tables covering integration and performance testing across team projects", // [cite: 19]
-      "Actively learned and implemented enterprise software architecture principles, gaining practical academic experience integrating frontend user interfaces with backend business logic", // [cite: 20]
+      "Collaborated cross-functionally with university peers on various full-stack applications, utilizing Git workflows including pull requests and actively participating in peer code reviews",
+      "Applied structured software development life cycle (SDLC) practices by designing comprehensive test case tables covering integration and performance testing across team projects",
+      "Actively learned and implemented enterprise software architecture principles, gaining practical academic experience integrating frontend user interfaces with backend business logic",
     ],
     tags: [
       "SDLC",
