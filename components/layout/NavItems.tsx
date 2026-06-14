@@ -91,7 +91,7 @@ export default function NavItems() {
         >
           {item.label}
           <motion.span
-            className="absolute bottom-1 left-1/2 h-[2px] rounded-full bg-linear-to-r from-emerald-400 via-sky-400 to-fuchsia-500"
+            className="absolute bottom-1 left-1/2 h-[2px] rounded-full bg-sky-400 "
             initial={false}
             animate={{
               width: activeId === item.id ? "64%" : 0,

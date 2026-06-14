@@ -2,15 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import {
-  ArrowRight,
-  BrainCircuit,
-  Code2,
-  Download,
-  Globe,
-  Layers3,
-  Send,
-} from "lucide-react";
+import { ArrowRight, Download, Globe, Send } from "lucide-react";
 import NameAvatar from "@/components/sections/hero/Profile";
 import TechStack from "@/components/sections/hero/TechStack";
 import { Spotlight } from "@/components/ui/spotlight";
@@ -29,24 +21,6 @@ const roles = [
   "Backend Developer",
   "Full-stack Builder",
   "AI Product Explorer",
-];
-
-const recruiterHooks = [
-  {
-    title: "Backend-first thinking",
-    body: "API design, authentication, database modeling, testing, and real product flows are visible across the project work.",
-    icon: Code2,
-  },
-  {
-    title: "AI product practice",
-    body: "Recent projects focus on resume analysis, financial parsing, analytics, and natural-language interfaces.",
-    icon: BrainCircuit,
-  },
-  {
-    title: "Team-ready workflow",
-    body: "Academic work includes Git, pull requests, SDLC practice, test case design, and peer code reviews.",
-    icon: Layers3,
-  },
 ];
 
 function RoleSwitcher() {
@@ -173,10 +147,10 @@ const Hero = () => {
               className="flex flex-wrap items-center gap-2"
             >
               <span className="rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-500">
-                Open to Internship / Fresher
+                Open to work
               </span>
               <span className="rounded-full border border-sky-400/25 bg-sky-400/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-sky-500">
-                Currently building AI systems
+                Currently learning AI systems
               </span>
             </motion.div>
 
@@ -192,14 +166,6 @@ const Hero = () => {
                 className="max-w-3xl text-balance text-2xl font-bold leading-tight text-foreground sm:text-3xl"
               >
                 Software engineering student targeting <RoleSwitcher />
-              </motion.p>
-              <motion.p
-                variants={staggerItem}
-                className="max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg"
-              >
-                I build clean full-stack web products with practical backend
-                logic, AI-assisted workflows, and interfaces that recruiters can
-                inspect quickly.
               </motion.p>
             </div>
 
@@ -253,27 +219,6 @@ const Hero = () => {
             <NameAvatar />
           </motion.div>
         </div>
-
-        <motion.div
-          variants={heroContainer}
-          className="grid grid-cols-1 gap-3 md:grid-cols-3"
-        >
-          {recruiterHooks.map(({ title, body, icon: Icon }) => (
-            <motion.div
-              key={title}
-              variants={staggerItem}
-              className="group rounded-lg border border-border/60 bg-background/50 p-5 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-glow/35 hover:bg-background/70 hover:shadow-lg hover:shadow-glow/10"
-            >
-              <div className="mb-4 inline-flex size-10 items-center justify-center rounded-lg border border-border bg-background/70 text-emerald-500 transition-all group-hover:-translate-y-0.5 group-hover:border-emerald-400/35 group-hover:shadow-lg group-hover:shadow-emerald-500/10">
-                <Icon className="size-5" />
-              </div>
-              <h2 className="text-base font-bold text-foreground">{title}</h2>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                {body}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
 
         <div className="w-full">
           <TechStack />

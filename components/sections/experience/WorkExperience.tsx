@@ -8,13 +8,20 @@ import Image from "next/image";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { AnimatedCard } from "@/components/ui/animated-card";
 import { Badge } from "@/components/ui/badge";
-import { fadeUp, staggerContainer, staggerItem } from "@/components/motion/variants";
+import {
+  fadeUp,
+  staggerContainer,
+  staggerItem,
+} from "@/components/motion/variants";
 import { viewportOnce } from "@/components/motion/transitions";
 
 export default function WorkExperience() {
   return (
     <section className="w-full min-h-[90vh] flex items-center justify-center px-4 sm:px-6 py-20 relative overflow-hidden">
-      <div className="absolute inset-0 premium-grid opacity-25" aria-hidden="true" />
+      <div
+        className="absolute inset-0 premium-grid opacity-25"
+        aria-hidden="true"
+      />
       <div
         className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-cyan-500/35 to-transparent"
         aria-hidden="true"
@@ -68,7 +75,7 @@ export default function WorkExperience() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="flex items-center justify-between pt-4 border-t border-border/50 mt-auto">
                 <span className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">
                   Period
@@ -120,7 +127,7 @@ export default function WorkExperience() {
           >
             <div>
               <span className="text-xs font-semibold uppercase tracking-widest text-glow mb-8 block">
-                Academic Experience
+                Experience
               </span>
 
               <div className="relative pl-8 sm:pl-10">
@@ -130,30 +137,31 @@ export default function WorkExperience() {
                 <div className="flex flex-col gap-10">
                   {EXPERIENCES.map((exp, index) => (
                     <motion.div
-                      key={index}
+                      key={`${exp.title}-${index}`}
                       variants={fadeUp}
                       whileHover={{ x: 4 }}
                       className="relative group/exp"
                     >
-                      {/* Timeline Dot with premium glow animations */}
+                      {/* Timeline Dot */}
                       <div
                         className={`absolute -left-[29px] sm:-left-[33px] top-1 w-4 h-4 rounded-full border-2 transition-all duration-500 z-10 flex items-center justify-center
-                          ${
-                            exp.current
-                              ? "bg-background border-blue-500 animate-pulse-glow"
-                              : "bg-background border-border/80 group-hover/exp:border-blue-400 group-hover/exp:scale-110 shadow-sm"
-                          }`}
+                ${
+                  exp.current
+                    ? "bg-background border-blue-500 animate-pulse-glow"
+                    : "bg-background border-border/80 group-hover/exp:border-blue-400 group-hover/exp:scale-110 shadow-sm"
+                }`}
                       >
                         {exp.current && (
                           <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
                         )}
                       </div>
 
-                      {/* Experience Metadata */}
+                      {/* Period + Current */}
                       <div className="flex flex-wrap items-center gap-2 mb-1.5">
                         <span className="text-xs font-bold tracking-wider text-muted-foreground">
                           {exp.period}
                         </span>
+
                         {exp.current && (
                           <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 font-bold border border-emerald-500/20">
                             Current
@@ -161,25 +169,63 @@ export default function WorkExperience() {
                         )}
                       </div>
 
-                      <h3 className="text-base sm:text-lg font-bold text-foreground leading-snug mb-0.5 group-hover/exp:text-blue-400 transition-colors">
+                      {/* Title */}
+                      <h3 className="text-base sm:text-lg font-bold text-foreground leading-snug mb-1 group-hover/exp:text-blue-400 transition-colors">
                         {exp.title}
                       </h3>
+
+                      {/* Company + Location */}
+                      <div className="flex">
+                        {exp.companyImage && (
+                          <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-border/60 bg-background/70 shadow-sm">
+                            <Image
+                              src={exp.companyImage}
+                              alt={
+                                exp.company
+                                  ? `${exp.company} logo`
+                                  : `${exp.title} company image`
+                              }
+                              fill
+                              className="object-contain p-2"
+                            />
+                          </div>
+                        )}
+                        {(exp.company || exp.location) && (
+                          <div className="flex flex-wrap items-center gap-2 text-sm text-foreground/80 font-medium mb-1">
+                            {exp.company && <span>{exp.company}</span>}
+
+                            {exp.company && exp.location && (
+                              <span className="text-muted-foreground">•</span>
+                            )}
+                            {exp.location && (
+                              <span className="text-muted-foreground">
+                                {exp.location}
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                      {/* Type */}
                       <p className="text-xs text-muted-foreground font-semibold uppercase tracking-wider mb-4">
                         {exp.type}
                       </p>
 
+                      {/* Bullets */}
                       <ul className="flex flex-col gap-2 mb-4">
-                        {exp.bullets.map((b, i) => (
+                        {exp.bullets.map((bullet, i) => (
                           <li
                             key={i}
                             className="text-sm text-foreground/80 pl-4 relative leading-relaxed cursor-default hover:text-foreground transition-colors"
                           >
-                            <span className="absolute left-0 text-cyan-400 font-bold select-none">•</span>
-                            {b}
+                            <span className="absolute left-0 text-cyan-400 font-bold select-none">
+                              •
+                            </span>
+                            {bullet}
                           </li>
                         ))}
                       </ul>
 
+                      {/* Tags */}
                       <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-border/40">
                         {exp.tags.map((tag) => (
                           <Badge

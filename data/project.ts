@@ -59,17 +59,17 @@ export const projects = [
     ],
     link: "https://github.com/Thanhbo209/grocery-ecommerce",
   },
-  {
-    id: 5,
-    timeline: "Oct - Dec 2025",
-    title: "CoinSnipe - Crypto Dashboard",
-    des: "Find your favourite cryptocurrency faster and explore all about the crypto market.",
-    img: "/projects/cryptodashboard.png",
-    iconLists: [
-      "/tech/nextjs2.png",
-      "/tech/tailwind2.png",
-      "/tech/typescript.png",
-    ],
-    link: "https://github.com/Thanhbo209/coinsnipe",
-  },
+  // {
+  //   id: 5,
+  //   timeline: "Oct - Dec 2025",
+  //   title: "CoinSnipe - Crypto Dashboard",
+  //   des: "Find your favourite cryptocurrency faster and explore all about the crypto market.",
+  //   img: "/projects/cryptodashboard.png",
+  //   iconLists: [
+  //     "/tech/nextjs2.png",
+  //     "/tech/tailwind2.png",
+  //     "/tech/typescript.png",
+  //   ],
+  //   link: "https://github.com/Thanhbo209/coinsnipe",
+  // },
 ];

@@ -62,7 +62,7 @@ export default function Navbar() {
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
           <span
-            className="size-2 rounded-full bg-emerald-400 shadow-[0_0_14px_rgba(52,211,153,0.65)]"
+            className="size-2 rounded-full bg-sky-400 shadow-[0_0_14px_rgba(52,211,153,0.65)]"
             aria-hidden="true"
           />
           <span className="gradient-text">THANH PHAM</span>
@@ -71,11 +71,12 @@ export default function Navbar() {
         <NavItems />
 
         <div className="flex items-center gap-2 md:gap-3">
-          <span className="hidden rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-bold text-emerald-500 lg:inline-flex">
-            Open to internships
-          </span>
-
-          <Button variant="outline" size="sm" className="hidden md:inline-flex" asChild>
+          <Button
+            variant="outline"
+            size="sm"
+            className="hidden md:inline-flex"
+            asChild
+          >
             <a href="#contact">Contact</a>
           </Button>
 

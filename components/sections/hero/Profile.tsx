@@ -7,13 +7,14 @@ import LottieAnimation from "@/components/ui/lottie-animation";
 import loveHands from "@/public/animation/love-hands.json";
 import { motion } from "motion/react";
 import Certificate from "@/components/sections/hero/Certificate";
-import { BadgeCheck, BriefcaseBusiness } from "lucide-react";
+import { BadgeCheck, BrainCircuit, Code2 } from "lucide-react";
 
 const NameAvatar = () => {
   const [isWaving, setIsWaving] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
-  const descriptionLines = HERO_DESCRIPTION.split("\n")
-    .map((line) => line.trim())
+  const descriptionParagraphs = HERO_DESCRIPTION.trim()
+    .split(/\n\s*\n/)
+    .map((paragraph) => paragraph.trim())
     .filter(Boolean);
 
   useEffect(() => {
@@ -80,9 +81,16 @@ const NameAvatar = () => {
           </motion.button>
 
           <div className="flex min-w-0 flex-1 flex-col items-center gap-3 text-center sm:items-start sm:text-left">
-            <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-accent/35 px-3 py-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-              <BriefcaseBusiness className="size-3.5 text-cyan-500" />
-              Software Engineering Student
+            <div className="flex flex-wrap justify-center gap-2 sm:justify-start">
+              <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-accent/35 px-3 py-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                <Code2 className="size-3.5 text-cyan-500" />
+                Full-stack Software Engineering
+              </div>
+
+              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-cyan-500">
+                <BrainCircuit className="size-3.5" />
+                Backend AI Engineering
+              </div>
             </div>
             <div>
               <h2 className="flex items-center justify-center gap-2 text-2xl font-black text-foreground md:text-3xl sm:justify-start">
@@ -103,19 +111,10 @@ const NameAvatar = () => {
                 </motion.button>
               </h2>
               <p className="mt-2 text-sm font-semibold leading-relaxed text-muted-foreground">
-                <span className="text-cyan-500">Backend</span> Developer with full-stack product practice
+                <span className="text-cyan-500">Full-stack</span> developer
+                building toward{" "}
+                <span className="text-cyan-500">Backend AI Engineering</span>
               </p>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-2 sm:justify-start">
-              {["React", "Node.js", "TypeScript", "MongoDB"].map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-border/70 bg-background/60 px-2.5 py-1 text-xs font-semibold text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-glow/35 hover:text-foreground"
-                >
-                  {tag}
-                </span>
-              ))}
             </div>
           </div>
         </div>
@@ -127,14 +126,13 @@ const NameAvatar = () => {
             About me
           </h3>
           <div className="text-sm leading-7 text-foreground/75 sm:text-base flex-1 flex flex-col justify-center">
-            <p className="w-full">
-              {descriptionLines.map((line, i) => (
-                <React.Fragment key={i}>
-                  {line}
-                  {i < descriptionLines.length - 1 && <br />}
-                </React.Fragment>
+            <div className="flex flex-col gap-3 sm:gap-4">
+              {descriptionParagraphs.map((paragraph, index) => (
+                <p key={index} className="w-full">
+                  {paragraph}
+                </p>
               ))}
-            </p>
+            </div>
           </div>
         </div>
 

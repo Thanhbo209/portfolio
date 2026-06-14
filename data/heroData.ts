@@ -2,11 +2,11 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export const HERO_DESCRIPTION = `
- I’m an Information Technology student with a strong interest in building clean user interfaces and solid backend logic.
+I’m a Software Engineering student focused on building practical full-stack applications with clean user interfaces and reliable backend logic.
 
- Through personal projects, I’ve learned how frontend and backend systems work together to create smooth user experiences.
+Through personal projects, I’ve practiced working with REST APIs, authentication, databases, frontend interfaces, and production-oriented application structure.
 
- I’m currently seeking an Intern/Fresher Web Developer position where I can learn fast, grow my skills, and contribute to real-world projects.
+I’m also learning AI Engineering step by step, especially how backend systems can connect with AI workflows and intelligent product features.
 `;
 
 export type SocialLink = {
