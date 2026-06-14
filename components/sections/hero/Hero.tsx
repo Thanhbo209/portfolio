@@ -17,11 +17,7 @@ import {
   staggerItem,
 } from "@/components/motion/variants";
 
-const roles = [
-  "Backend Developer",
-  "Full-stack Builder",
-  "AI Product Explorer",
-];
+const roles = ["Full-stack Builder", "AI Product Explorer"];
 
 function RoleSwitcher() {
   const [index, setIndex] = useState(0);
