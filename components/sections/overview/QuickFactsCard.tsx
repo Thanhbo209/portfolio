@@ -16,7 +16,7 @@ interface Fact {
 
 const facts: Fact[] = [
   { label: "Ho Chi Minh City, Vietnam", icon: MapPinIcon },
-  { label: "TOEIC 870", icon: SealCheckIcon },
+  { label: "TOEIC Listening & Reading - Score: 870", icon: SealCheckIcon },
   { label: "AI Engineering", icon: BrainIcon },
   { label: "Full-Stack Engineering", icon: StackIcon },
 ];
@@ -35,7 +35,10 @@ export function QuickFactsCard() {
             key={label}
             className="flex items-center gap-2 text-sm text-foreground"
           >
-            <FactIcon className="size-4 shrink-0 text-muted-foreground" weight="regular" />
+            <FactIcon
+              className="size-4 shrink-0 text-muted-foreground"
+              weight="regular"
+            />
             <span>{label}</span>
           </li>
         ))}
