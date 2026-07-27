@@ -11,4 +11,5 @@ export interface ExternalLink {
   label: string;
   href: string;
   icon: ElementType;
+  description?: string;
 }

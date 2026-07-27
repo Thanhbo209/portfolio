@@ -16,7 +16,7 @@ export function TechCategoryCard({ category }: TechCategoryCardProps) {
         <span>{category.name}</span>
       </div>
 
-      <div className="flex flex-col gap-3">
+      <div className="grid grid-cols-2 gap-x-4 gap-y-1 [&>*:last-child:nth-child(odd)]:col-span-2">
         {category.items.map((item) => (
           <TechItemRow key={item.name} item={item} />
         ))}

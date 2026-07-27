@@ -19,7 +19,7 @@ export function Sidebar() {
 
       <nav
         aria-label="Primary"
-        className="flex flex-1 flex-col gap-2 overflow-y-auto p-3"
+        className="flex flex-1 flex-col gap-2 uppercase overflow-y-auto p-3"
       >
         {primaryNav.map((item) => (
           <NavItem

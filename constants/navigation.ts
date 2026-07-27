@@ -34,12 +34,28 @@ export const primaryNav: NavItem[] = [
 // local SVGs. Resume reuses the existing Phosphor FileTextIcon (not a section —
 // opens/downloads the resume instead of scrolling the page).
 export const externalLinks: ExternalLink[] = [
-  { label: "Resume", href: "/resume", icon: FileTextIcon },
-  { label: "GitHub", href: "https://github.com/Thanhbo209", icon: GithubIcon },
+  {
+    label: "Resume",
+    href: "/resume",
+    icon: FileTextIcon,
+    description: "Download my full resume as a PDF",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/Thanhbo209",
+    icon: GithubIcon,
+    description: "Explore my repositories and open-source work",
+  },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/phmthanh/",
     icon: LinkedinIcon,
+    description: "Connect with me professionally",
   },
-  { label: "Email", href: "mailto:thanhagar123@gmail.com", icon: EnvelopeIcon },
+  {
+    label: "Email",
+    href: "mailto:thanhagar123@gmail.com",
+    icon: EnvelopeIcon,
+    description: "Send me a direct message",
+  },
 ];
