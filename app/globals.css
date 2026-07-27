@@ -73,8 +73,8 @@
   --primary-foreground: oklch(0.2074 0.0625 252.2461);
   --secondary: oklch(0.3211 0 0);
   --secondary-foreground: oklch(0.9389 0 0);
-  --muted: oklch(0.3008 0 0);
-  --muted-foreground: oklch(0.7244 0 0);
+  --muted: oklch(34.846% 0.00004 271.152);
+  --muted-foreground: oklch(72.838% 0.00008 271.152);
   --accent: oklch(0.3148 0.1071 255.8956);
   --accent-foreground: oklch(0.8647 0.0685 252.0087);
   --destructive: oklch(0.5789 0.2217 27.8067);
@@ -209,5 +209,16 @@
 
   .animate-border-travel {
     animation: border-travel 6s linear infinite;
+  }
+
+  /* Hides the scrollbar visually while keeping the element scrollable by
+     mouse, touch, and keyboard (tabIndex + native arrow-key/Page-Up-Down
+     support) — used by the Projects horizontal carousel. */
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
