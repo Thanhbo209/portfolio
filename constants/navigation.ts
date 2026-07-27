@@ -19,8 +19,8 @@ import type { ExternalLink, NavItem } from "@/types/navigation";
 // Fixed order per AGENTS.md §4.1 — do not resequence without updating that table first.
 // `id` matches the corresponding <section id="..."> in app/page.tsx.
 export const primaryNav: NavItem[] = [
-  { label: "Overview", id: "overview", icon: HouseIcon },
   { label: "About", id: "about", icon: UserIcon },
+  { label: "Overview", id: "overview", icon: HouseIcon },
   { label: "Experience", id: "experience", icon: BriefcaseIcon },
   { label: "Projects", id: "projects", icon: FolderIcon },
   { label: "Case Studies", id: "case-studies", icon: NotebookIcon },

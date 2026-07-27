@@ -1,5 +1,6 @@
 import type { Icon } from "@phosphor-icons/react";
 import {
+  BrainIcon,
   BriefcaseIcon,
   CodeIcon,
   GraduationCapIcon,
@@ -19,13 +20,18 @@ const milestones: Milestone[] = [
     icon: GraduationCapIcon,
   },
   {
-    label: "Built AI and full-stack projects",
-    date: "2026",
+    label: "Learnt and Built full-stack projects",
+    date: "2024 - Present",
     icon: CodeIcon,
   },
   {
+    label: "Contributed to AI data labeling projects at Acacy Co. Ltd.",
+    date: "May 2026 - June 2026",
+    icon: BrainIcon,
+  },
+  {
     label: "Joined FlyRank AI as an AI Backend Engineering Intern",
-    date: "Jun 2026",
+    date: "Jun 2026 - Present",
     icon: BriefcaseIcon,
   },
   {

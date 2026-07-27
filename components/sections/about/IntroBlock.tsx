@@ -1,8 +1,7 @@
 import Image from "next/image";
-import {
-  BriefcaseIcon,
-  GraduationCapIcon,
-} from "@phosphor-icons/react/dist/ssr";
+import { GraduationCapIcon } from "@phosphor-icons/react/dist/ssr";
+
+import { AnimatedBorderDot } from "@/components/ui/AnimatedBorderDot";
 
 export function IntroBlock() {
   return (
@@ -19,18 +18,17 @@ export function IntroBlock() {
 
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-2 text-sm">
-          <p className="text-base font-semibold text-foreground">Thanh Pham</p>
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <BriefcaseIcon className="size-4 shrink-0" weight="regular" />
-            <span>AI Backend Engineering Intern @ FlyRank AI</span>
-          </div>
+          <p className="text-base font-semibold text-foreground">
+            Pham Viet Thanh
+          </p>
           <div className="flex items-center gap-2 text-muted-foreground">
             <GraduationCapIcon className="size-4 shrink-0" weight="regular" />
             <span>B.S. Software Engineering, HUFLIT (Expected 2027)</span>
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 text-sm text-muted-foreground">
+        <div className="relative flex font-semibold flex-col gap-4 text-sm text-foreground">
+          <AnimatedBorderDot />
           <p>
             I&apos;m a software engineering student at HUFLIT, currently working
             as an AI Backend Engineering Intern at FlyRank AI, where I build

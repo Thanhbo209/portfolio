@@ -7,11 +7,17 @@ import { EngineeringPrinciples } from "@/components/sections/about/EngineeringPr
 export function About() {
   return (
     <Section id="about" heading="About" align="start">
-      <div className="flex flex-col gap-12">
+      <div className="flex flex-col gap-12 mt-10">
         <IntroBlock />
-        <JourneyTimeline />
+        <div className="flex flex-col gap-12 sm:flex-row sm:gap-8">
+          <div className="flex-1">
+            <JourneyTimeline />
+          </div>
+          <div className="flex-1">
+            <EngineeringPrinciples />
+          </div>
+        </div>
         <WhatIBuildCards />
-        <EngineeringPrinciples />
       </div>
     </Section>
   );

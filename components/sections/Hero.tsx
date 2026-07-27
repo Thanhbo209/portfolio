@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { ChatCircleIcon, DownloadSimpleIcon } from "@phosphor-icons/react/dist/ssr";
+import {
+  ChatCircleIcon,
+  DownloadSimpleIcon,
+} from "@phosphor-icons/react/dist/ssr";
 
 import { Section } from "@/components/layout/Section";
 import { CurrentPositionCard } from "@/components/sections/overview/CurrentPositionCard";
@@ -10,7 +13,7 @@ import { QuickFactsCard } from "@/components/sections/overview/QuickFactsCard";
 export function Hero() {
   return (
     <Section id="overview" heading="Overview" headingLevel="h1" align="start">
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 mt-10">
         <CurrentPositionCard />
         <EducationCard />
         <GitHubActivityCard />

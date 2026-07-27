@@ -197,4 +197,17 @@
   .nav-highlight {
     clip-path: polygon(10px 0, 100% 0, 100% 100%, 10px 100%, 0 50%);
   }
+
+  @keyframes border-travel {
+    from {
+      offset-distance: 0%;
+    }
+    to {
+      offset-distance: 100%;
+    }
+  }
+
+  .animate-border-travel {
+    animation: border-travel 6s linear infinite;
+  }
 }
