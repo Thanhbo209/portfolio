@@ -16,7 +16,7 @@ interface Milestone {
 const milestones: Milestone[] = [
   {
     label: "Started Software Engineering at HUFLIT",
-    date: "Nov 2024",
+    date: "Aug 2024",
     icon: GraduationCapIcon,
   },
   {

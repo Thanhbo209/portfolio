@@ -13,8 +13,8 @@
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.9686 0.0035 247.859);
   --secondary-foreground: oklch(0.2697 0 0);
-  --muted: oklch(92.797% 0.00011 271.152);
-  --muted-foreground: oklch(64.341% 0.00007 271.152);
+  --muted: oklch(41.283% 0.00005 271.152);
+  --muted-foreground: oklch(47.478% 0.00005 271.152);
   --accent: oklch(0.9633 0.0154 255.0359);
   --accent-foreground: oklch(0.443 0.1522 257.9241);
   --destructive: oklch(0.5409 0.2143 28.4788);
@@ -35,7 +35,8 @@
   --sidebar-accent-foreground: oklch(23.94% 0.07598 256.581);
   --sidebar-border: oklch(0.9234 0 0);
   --sidebar-ring: oklch(0.5296 0.1863 258.1459);
-  --font-sans: "Inter", "Segoe UI", "Helvetica Neue", sans-serif;
+  --font-sans: "Inter Tight", "Segoe UI", "Helvetica Neue", sans-serif;
+  --font-heading: "Space Grotesk", "Segoe UI", "Helvetica Neue", sans-serif;
   --font-serif: Georgia, "Times New Roman", serif;
   --font-mono: monospace;
   --radius: 0.125rem;
@@ -95,7 +96,8 @@
   --sidebar-accent-foreground: oklch(0.9619 0 0);
   --sidebar-border: oklch(0.3411 0 0);
   --sidebar-ring: oklch(0.7782 0.1158 252.5545);
-  --font-sans: "Inter", "Segoe UI", "Helvetica Neue", sans-serif;
+  --font-sans: "Inter Tight", "Segoe UI", "Helvetica Neue", sans-serif;
+  --font-heading: "Space Grotesk", "Segoe UI", "Helvetica Neue", sans-serif;
   --font-serif: Georgia, "Times New Roman", serif;
   --font-mono: monospace;
   --radius: 0.125rem;
@@ -155,6 +157,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
 
   --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
 
@@ -188,6 +191,14 @@
     @apply bg-background text-foreground;
     letter-spacing: var(--tracking-normal);
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
 }
 
 @layer utilities {
@@ -220,5 +231,22 @@
   }
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Blinking ":" separator on the seven-segment JourneyTimer — runs on its
+     own timeline, independent of the JS tick that drives the digits. */
+  @keyframes blink {
+    0%,
+    49% {
+      opacity: 1;
+    }
+    50%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .animate-blink {
+    animation: blink 1s steps(1) infinite;
   }
 }
