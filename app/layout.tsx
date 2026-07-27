@@ -1,20 +1,29 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { ToastContainer } from "react-toastify";
-import { Analytics } from "@vercel/analytics/next";
+
+import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { NavigationProvider } from "@/components/layout/NavigationProvider";
+import { Sidebar } from "@/components/layout/Sidebar";
+import { MobileNavDrawer } from "@/components/layout/MobileNavDrawer";
+import { primaryNav } from "@/constants/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
-  title: "Thanh's Portfolio",
-  description:
-    "Thanh Pham — backend-focused full-stack developer portfolio showcasing AI projects, technical skills, experience, and creative work.",
+  title: "My Portfolio",
+  description: "Created with Next.js",
 };
+
+const sectionIds = primaryNav.map((item) => item.id);
 
 export default function RootLayout({
   children,
@@ -22,25 +31,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} `}>
-        <Analytics />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-        >
-          {children}
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop
-            closeOnClick
-            pauseOnHover
-            draggable
-            theme="light"
-          />
+    <html lang="en" className="scroll-smooth motion-reduce:scroll-auto" suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <ThemeProvider>
+          <NavigationProvider sectionIds={sectionIds}>
+            <Sidebar />
+            <MobileNavDrawer />
+            <main className="lg:pl-64">{children}</main>
+          </NavigationProvider>
         </ThemeProvider>
       </body>
     </html>
