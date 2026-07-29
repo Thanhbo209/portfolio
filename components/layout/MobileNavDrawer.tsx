@@ -60,7 +60,7 @@ export function MobileNavDrawer() {
   return (
     <>
       <div className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-sidebar-border bg-sidebar px-4 lg:hidden">
-        <Link href="#overview" className="text-sm font-semibold tracking-tight text-sidebar-foreground">
+        <Link href="/#overview" className="text-sm font-semibold tracking-tight text-sidebar-foreground">
           Portfolio
         </Link>
         <button
