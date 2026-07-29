@@ -26,7 +26,7 @@ export function NavItem({
 
   return (
     <Link
-      href={`#${id}`}
+      href={`/#${id}`}
       onClick={onNavigate}
       aria-current={isActive ? "page" : undefined}
       className={cn(

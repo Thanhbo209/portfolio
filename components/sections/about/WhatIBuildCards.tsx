@@ -40,8 +40,8 @@ export function WhatIBuildCards() {
       <h3 className="text-lg font-semibold text-foreground">What I Build</h3>
       <div className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-3">
         {buildAreas.map(({ title, description, icon: AreaIcon }) => (
-          <Card key={title} className="flex flex-col gap-3">
-            <AreaIcon className="size-6 text-primary" weight="regular" />
+          <Card key={title} className="flex  flex-col gap-3">
+            <AreaIcon className="size-6 text-chart-1" weight="regular" />
             <p className="text-sm font-semibold text-foreground">{title}</p>
             <p className="text-sm text-muted-foreground">{description}</p>
           </Card>
