@@ -9,6 +9,13 @@ export interface ElapsedTime {
   seconds: number;
 }
 
+const ZERO_ELAPSED: ElapsedTime = {
+  days: 0,
+  hours: 0,
+  minutes: 0,
+  seconds: 0,
+};
+
 function getElapsed(startDate: string): ElapsedTime {
   const totalSeconds = Math.max(
     0,
@@ -24,7 +31,15 @@ function getElapsed(startDate: string): ElapsedTime {
 }
 
 export function useElapsedTime(startDate: string): ElapsedTime {
-  const [elapsed, setElapsed] = useState(() => getElapsed(startDate));
+  // Starts at a static zero rather than computing the real value during
+  // render: this component is server-rendered once at request time and
+  // then re-rendered client-side during hydration a moment later — since
+  // both renders would call Date.now(), the seconds (sometimes minutes)
+  // almost always differ between them, which React reports as a hydration
+  // mismatch. The interval below (client-only, post-hydration) supplies
+  // the real value within one second, guaranteeing the server HTML and
+  // the client's first paint stay identical in the meantime.
+  const [elapsed, setElapsed] = useState<ElapsedTime>(ZERO_ELAPSED);
 
   useEffect(() => {
     const interval = setInterval(() => {

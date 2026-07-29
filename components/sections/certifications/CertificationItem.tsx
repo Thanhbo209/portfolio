@@ -56,7 +56,7 @@ export function CertificationItem({ certification }: CertificationItemProps) {
       )}
 
       {certification.skills && certification.skills.length > 0 && (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mt-2">
           {certification.skills.map((skill) => (
             <Badge key={skill} variant="outline">
               {skill}

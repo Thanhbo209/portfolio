@@ -1,6 +1,7 @@
 import Image from "next/image";
 import {
   ArrowSquareOutIcon,
+  CodeIcon,
   FileTextIcon,
   ImageSquareIcon,
 } from "@phosphor-icons/react/dist/ssr";
@@ -8,18 +9,14 @@ import {
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import { GithubIcon } from "@/components/ui/icons/GithubIcon";
+import { TECH_ICON_MAP } from "@/constants/techIcons";
 import type { Project } from "@/content/projects";
-
-const MAX_VISIBLE_TECH = 4;
 
 interface ProjectCardProps {
   project: Project;
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
-  const visibleTech = project.technologies.slice(0, MAX_VISIBLE_TECH);
-  const remainingTech = project.technologies.length - visibleTech.length;
-
   return (
     <Card className="flex h-full flex-col gap-4 transition-[color,background-color,border-color,transform,box-shadow] duration-200 hover:scale-[1.015] hover:shadow-md motion-reduce:transition-none motion-reduce:hover:scale-100">
       <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-md bg-muted">
@@ -51,14 +48,47 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       <div className="flex flex-wrap gap-2">
-        {visibleTech.map((tech) => (
-          <Badge key={tech} variant="outline">
-            {tech}
-          </Badge>
-        ))}
-        {remainingTech > 0 && (
-          <Badge variant="outline">+{remainingTech}</Badge>
-        )}
+        {project.technologies.map((tech) => {
+          const icon = TECH_ICON_MAP[tech];
+
+          return (
+            <Badge
+              key={tech}
+              variant="outline"
+              className="flex items-center gap-1.5"
+            >
+              {icon ? (
+                <>
+                  <Image
+                    src={icon.logo}
+                    alt=""
+                    width={14}
+                    height={14}
+                    aria-hidden
+                    className={icon.logoDark ? "dark:hidden" : undefined}
+                  />
+                  {icon.logoDark && (
+                    <Image
+                      src={icon.logoDark}
+                      alt=""
+                      width={14}
+                      height={14}
+                      aria-hidden
+                      className="hidden dark:block"
+                    />
+                  )}
+                </>
+              ) : (
+                <CodeIcon
+                  className="size-3.5 shrink-0"
+                  weight="regular"
+                  aria-hidden
+                />
+              )}
+              {tech}
+            </Badge>
+          );
+        })}
       </div>
 
       <div className="flex items-center gap-4 text-sm font-medium text-foreground">
