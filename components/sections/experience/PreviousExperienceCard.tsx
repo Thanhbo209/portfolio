@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { BriefcaseIcon } from "@phosphor-icons/react/dist/ssr";
 
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
+import { LogoTile } from "@/components/ui/LogoTile";
 
 interface PastRole {
   company: string;
@@ -42,15 +42,11 @@ export function PreviousExperienceCard() {
             className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-6"
           >
             <div className="flex items-start gap-3">
-              <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-white p-1">
-                <Image
-                  src={role.logo}
-                  alt={`${role.company} logo`}
-                  width={32}
-                  height={32}
-                  className="rounded-sm"
-                />
-              </div>
+              <LogoTile
+                src={role.logo}
+                alt={`${role.company} logo`}
+                background="white"
+              />
               <div>
                 <p className="text-sm font-semibold text-foreground">
                   {role.position}

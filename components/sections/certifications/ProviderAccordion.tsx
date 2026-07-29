@@ -17,19 +17,21 @@ export function ProviderAccordion({
 }: ProviderAccordionProps) {
   return (
     <Card className="p-0">
-      <details className="group" name="certifications-accordion" open={defaultOpen}>
-        <summary
-          className="flex cursor-pointer list-none items-center justify-between gap-3 p-6 [&::-webkit-details-marker]:hidden [&::marker]:hidden"
-        >
+      <details
+        className="group"
+        name="certifications-accordion"
+        open={defaultOpen}
+      >
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-6 transition-colors duration-200 hover:bg-accent/50 motion-reduce:transition-none [&::-webkit-details-marker]:hidden [&::marker]:hidden">
           <div className="flex items-center gap-3">
-            <div className="flex size-10 shrink-0 items-center justify-center rounded-md p-1">
+            <div className="flex size-15 shrink-0 items-center justify-center rounded-md p-1">
               {provider.logo ? (
                 <>
                   <Image
                     src={provider.logo}
                     alt={`${provider.name} logo`}
-                    width={50}
-                    height={50}
+                    width={100}
+                    height={100}
                     className={provider.logoDark ? "dark:hidden" : undefined}
                   />
                   {provider.logoDark && (
@@ -62,7 +64,7 @@ export function ProviderAccordion({
 
         <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 group-open:grid-rows-[1fr] motion-reduce:transition-none">
           <div className="overflow-hidden">
-            <div className="flex flex-col gap-3 px-6 pb-6">
+            <div className="flex -translate-y-1 flex-col gap-3 px-6 pb-6 opacity-0 transition-[opacity,transform] duration-300 group-open:translate-y-0 group-open:opacity-100 motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none">
               {provider.certifications.map((certification) => (
                 <CertificationItem
                   key={certification.title}

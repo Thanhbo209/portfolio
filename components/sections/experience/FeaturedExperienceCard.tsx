@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   BriefcaseIcon,
   CalendarBlankIcon,
@@ -8,6 +7,7 @@ import {
 
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
+import { LogoTile } from "@/components/ui/LogoTile";
 
 const responsibilities: string[] = [
   "Build backend services and REST APIs with TypeScript, Node.js, and PostgreSQL to support AI-powered applications.",
@@ -31,15 +31,12 @@ export function FeaturedExperienceCard() {
     <Card className="flex h-full flex-col gap-6">
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="flex size-12 shrink-0 items-center justify-center rounded-md bg-black p-2">
-            <Image
-              src="/companies/flyrank-ai.jpg"
-              alt="FlyRank AI logo"
-              width={32}
-              height={32}
-              className="rounded-sm"
-            />
-          </div>
+          <LogoTile
+            src="/companies/flyrank-ai.jpg"
+            alt="FlyRank AI logo"
+            background="black"
+            size="md"
+          />
           <div>
             <p className="text-base font-semibold text-foreground">
               Backend AI Engineering Intern
@@ -65,7 +62,7 @@ export function FeaturedExperienceCard() {
         </div>
       </div>
 
-      <ul className="flex flex-col gap-2">
+      <ul className="flex flex-col gap-5 mt-3">
         {responsibilities.map((item) => (
           <li
             key={item}
@@ -80,7 +77,7 @@ export function FeaturedExperienceCard() {
         ))}
       </ul>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex mt-auto flex-wrap gap-2">
         {technologies.map((tech) => (
           <Badge key={tech} variant="outline">
             {tech}

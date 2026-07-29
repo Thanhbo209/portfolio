@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   BriefcaseIcon,
   MapPinIcon,
@@ -6,6 +5,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 
 import { Card } from "@/components/ui/Card";
+import { LogoTile } from "@/components/ui/LogoTile";
 import type { CurrentStatus } from "@/content/contact";
 
 interface CurrentStatusCardProps {
@@ -22,15 +22,13 @@ export function CurrentStatusCard({ status }: CurrentStatusCardProps) {
 
       <div className="flex items-center gap-3">
         {status.companyLogo && (
-          <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-black p-1.5">
-            <Image
-              src={status.companyLogo}
-              alt={`${status.company} logo`}
-              width={28}
-              height={28}
-              className="rounded-sm"
-            />
-          </div>
+          <LogoTile
+            src={status.companyLogo}
+            alt={`${status.company} logo`}
+            background="black"
+            imageSize={28}
+            padding="p-1.5"
+          />
         )}
         <div>
           <p className="text-sm font-semibold text-foreground">

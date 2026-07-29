@@ -56,10 +56,9 @@ export const techCategories: TechCategory[] = [
       {
         name: "Express",
         logo: "/tech/express.svg",
-        logoDark: "/tech/express-dark.svg",
+        logoDark: "/tech/expressjs-light.svg",
       },
       { name: "FastAPI", logo: "/tech/fastapi.svg" },
-      { name: "JSON Web Tokens", logo: "/tech/jsonwebtokens.svg" },
     ],
   },
   {
@@ -77,10 +76,10 @@ export const techCategories: TechCategory[] = [
     ],
   },
   {
-    name: "AI / Machine Learning",
+    name: "AI / Data",
     icon: BrainIcon,
     items: [
-      { name: "YOLOv8", logo: "/tech/ultralytics.svg" },
+      { name: "PyTorch", logo: "/tech/PyTorch.svg" },
       { name: "NumPy", logo: "/tech/numpy.svg" },
       { name: "Pandas", logo: "/tech/pandas.svg" },
       { name: "OpenCV", logo: "/tech/opencv.svg" },

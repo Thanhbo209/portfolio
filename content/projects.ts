@@ -39,6 +39,7 @@ export const projects: Project[] = [
   {
     slug: "ai-resume-analyzer",
     title: "AI Resume Analyzer",
+    thumbnail: "/project-banner/resume-analyze.jpg",
     description:
       "A serverless resume-scoring app built on Puter.js, using its hosted Claude Sonnet integration for AI feedback.",
     technologies: [

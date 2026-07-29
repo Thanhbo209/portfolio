@@ -1,26 +1,24 @@
-import Image from "next/image";
 import { BriefcaseIcon, CalendarBlankIcon } from "@phosphor-icons/react/dist/ssr";
 
 import { Card } from "@/components/ui/Card";
+import { LogoTile } from "@/components/ui/LogoTile";
 
 export function CurrentPositionCard() {
   return (
-    <Card className="flex flex-col gap-4">
+    <Card className="flex h-full flex-col gap-4">
       <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
         <BriefcaseIcon className="size-4" weight="regular" />
         <span>Current Position</span>
       </div>
 
       <div className="flex items-center gap-3">
-        <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-black p-1.5">
-          <Image
-            src="/companies/flyrank-ai.jpg"
-            alt="FlyRank AI logo"
-            width={28}
-            height={28}
-            className="rounded-sm"
-          />
-        </div>
+        <LogoTile
+          src="/companies/flyrank-ai.jpg"
+          alt="FlyRank AI logo"
+          background="black"
+          imageSize={28}
+          padding="p-1.5"
+        />
         <div>
           <p className="text-sm font-semibold text-foreground">FlyRank AI</p>
           <p className="text-sm text-muted-foreground">

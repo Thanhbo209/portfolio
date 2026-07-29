@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/utils";
 
 interface SectionProps {
@@ -29,15 +30,17 @@ export function Section({
         className,
       )}
     >
-      <Heading
-        id={`${id}-heading`}
-        className={cn(
-          "font-semibold tracking-tight text-foreground",
-          headingLevel === "h1" ? "text-4xl" : "text-3xl",
-        )}
-      >
-        {heading}
-      </Heading>
+      <Reveal>
+        <Heading
+          id={`${id}-heading`}
+          className={cn(
+            "font-semibold tracking-tight text-foreground",
+            headingLevel === "h1" ? "text-4xl" : "text-3xl",
+          )}
+        >
+          {heading}
+        </Heading>
+      </Reveal>
       <div className="mt-4">{children}</div>
     </section>
   );

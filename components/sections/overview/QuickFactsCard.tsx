@@ -23,7 +23,7 @@ const facts: Fact[] = [
 
 export function QuickFactsCard() {
   return (
-    <Card className="flex flex-col gap-4">
+    <Card className="flex h-full flex-col gap-4">
       <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
         <InfoIcon className="size-4" weight="regular" />
         <span>Quick Facts</span>

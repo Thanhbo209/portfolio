@@ -23,10 +23,10 @@ export const primaryNav: NavItem[] = [
   { label: "Overview", id: "overview", icon: HouseIcon },
   { label: "Experience", id: "experience", icon: BriefcaseIcon },
   { label: "Projects", id: "projects", icon: FolderIcon },
-  { label: "Case Studies", id: "case-studies", icon: NotebookIcon },
+  // { label: "Case Studies", id: "case-studies", icon: NotebookIcon },
   { label: "Tech Stack", id: "tech-stack", icon: CodeIcon },
   { label: "Certifications", id: "certifications", icon: CertificateIcon },
-  { label: "Blog", id: "blog", icon: ArticleIcon },
+  // { label: "Blog", id: "blog", icon: ArticleIcon },
   { label: "Contact", id: "contact", icon: EnvelopeSimpleIcon },
 ];
 

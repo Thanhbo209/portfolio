@@ -6,6 +6,7 @@ import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react/dist/ssr";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/content/projects";
 import { ProjectCard } from "@/components/sections/projects/ProjectCard";
+import { Reveal } from "@/components/ui/Reveal";
 
 interface ProjectsCarouselProps {
   projects: Project[];
@@ -60,10 +61,15 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
         tabIndex={0}
         className="scrollbar-hide grid grid-flow-col grid-rows-1 auto-cols-[100%] gap-6 overflow-x-auto scroll-smooth motion-reduce:scroll-auto snap-x snap-mandatory sm:auto-cols-[calc(50%-0.75rem)] lg:grid-rows-2"
       >
-        {projects.map((project) => (
-          <div key={project.slug} className="h-full snap-start">
+        {projects.map((project, index) => (
+          <Reveal
+            key={project.slug}
+            delay={index * 60}
+            className="h-full snap-start"
+            root={scrollRef}
+          >
             <ProjectCard project={project} />
-          </div>
+          </Reveal>
         ))}
       </div>
 
@@ -74,7 +80,7 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
             onClick={() => goByPage(-1)}
             disabled={activePage === 0}
             aria-label="Previous projects"
-            className="flex size-8 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:text-foreground disabled:opacity-40"
+            className="flex size-8 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors duration-200 hover:text-foreground disabled:opacity-40 motion-reduce:transition-none"
           >
             <CaretLeftIcon className="size-4" weight="bold" />
           </button>
@@ -88,7 +94,7 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
                 aria-label={`Go to page ${index + 1}`}
                 aria-current={index === activePage ? "true" : undefined}
                 className={cn(
-                  "size-2 rounded-full transition-colors",
+                  "size-2 rounded-full transition-colors duration-200 motion-reduce:transition-none",
                   index === activePage ? "bg-foreground" : "bg-border",
                 )}
               />
@@ -100,7 +106,7 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
             onClick={() => goByPage(1)}
             disabled={activePage === pageCount - 1}
             aria-label="Next projects"
-            className="flex size-8 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:text-foreground disabled:opacity-40"
+            className="flex size-8 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors duration-200 hover:text-foreground disabled:opacity-40 motion-reduce:transition-none"
           >
             <CaretRightIcon className="size-4" weight="bold" />
           </button>

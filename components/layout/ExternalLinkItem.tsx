@@ -16,7 +16,7 @@ export function ExternalLinkItem({ link, className }: ExternalLinkItemProps) {
       target={isMail ? undefined : "_blank"}
       rel={isMail ? undefined : "noopener noreferrer"}
       className={cn(
-        "flex h-9 items-center gap-2 rounded-md px-3 text-sm font-medium text-sidebar-foreground transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+        "flex h-9 items-center gap-2 rounded-md px-3 text-sm font-medium text-sidebar-foreground transition-colors duration-200 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground motion-reduce:transition-none",
         className,
       )}
     >

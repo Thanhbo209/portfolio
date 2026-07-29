@@ -21,7 +21,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const remainingTech = project.technologies.length - visibleTech.length;
 
   return (
-    <Card className="flex h-full flex-col gap-4">
+    <Card className="flex h-full flex-col gap-4 transition-[color,background-color,border-color,transform,box-shadow] duration-200 hover:scale-[1.015] hover:shadow-md motion-reduce:transition-none motion-reduce:hover:scale-100">
       <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-md bg-muted">
         {project.thumbnail ? (
           <Image
@@ -66,9 +66,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
           href={project.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 transition-colors hover:text-muted-foreground"
+          className="group flex items-center gap-1.5 transition-colors duration-200 hover:text-muted-foreground motion-reduce:transition-none"
         >
-          <GithubIcon className="size-4" />
+          <GithubIcon className="size-4 transition-transform duration-150 group-hover:translate-x-0.5 motion-reduce:transition-none" />
           GitHub
         </a>
         {project.liveUrl && (
@@ -76,18 +76,24 @@ export function ProjectCard({ project }: ProjectCardProps) {
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 transition-colors hover:text-muted-foreground"
+            className="group flex items-center gap-1.5 transition-colors duration-200 hover:text-muted-foreground motion-reduce:transition-none"
           >
-            <ArrowSquareOutIcon className="size-4" weight="regular" />
+            <ArrowSquareOutIcon
+              className="size-4 transition-transform duration-150 group-hover:translate-x-0.5 motion-reduce:transition-none"
+              weight="regular"
+            />
             Live Demo
           </a>
         )}
         {project.caseStudyUrl && (
           <a
             href={project.caseStudyUrl}
-            className="flex items-center gap-1.5 transition-colors hover:text-muted-foreground"
+            className="group flex items-center gap-1.5 transition-colors duration-200 hover:text-muted-foreground motion-reduce:transition-none"
           >
-            <FileTextIcon className="size-4" weight="regular" />
+            <FileTextIcon
+              className="size-4 transition-transform duration-150 group-hover:translate-x-0.5 motion-reduce:transition-none"
+              weight="regular"
+            />
             Case Study
           </a>
         )}

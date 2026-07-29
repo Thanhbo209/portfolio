@@ -48,6 +48,24 @@ export const certificationProviders: CertificationProvider[] = [
     ],
   },
   {
+    name: "FreeCodeCamp",
+    logo: "/companies/freecodecamp.png",
+    certifications: [
+      {
+        title: "Python Certificate",
+        issueDate: "Jul 2026",
+        verifyUrl: "https://verify.skilljar.com/c/7uptcnob27fa",
+        certificateImage: "/tech/python.svg",
+        skills: [
+          "Python",
+          "Data Structure & Algorithms",
+          "OOP",
+          "Fundamentals",
+        ],
+      },
+    ],
+  },
+  {
     name: "IIG Vietnam",
     logo: "/tech/iig.jpg",
     certifications: [

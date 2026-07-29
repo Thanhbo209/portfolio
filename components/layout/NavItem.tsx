@@ -14,7 +14,13 @@ interface NavItemProps {
   className?: string;
 }
 
-export function NavItem({ id, label, icon, onNavigate, className }: NavItemProps) {
+export function NavItem({
+  id,
+  label,
+  icon,
+  onNavigate,
+  className,
+}: NavItemProps) {
   const { activeId } = useNavigationContext();
   const isActive = activeId === id;
 
@@ -26,18 +32,16 @@ export function NavItem({ id, label, icon, onNavigate, className }: NavItemProps
       className={cn(
         "group relative flex h-12 items-center gap-2 overflow-hidden rounded-md px-3 text-sm font-medium transition-colors duration-250 ease-out motion-reduce:transition-none",
         isActive
-          ? "text-sidebar-primary-foreground"
-          : "text-sidebar-foreground hover:text-sidebar-accent-foreground",
+          ? "text-background"
+          : "text-sidebar-foreground hover:text-background",
         className,
       )}
     >
       <span
         aria-hidden
         className={cn(
-          "nav-highlight absolute inset-0 origin-left transition-transform duration-250 ease-out motion-reduce:transition-none",
-          isActive
-            ? "scale-x-100 bg-sidebar-primary"
-            : "scale-x-0 bg-sidebar-accent group-hover:scale-x-100",
+          "nav-highlight absolute inset-0 bg-primary",
+          isActive && "is-active",
         )}
       />
       <span className="relative z-10 flex size-4 shrink-0 [&>svg]:size-4">

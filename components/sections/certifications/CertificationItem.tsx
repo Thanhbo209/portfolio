@@ -38,9 +38,12 @@ export function CertificationItem({ certification }: CertificationItemProps) {
             href={certification.verifyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex shrink-0 items-center gap-1.5 text-xs font-medium text-foreground transition-colors hover:text-muted-foreground"
+            className="group flex shrink-0 items-center gap-1.5 text-xs font-medium text-foreground transition-colors duration-200 hover:text-muted-foreground motion-reduce:transition-none"
           >
-            <ArrowSquareOutIcon className="size-4" weight="regular" />
+            <ArrowSquareOutIcon
+              className="size-4 transition-transform duration-150 group-hover:translate-x-0.5 motion-reduce:transition-none"
+              weight="regular"
+            />
             Verify Credential
           </a>
         )}
