@@ -1,23 +1,24 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { motion } from "motion/react";
 import {
   ArrowSquareOutIcon,
   DownloadSimpleIcon,
   PrinterIcon,
 } from "@phosphor-icons/react/dist/ssr";
 
-import { cn } from "@/lib/utils";
+import { buttonHover, buttonPressEffect, TRANSITIONS } from "@/lib/motion/variants";
 
 interface ResumeViewerProps {
   pdfUrl: string;
 }
 
 const PRIMARY_BUTTON =
-  "flex w-full items-center justify-center gap-2 bg-foreground px-4 py-2 text-sm font-medium text-primary-foreground transition-colors duration-200 hover:bg-accent/90 hover:text-foreground active:scale-[0.98] motion-reduce:transition-none sm:w-auto";
+  "flex w-full items-center justify-center gap-2 bg-foreground px-4 py-2 text-sm font-medium text-primary-foreground transition-colors duration-200 hover:bg-accent/90 hover:text-foreground sm:w-auto";
 
 const OUTLINE_BUTTON =
-  "flex w-full items-center justify-center gap-2 border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors duration-200 hover:text-muted-foreground active:scale-[0.98] motion-reduce:transition-none sm:w-auto";
+  "flex w-full items-center justify-center gap-2 border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors duration-200 hover:text-muted-foreground sm:w-auto";
 
 export function ResumeViewer({ pdfUrl }: ResumeViewerProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -30,23 +31,37 @@ export function ResumeViewer({ pdfUrl }: ResumeViewerProps) {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-        <a href={pdfUrl} download className={PRIMARY_BUTTON}>
+        <motion.a
+          href={pdfUrl}
+          download
+          whileHover={buttonHover}
+          whileTap={buttonPressEffect}
+          className={PRIMARY_BUTTON}
+        >
           <DownloadSimpleIcon className="size-4" weight="regular" />
           Download PDF
-        </a>
-        <a
+        </motion.a>
+        <motion.a
           href={pdfUrl}
           target="_blank"
           rel="noopener noreferrer"
+          whileHover={buttonHover}
+          whileTap={buttonPressEffect}
           className={OUTLINE_BUTTON}
         >
           <ArrowSquareOutIcon className="size-4" weight="regular" />
           Open in New Tab
-        </a>
-        <button type="button" onClick={handlePrint} className={OUTLINE_BUTTON}>
+        </motion.a>
+        <motion.button
+          type="button"
+          onClick={handlePrint}
+          whileHover={buttonHover}
+          whileTap={buttonPressEffect}
+          className={OUTLINE_BUTTON}
+        >
           <PrinterIcon className="size-4" weight="regular" />
           Print Resume
-        </button>
+        </motion.button>
       </div>
 
       <div className="relative min-h-[80vh] w-full overflow-hidden rounded-md border border-border bg-card">
@@ -58,15 +73,15 @@ export function ResumeViewer({ pdfUrl }: ResumeViewerProps) {
             </p>
           </div>
         )}
-        <iframe
+        <motion.iframe
           ref={iframeRef}
           src={pdfUrl}
           title="Resume preview"
           onLoad={() => setIsLoaded(true)}
-          className={cn(
-            "h-full min-h-[80vh] w-full transition-opacity duration-300",
-            isLoaded ? "opacity-100" : "opacity-0",
-          )}
+          initial={false}
+          animate={{ opacity: isLoaded ? 1 : 0 }}
+          transition={TRANSITIONS.normal}
+          className="h-full min-h-[80vh] w-full"
         />
       </div>
     </div>

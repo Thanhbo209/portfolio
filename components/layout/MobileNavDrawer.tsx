@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { ListIcon, XIcon } from "@phosphor-icons/react";
 
 import { cn } from "@/lib/utils";
-import { externalLinks, primaryNav } from "@/constants/navigation";
-import { NavItem } from "@/components/layout/NavItem";
+import { externalLinks } from "@/constants/navigation";
+import { PrimaryNavList } from "@/components/layout/PrimaryNavList";
 import { ExternalLinkItem } from "@/components/layout/ExternalLinkItem";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
@@ -102,17 +102,12 @@ export function MobileNavDrawer() {
             </button>
           </div>
 
-          <nav aria-label="Primary" className="flex flex-1 flex-col gap-1 overflow-y-auto p-3">
-            {primaryNav.map((item) => (
-              <NavItem
-                key={item.id}
-                id={item.id}
-                label={item.label}
-                icon={<item.icon weight="regular" />}
-                onNavigate={closeDrawer}
-              />
-            ))}
-          </nav>
+          <PrimaryNavList
+            layoutGroupId="drawer-nav"
+            animate={visible}
+            onNavigate={closeDrawer}
+            className="gap-1"
+          />
 
           <div className="flex flex-col gap-1 border-t border-sidebar-border p-3">
             {externalLinks.map((link) => (

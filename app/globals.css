@@ -203,29 +203,14 @@
 
 @layer utilities {
   /* Flag-shaped nav highlight: sharp triangular point on the left, flat right
-     edge, sliding in left-to-right on hover/active.
-     Deliberately plain CSS transform/transition here, not Tailwind's
-     translate-x and transition-transform utilities: those compose via the
-     unregistered (syntax "*") --tw-translate-x custom property, which
-     Chromium cannot smoothly interpolate — confirmed via live DOM/DevTools
-     inspection, the fill was snapping instantly instead of sliding. A raw
-     transform: translateX() has no such indirection and interpolates
-     natively. */
+     edge. Only ever rendered for the active nav item now — Motion's
+     layoutId (NavItem.tsx) animates this shape's position between whichever
+     two items are active before/after a scroll-spy change, so there's no
+     transform/transition to author here anymore. The clip-path is the one
+     thing that must stay defined in plain CSS, since it's a static shape,
+     not an animated value. */
   .nav-highlight {
     clip-path: polygon(10px 0, 100% 0, 100% 100%, 10px 100%, 0 50%);
-    transform: translateX(-100%);
-    transition: transform 250ms ease-out;
-  }
-
-  .group:hover .nav-highlight,
-  .nav-highlight.is-active {
-    transform: translateX(0);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .nav-highlight {
-      transition: none;
-    }
   }
 
   @keyframes border-travel {
@@ -267,5 +252,50 @@
 
   .animate-blink {
     animation: blink 1s steps(1) infinite;
+  }
+
+  /* Premium light-sweep effect for headings/wordmarks: a narrow bright band
+     travels left-to-right through the text via a moving background-clip:
+     text gradient. `color-mix` blends against `transparent` so the dim/
+     bright stops track --foreground automatically in both themes, with no
+     separate light/dark values to maintain. The 0%/100% transparent stops
+     exist only so the gradient's own edges never show a hard seam; the
+     300% background-size keeps them well outside the visible text for
+     nearly the whole cycle, so the text itself never visibly disappears. */
+  .text-shimmer {
+    color: transparent;
+    background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in oklch, var(--foreground) 38%, transparent) 12%,
+      color-mix(in oklch, var(--foreground) 38%, transparent) 44%,
+      var(--foreground) 50%,
+      color-mix(in oklch, var(--foreground) 38%, transparent) 56%,
+      color-mix(in oklch, var(--foreground) 38%, transparent) 88%,
+      transparent 100%
+    );
+    background-size: 300% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-shimmer 2.75s linear infinite;
+  }
+
+  @keyframes text-shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .text-shimmer {
+      animation: none;
+      background-image: none;
+      color: var(--foreground);
+      -webkit-text-fill-color: var(--foreground);
+    }
   }
 }

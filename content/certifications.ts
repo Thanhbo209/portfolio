@@ -17,7 +17,7 @@ export interface CertificationProvider {
 export const certificationProviders: CertificationProvider[] = [
   {
     name: "Google",
-    logo: "/tech/google.svg",
+    logo: "/tech/google.jpg",
     certifications: [
       {
         title: "Google AI Essentials",

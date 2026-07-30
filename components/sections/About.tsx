@@ -1,10 +1,11 @@
 import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/ui/Reveal";
+import { MotionLink } from "@/components/ui/MotionLink";
 import { IntroBlock } from "@/components/sections/about/IntroBlock";
 import { JourneyTimeline } from "@/components/sections/about/JourneyTimeline";
 import { WhatIBuildCards } from "@/components/sections/about/WhatIBuildCards";
 import { EngineeringPrinciples } from "@/components/sections/about/EngineeringPrinciples";
-import Link from "next/link";
+import { buttonHover, buttonPressEffect } from "@/lib/motion/variants";
 import {
   ChatCircleIcon,
   DownloadSimpleIcon,
@@ -25,20 +26,24 @@ export function About() {
             <div className="flex-1">
               <EngineeringPrinciples />
               <div className="mt-15 flex justify-start flex-wrap items-start gap-4">
-                <Link
+                <MotionLink
                   href="#contact"
-                  className="flex items-center gap-2 bg-foreground px-4 py-2 text-sm font-medium text-primary-foreground transition-colors duration-200 hover:bg-accent/90 hover:text-foreground active:scale-[0.98] motion-reduce:transition-none"
+                  whileHover={buttonHover}
+                  whileTap={buttonPressEffect}
+                  className="flex items-center gap-2 bg-foreground px-4 py-2 text-sm font-medium text-primary-foreground transition-colors duration-200 hover:bg-accent/90 hover:text-foreground"
                 >
                   <ChatCircleIcon className="size-4" weight="regular" />
                   Get in Touch
-                </Link>
-                <Link
+                </MotionLink>
+                <MotionLink
                   href="/resume"
-                  className="flex items-center gap-2 border px-4 py-2 text-sm font-medium text-foreground transition-colors duration-200 hover:text-muted-foreground active:scale-[0.98] motion-reduce:transition-none"
+                  whileHover={buttonHover}
+                  whileTap={buttonPressEffect}
+                  className="flex items-center gap-2 border px-4 py-2 text-sm font-medium text-foreground transition-colors duration-200 hover:text-muted-foreground"
                 >
                   <DownloadSimpleIcon className="size-4" weight="regular" />
                   Download Resume
-                </Link>
+                </MotionLink>
               </div>
             </div>
           </div>

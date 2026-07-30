@@ -27,21 +27,19 @@ export function IntroBlock() {
           </div>
         </div>
 
-        <div className="relative flex font-semibold flex-col gap-4 text-sm text-foreground">
+        <div className="rounded-lg border border-border bg-card p-5">
           <AnimatedBorderDot />
-          <p>
-            I&apos;m a software engineering student at HUFLIT, currently working
-            as an AI Backend Engineering Intern at FlyRank AI, where I build
-            backend services and AI-integrated tools.
-          </p>
-          <p>
-            I&apos;m comfortable working across the stack, from REST API design
-            and data modeling to React-based interfaces, with a growing depth in
-            AI engineering fundamentals.
-          </p>
-          <p>
-            I care about backend architecture and production-ready software, and
-            I&apos;m building toward a long-term focus in AI engineering.
+
+          <p className="text-sm leading-7 text-muted-foreground">
+            Backend & AI engineer focused on{" "}
+            <strong className="text-foreground">TypeScript</strong>,{" "}
+            <strong className="text-foreground">Python</strong>,{" "}
+            <strong className="text-foreground">Node.js</strong>,{" "}
+            <strong className="text-foreground">FastAPI</strong>, and{" "}
+            <strong className="text-foreground">PostgreSQL</strong>. Building
+            production-ready APIs, LLM applications, Dockerized systems, CI/CD
+            pipelines, and continuously learning system design and distributed
+            systems.
           </p>
         </div>
       </div>

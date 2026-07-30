@@ -1,28 +1,48 @@
 import { externalLinks } from "@/constants/navigation";
 
-export const contactMethods = externalLinks;
-
-export interface CurrentStatus {
-  role: string;
-  company: string;
-  companyLogo?: string;
-  employmentStatus: string;
-  desiredOpportunities: string;
-  location: string;
+function getExternalLink(label: string) {
+  const link = externalLinks.find((item) => item.label === label);
+  if (!link) {
+    throw new Error(`Missing external link: ${label}`);
+  }
+  return link;
 }
 
-export const currentStatus: CurrentStatus = {
-  role: "Backend AI Engineering Intern",
-  company: "FlyRank AI",
-  companyLogo: "/companies/flyrank-ai.jpg",
-  employmentStatus: "Open to new opportunities",
-  desiredOpportunities: "AI Engineering & Backend Development roles",
-  location: "Ho Chi Minh City, Vietnam",
-};
+// Row 1 of the Contact section — Email is deliberately excluded here since
+// it's already surfaced as the "Email Me" CTA and the Contact group inside
+// the Hiring Information card below.
+export const contactMethods = externalLinks.filter(
+  (link) => link.label !== "Email",
+);
 
-export const availabilityAreas: string[] = [
-  "AI Engineering",
-  "Backend Development",
-  "Full-Stack Development",
-  "Open Source Collaboration",
-];
+export interface HiringInfo {
+  contact: {
+    emailHref: string;
+    location: string;
+    linkedinHref: string;
+  };
+  availability: {
+    status: string;
+    roles: string[];
+  };
+  languages: {
+    name: string;
+    detail?: string;
+  }[];
+}
+
+export const hiringInfo: HiringInfo = {
+  contact: {
+    emailHref: getExternalLink("Email").href,
+    location: "Ho Chi Minh City, Vietnam",
+    linkedinHref: getExternalLink("LinkedIn").href,
+  },
+  availability: {
+    status: "Open to full-time opportunities",
+    roles: ["AI Engineering", "Backend Engineering", "Full-Stack Engineering"],
+  },
+  languages: [
+    { name: "Vietnamese" },
+    { name: "English", detail: "TOEIC 870" },
+  ],
+};

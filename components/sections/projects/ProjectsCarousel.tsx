@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react/dist/ssr";
 
 import { cn } from "@/lib/utils";
 import type { Project } from "@/content/projects";
 import { ProjectCard } from "@/components/sections/projects/ProjectCard";
 import { Reveal } from "@/components/ui/Reveal";
+import { buttonHover, buttonPressEffect } from "@/lib/motion/variants";
 
 interface ProjectsCarouselProps {
   projects: Project[];
@@ -75,15 +77,17 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
 
       {pageCount > 1 && (
         <div className="flex items-center justify-center gap-4">
-          <button
+          <motion.button
             type="button"
             onClick={() => goByPage(-1)}
             disabled={activePage === 0}
             aria-label="Previous projects"
+            whileHover={activePage === 0 ? undefined : buttonHover}
+            whileTap={activePage === 0 ? undefined : buttonPressEffect}
             className="flex size-8 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors duration-200 hover:text-foreground disabled:opacity-40 motion-reduce:transition-none"
           >
             <CaretLeftIcon className="size-4" weight="bold" />
-          </button>
+          </motion.button>
 
           <div className="flex items-center gap-2">
             {Array.from({ length: pageCount }).map((_, index) => (
@@ -101,15 +105,17 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
             ))}
           </div>
 
-          <button
+          <motion.button
             type="button"
             onClick={() => goByPage(1)}
             disabled={activePage === pageCount - 1}
             aria-label="Next projects"
+            whileHover={activePage === pageCount - 1 ? undefined : buttonHover}
+            whileTap={activePage === pageCount - 1 ? undefined : buttonPressEffect}
             className="flex size-8 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors duration-200 hover:text-foreground disabled:opacity-40 motion-reduce:transition-none"
           >
             <CaretRightIcon className="size-4" weight="bold" />
-          </button>
+          </motion.button>
         </div>
       )}
     </div>

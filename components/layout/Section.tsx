@@ -25,7 +25,7 @@ export function Section({
       id={id}
       aria-labelledby={`${id}-heading`}
       className={cn(
-        "flex min-h-dvh flex-col scroll-mt-20 px-6 py-16 lg:px-12",
+        "flex flex-col scroll-mt-20 px-6 py-16 lg:px-12",
         align === "center" ? "justify-center" : "justify-start",
         className,
       )}

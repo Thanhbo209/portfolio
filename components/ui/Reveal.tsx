@@ -1,9 +1,9 @@
 "use client";
 
-import type { RefObject } from "react";
+import { useEffect, useState, type RefObject } from "react";
+import { motion, type Variants } from "motion/react";
 
-import { useInViewOnce } from "@/hooks/useInViewOnce";
-import { cn } from "@/lib/utils";
+import { fadeIn, fadeUp } from "@/lib/motion/variants";
 
 interface RevealProps {
   children: React.ReactNode;
@@ -12,21 +12,41 @@ interface RevealProps {
   root?: RefObject<HTMLElement | null>;
 }
 
+// Reduced-motion handling lives only here, scoped to the entrance travel
+// (the one animation that's ambient/scroll-triggered rather than a small,
+// discrete, user-initiated interaction) - hover/tap feedback elsewhere
+// (Card, NavItem, buttons, ...) intentionally stays full-motion regardless
+// of the OS setting, since a 4px hover lift isn't the kind of motion
+// prefers-reduced-motion is meant to suppress, and disabling it made hovering
+// anything feel instant/broken.
+//
+// Both server and client render `fadeUp` on first paint - matchMedia isn't
+// available during SSR, and branching on its value during the initial render
+// caused a hydration mismatch (server always assumed "no preference" while
+// the client's first paint already knew the real OS setting, producing a
+// differently-shaped inline style). Switching to the opacity-only `fadeIn`
+// happens only after mount, via this effect, so it never affects hydration.
 export function Reveal({ children, delay = 0, className, root }: RevealProps) {
-  const { ref, isInView } = useInViewOnce<HTMLDivElement>({ root });
+  const [variants, setVariants] = useState<Variants>(fadeUp);
+
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const apply = () => setVariants(query.matches ? fadeIn : fadeUp);
+    apply();
+    query.addEventListener("change", apply);
+    return () => query.removeEventListener("change", apply);
+  }, []);
 
   return (
-    <div
-      ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={cn(
-        "opacity-0 translate-y-4 transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
-        "motion-reduce:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-none",
-        isInView && "opacity-100 translate-y-0",
-        className,
-      )}
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2, root }}
+      variants={variants}
+      transition={{ delay: delay / 1000 }}
+      className={className}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

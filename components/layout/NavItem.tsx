@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { MouseEvent, ReactNode } from "react";
+import { motion } from "motion/react";
+import { useState, type MouseEvent, type ReactNode } from "react";
 
 import { useNavigationContext } from "@/components/layout/NavigationProvider";
+import { TRANSITIONS } from "@/lib/motion/variants";
 import { cn } from "@/lib/utils";
 
 interface NavItemProps {
@@ -25,6 +27,7 @@ export function NavItem({
   const { activeId } = useNavigationContext();
   const isActive = activeId === id;
   const isHomepage = usePathname() === "/";
+  const [isHovered, setIsHovered] = useState(false);
 
   // On the homepage itself, scroll natively instead of letting Next.js's
   // router handle the hash change: its own scroll restoration bypasses the
@@ -57,25 +60,32 @@ export function NavItem({
       href={`/#${id}`}
       scroll={!isHomepage}
       onClick={handleClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       aria-current={isActive ? "page" : undefined}
       className={cn(
         "group relative flex h-12 items-center gap-2 overflow-hidden rounded-md px-3 text-sm font-medium transition-colors duration-250 ease-out motion-reduce:transition-none",
         isActive
           ? "text-background"
-          : "text-sidebar-foreground hover:text-background",
+          : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
         className,
       )}
     >
-      <span
-        aria-hidden
-        className={cn(
-          "nav-highlight absolute inset-0 bg-primary",
-          isActive && "is-active",
-        )}
-      />
-      <span className="relative z-10 flex size-4 shrink-0 [&>svg]:size-4">
+      {isActive && (
+        <motion.span
+          layoutId="nav-active-pill"
+          aria-hidden
+          className="nav-highlight absolute inset-0 bg-primary"
+          transition={TRANSITIONS.normal}
+        />
+      )}
+      <motion.span
+        animate={{ x: isHovered ? 4 : 0 }}
+        transition={TRANSITIONS.fast}
+        className="relative z-10 flex size-4 shrink-0 [&>svg]:size-4"
+      >
         {icon}
-      </span>
+      </motion.span>
       <span className="relative z-10">{label}</span>
     </Link>
   );

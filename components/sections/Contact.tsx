@@ -1,13 +1,8 @@
 import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/ui/Reveal";
-import { AvailabilityCard } from "@/components/sections/contact/AvailabilityCard";
 import { ContactMethodCard } from "@/components/sections/contact/ContactMethodCard";
-import { CurrentStatusCard } from "@/components/sections/contact/CurrentStatusCard";
-import {
-  availabilityAreas,
-  contactMethods,
-  currentStatus,
-} from "@/content/contact";
+import { HiringInformationCard } from "@/components/sections/contact/HiringInformationCard";
+import { contactMethods, hiringInfo } from "@/content/contact";
 
 export function Contact() {
   return (
@@ -18,11 +13,11 @@ export function Contact() {
             <ContactMethodCard method={method} />
           </Reveal>
         ))}
-        <Reveal delay={contactMethods.length * 60} className="h-full">
-          <CurrentStatusCard status={currentStatus} />
-        </Reveal>
-        <Reveal delay={(contactMethods.length + 1) * 60} className="h-full">
-          <AvailabilityCard areas={availabilityAreas} />
+        <Reveal
+          delay={contactMethods.length * 60}
+          className="sm:col-span-2 lg:col-span-3"
+        >
+          <HiringInformationCard info={hiringInfo} />
         </Reveal>
       </div>
     </Section>
