@@ -1,12 +1,14 @@
-import { Fragment } from "react";
 import { ArrowSquareOutIcon } from "@phosphor-icons/react/dist/ssr";
 
 import { GithubIcon } from "@/components/ui/icons/GithubIcon";
 import { Card } from "@/components/ui/Card";
-import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/ui/Reveal";
+import { ContributionHeatmap } from "@/components/sections/overview/ContributionHeatmap";
+import { ContributionLegend } from "@/components/sections/overview/ContributionLegend";
+import { ActivityStatsRow } from "@/components/sections/overview/ActivityStatsRow";
+import { ContributionDistributionBar } from "@/components/sections/overview/ContributionDistributionBar";
 import {
-  type ContributionDay,
-  type ContributionLevel,
+  getContributionBreakdown,
   getContributionCalendar,
   getGithubStats,
 } from "@/lib/github";
@@ -14,109 +16,72 @@ import {
 const GITHUB_USERNAME = "Thanhbo209";
 const GITHUB_PROFILE_URL = `https://github.com/${GITHUB_USERNAME}`;
 
-// Gray for no activity, increasing green intensity per level — matches the
-// theme automatically since `bg-muted` is a token and the greens are just
-// opacity ramps over one hue, not separate light/dark color pairs.
-const LEVEL_CLASSES: Record<ContributionLevel, string> = {
-  0: "bg-muted",
-  1: "bg-green-500/25",
-  2: "bg-green-500/50",
-  3: "bg-green-500/75",
-  4: "bg-green-500",
-};
-
-const MONTH_LABELS = [
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
-];
-
-function chunkIntoWeeks(days: ContributionDay[]): ContributionDay[][] {
-  const weeks: ContributionDay[][] = [];
-  for (let i = 0; i < days.length; i += 7) {
-    weeks.push(days.slice(i, i + 7));
-  }
-  return weeks;
-}
-
-// Reads the month straight out of the "YYYY-MM-DD" string rather than
-// `new Date(...).getMonth()`, which parses as UTC and can shift the month
-// near a boundary depending on the server's local timezone offset.
-function monthOf(isoDate: string): number {
-  return Number(isoDate.split("-")[1]) - 1;
-}
-
 export async function GitHubActivityCard() {
-  const [stats, calendar] = await Promise.all([
+  const [stats, calendar, breakdown] = await Promise.all([
     getGithubStats(),
     getContributionCalendar(),
+    getContributionBreakdown(),
   ]);
 
   return (
-    <Card className="flex h-full flex-col gap-4">
+    <Card className="flex h-full flex-col gap-5 p-6 sm:p-8">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
           <GithubIcon className="size-4" />
           <span>GitHub Activity</span>
         </div>
+        {calendar && (
+          <div className="text-right">
+            <p className="text-lg font-bold text-foreground">
+              {calendar.totalLastYear.toLocaleString()}
+            </p>
+            <p className="text-xs text-muted-foreground">past year</p>
+          </div>
+        )}
+      </div>
+
+      <div className="border-t border-border" />
+
+      {calendar && (
+        <Reveal delay={60}>
+          <div className="flex flex-col gap-3">
+            <ContributionHeatmap
+              days={calendar.days}
+              totalLastYear={calendar.totalLastYear}
+            />
+            <ContributionLegend />
+          </div>
+        </Reveal>
+      )}
+
+      {breakdown && (
+        <Reveal delay={100}>
+          <ActivityStatsRow breakdown={breakdown} />
+        </Reveal>
+      )}
+
+      {breakdown && (
+        <Reveal delay={140}>
+          <ContributionDistributionBar breakdown={breakdown} />
+        </Reveal>
+      )}
+
+      <div className="mt-auto flex items-center justify-between gap-4 pt-1">
         {stats && (
           <span className="text-xs text-muted-foreground">
             {stats.publicRepos} repos
           </span>
         )}
+        <a
+          href={GITHUB_PROFILE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-muted-foreground"
+        >
+          View GitHub profile
+          <ArrowSquareOutIcon className="size-4" weight="regular" />
+        </a>
       </div>
-
-      {calendar &&
-        (() => {
-          const weeks = chunkIntoWeeks(calendar.days);
-          let lastMonth = -1;
-
-          return (
-            <div className="overflow-x-auto">
-              <div className="grid w-max auto-cols-max grid-flow-col grid-rows-8 gap-0.75">
-                {weeks.map((week, weekIndex) => {
-                  const month = week[0] ? monthOf(week[0].date) : -1;
-                  const showLabel = month !== lastMonth;
-                  if (showLabel) lastMonth = month;
-
-                  return (
-                    <Fragment key={weekIndex}>
-                      <div className="h-2.25 w-2.25 overflow-visible text-[9px] leading-none whitespace-nowrap text-muted-foreground">
-                        {showLabel ? MONTH_LABELS[month] : ""}
-                      </div>
-                      {week.map((day) => (
-                        <div
-                          key={day.date}
-                          title={`${day.count} contributions on ${day.date}`}
-                          className={cn(
-                            "size-2.25 rounded-[2px]",
-                            LEVEL_CLASSES[day.level],
-                          )}
-                        />
-                      ))}
-                    </Fragment>
-                  );
-                })}
-              </div>
-            </div>
-          );
-        })()}
-
-      {calendar && (
-        <p className="text-xs text-muted-foreground">
-          {calendar.totalLastYear.toLocaleString()} contributions in the last
-          year
-        </p>
-      )}
-
-      <a
-        href={GITHUB_PROFILE_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-muted-foreground"
-      >
-        View GitHub profile
-        <ArrowSquareOutIcon className="size-4" weight="regular" />
-      </a>
     </Card>
   );
 }

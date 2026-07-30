@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { NavigationProvider } from "@/components/layout/NavigationProvider";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { MobileNavDrawer } from "@/components/layout/MobileNavDrawer";
+import { InteractiveParticles } from "@/components/background/InteractiveParticles";
 import { primaryNav } from "@/constants/navigation";
 
 // Body copy — see AGENTS.md §12/design-taste skill: Inter is discouraged
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body
         className={`${interTight.variable} ${spaceGrotesk.variable} antialiased`}
       >
+        <InteractiveParticles />
         <ThemeProvider>
           <NavigationProvider sectionIds={sectionIds}>
             <Sidebar />
