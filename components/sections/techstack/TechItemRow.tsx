@@ -17,7 +17,7 @@ export function TechItemRow({ item }: TechItemRowProps) {
     <motion.div
       initial="rest"
       whileHover="hover"
-      className="group flex items-center gap-2 rounded-md p-1.5 transition-colors duration-200 hover:bg-accent motion-reduce:transition-none"
+      className="group flex items-center gap-2 rounded-md p-1.5 transition-colors duration-200 hover:bg-muted motion-reduce:transition-none"
     >
       <motion.div
         variants={logoVariants}
@@ -50,7 +50,9 @@ export function TechItemRow({ item }: TechItemRowProps) {
           />
         )}
       </motion.div>
-      <span className="truncate text-sm text-foreground">{item.name}</span>
+      <span className="truncate text-sm font-semibold text-foreground">
+        {item.name}
+      </span>
     </motion.div>
   );
 }

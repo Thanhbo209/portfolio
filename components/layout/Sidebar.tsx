@@ -12,13 +12,17 @@ export function Sidebar() {
         <Link
           href="/#overview"
           className="text-shimmer text-sm font-semibold tracking-tight"
-          style={{ "--foreground": "var(--sidebar-foreground)" } as React.CSSProperties}
+          style={
+            {
+              "--foreground": "var(--sidebar-foreground)",
+            } as React.CSSProperties
+          }
         >
           THANH PHAM
         </Link>
       </div>
 
-      <PrimaryNavList layoutGroupId="sidebar-nav" animate className="gap-2" />
+      <PrimaryNavList layoutGroupId="sidebar-nav" animate className="gap-6" />
 
       <div className="flex flex-col gap-1 border-t border-sidebar-border p-3">
         {externalLinks.map((link) => (

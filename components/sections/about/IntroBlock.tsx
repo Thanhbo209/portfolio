@@ -1,46 +1,36 @@
 import Image from "next/image";
-import { GraduationCapIcon } from "@phosphor-icons/react/dist/ssr";
+import { GraduationCapIcon, MapPinIcon } from "@phosphor-icons/react/dist/ssr";
 
-import { AnimatedBorderDot } from "@/components/ui/AnimatedBorderDot";
+import { hiringInfo } from "@/content/contact";
 
 export function IntroBlock() {
   return (
-    <div className="grid grid-cols-1 gap-8 sm:grid-cols-[200px_1fr]">
-      <div className="relative aspect-square rotate-4 !rounded-full w-full max-w-[200px] overflow-hidden rounded-md">
+    <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+      <div className="relative aspect-square w-28 shrink-0 overflow-hidden rounded-full sm:w-32">
         <Image
           src="/portrait/portrait1.jpg"
           alt="Portrait of Thanh Pham"
           fill
-          sizes="200px"
+          sizes="128px"
           className="object-cover"
         />
       </div>
 
-      <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-2 text-sm">
-          <p className="text-base font-semibold text-foreground">
-            Pham Viet Thanh
-          </p>
-          <div className="flex items-center gap-2 text-muted-foreground">
+      <div className="flex flex-col gap-1.5">
+        <p className="text-xl font-semibold text-foreground sm:text-2xl">
+          Pham Viet Thanh
+        </p>
+        <p className="text-base text-foreground">Backend & AI Engineer</p>
+
+        <div className="mt-1 flex flex-col gap-1.5 text-sm text-muted-foreground sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 sm:gap-y-1.5">
+          <div className="flex items-center gap-1.5">
+            <MapPinIcon className="size-4 shrink-0" weight="regular" />
+            <span>{hiringInfo.contact.location}</span>
+          </div>
+          <div className="flex items-center gap-1.5">
             <GraduationCapIcon className="size-4 shrink-0" weight="regular" />
             <span>B.S. Software Engineering, HUFLIT (Expected 2027)</span>
           </div>
-        </div>
-
-        <div className="rounded-lg border border-border bg-card p-5">
-          <AnimatedBorderDot />
-
-          <p className="text-sm leading-7 text-muted-foreground">
-            Backend & AI engineer focused on{" "}
-            <strong className="text-foreground">TypeScript</strong>,{" "}
-            <strong className="text-foreground">Python</strong>,{" "}
-            <strong className="text-foreground">Node.js</strong>,{" "}
-            <strong className="text-foreground">FastAPI</strong>, and{" "}
-            <strong className="text-foreground">PostgreSQL</strong>. Building
-            production-ready APIs, LLM applications, Dockerized systems, CI/CD
-            pipelines, and continuously learning system design and distributed
-            systems.
-          </p>
         </div>
       </div>
     </div>

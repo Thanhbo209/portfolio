@@ -10,6 +10,10 @@ interface RevealProps {
   delay?: number;
   className?: string;
   root?: RefObject<HTMLElement | null>;
+  /** Full-motion entrance variant. Defaults to `fadeUp` (existing behavior
+   * for every current call site); pass `fadeLeft`/`fadeRight` etc. for a
+   * directional entrance instead. */
+  variant?: Variants;
 }
 
 // Reduced-motion handling lives only here, scoped to the entrance travel
@@ -20,22 +24,29 @@ interface RevealProps {
 // prefers-reduced-motion is meant to suppress, and disabling it made hovering
 // anything feel instant/broken.
 //
-// Both server and client render `fadeUp` on first paint - matchMedia isn't
-// available during SSR, and branching on its value during the initial render
-// caused a hydration mismatch (server always assumed "no preference" while
-// the client's first paint already knew the real OS setting, producing a
-// differently-shaped inline style). Switching to the opacity-only `fadeIn`
-// happens only after mount, via this effect, so it never affects hydration.
-export function Reveal({ children, delay = 0, className, root }: RevealProps) {
-  const [variants, setVariants] = useState<Variants>(fadeUp);
+// Both server and client render the full-motion `variant` on first paint -
+// matchMedia isn't available during SSR, and branching on its value during
+// the initial render caused a hydration mismatch (server always assumed "no
+// preference" while the client's first paint already knew the real OS
+// setting, producing a differently-shaped inline style). Switching to the
+// opacity-only `fadeIn` happens only after mount, via this effect, so it
+// never affects hydration.
+export function Reveal({
+  children,
+  delay = 0,
+  className,
+  root,
+  variant = fadeUp,
+}: RevealProps) {
+  const [variants, setVariants] = useState<Variants>(variant);
 
   useEffect(() => {
     const query = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const apply = () => setVariants(query.matches ? fadeIn : fadeUp);
+    const apply = () => setVariants(query.matches ? fadeIn : variant);
     apply();
     query.addEventListener("change", apply);
     return () => query.removeEventListener("change", apply);
-  }, []);
+  }, [variant]);
 
   return (
     <motion.div

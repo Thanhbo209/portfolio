@@ -30,7 +30,7 @@ export function PrimaryNavList({
     <LayoutGroup id={layoutGroupId}>
       <nav
         aria-label="Primary"
-        className={cn("flex flex-1 flex-col overflow-y-auto p-3", className)}
+        className={cn("flex flex-1 flex-col overflow-y-auto p-4", className)}
       >
         {primaryNav.map((item, index) => (
           <motion.div

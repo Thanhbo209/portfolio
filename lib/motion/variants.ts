@@ -34,6 +34,17 @@ export const scaleIn: Variants = {
   visible: { opacity: 1, scale: 1, transition: TRANSITIONS.reveal },
 };
 
+// For a group of siblings that should animate in together as one coordinated
+// moment (e.g. Quick Stats' four tiles) rather than each independently
+// deciding its own delay via Reveal's `delay` prop — parent gets
+// staggerContainer, each child gets staggerItem, and Motion sequences them.
+export const staggerContainer: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } },
+};
+
+export const staggerItem: Variants = fadeUp;
+
 // Card hover/tap — shared by every Card instance via Card.tsx itself, so
 // no section re-declares its own lift/scale. The shadow increase that goes
 // with this stays a plain CSS `hover:shadow-lg` at the call site rather

@@ -1,32 +1,35 @@
 import { CheckCircleIcon } from "@phosphor-icons/react/dist/ssr";
 
+import { Card } from "@/components/ui/Card";
+
 const principles: string[] = [
-  "Build maintainable software.",
-  "Solve real-world problems.",
+  "Think in systems, not features.",
+  "Build software people can maintain.",
   "Learn by building.",
-  "Prioritize clean architecture and scalability.",
+  "Measure before optimizing.",
+  "Ship. Iterate. Improve.",
 ];
 
 export function EngineeringPrinciples() {
   return (
-    <div>
+    <Card className="flex flex-col gap-4">
       <h3 className="text-lg font-semibold text-foreground">
-        Engineering Principles
+        Engineering Philosophy
       </h3>
-      <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <ul className="flex flex-col gap-3">
         {principles.map((principle) => (
-          <div
+          <li
             key={principle}
-            className="flex items-center gap-2 text-sm text-foreground"
+            className="flex items-center gap-2.5 text-sm text-foreground"
           >
             <CheckCircleIcon
               className="size-4 shrink-0 text-primary"
               weight="regular"
             />
             <span>{principle}</span>
-          </div>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </Card>
   );
 }
