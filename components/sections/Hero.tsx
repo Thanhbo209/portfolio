@@ -1,7 +1,7 @@
 import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/ui/Reveal";
+import { AskMeCard } from "@/components/sections/overview/AskMeCard";
 import { CurrentPositionCard } from "@/components/sections/overview/CurrentPositionCard";
-import { EducationCard } from "@/components/sections/overview/EducationCard";
 import { EngineeringJourneyCard } from "@/components/sections/overview/EngineeringJourneyCard";
 import { GitHubActivityCard } from "@/components/sections/overview/GitHubActivityCard";
 import { QuickFactsCard } from "@/components/sections/overview/QuickFactsCard";
@@ -15,7 +15,7 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={60} className="h-full">
-          <EducationCard />
+          <AskMeCard />
         </Reveal>
 
         <Reveal delay={0} className="h-full">
