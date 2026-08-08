@@ -10,8 +10,8 @@ const INTERACTION_RADIUS = 160;
 // Per-frame interpolation factor toward the target opacity/radius - applied
 // as `value += (target - value) * FADE_SPEED`, never an instant jump.
 const FADE_SPEED = 0.08;
-const MIN_OPACITY = 0.05;
-const MAX_OPACITY = 0.6;
+const MIN_OPACITY = 0.16;
+const MAX_OPACITY = 0.75;
 const MIN_RADIUS = 1.2;
 const MAX_RADIUS = 2.5;
 // Subtle per-frame noise added only at draw time (never written back into
