@@ -1,15 +1,18 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 
 import type { ContributionDay } from "@/lib/github";
 import {
+  formatContributionDate,
   getContributionColor,
   getContributionLabel,
   getContributionLevel,
+  type ContributionLevel,
 } from "@/lib/contribution-level";
 import { TRANSITIONS } from "@/lib/motion/variants";
+import { HeatmapTooltip } from "@/components/sections/overview/HeatmapTooltip";
 
 interface ContributionHeatmapProps {
   days: ContributionDay[];
@@ -34,15 +37,6 @@ function chunkIntoWeeks(days: ContributionDay[]): ContributionDay[][] {
 // near a boundary depending on the server's local timezone offset.
 function monthOf(isoDate: string): number {
   return Number(isoDate.split("-")[1]) - 1;
-}
-
-function formatFullDate(isoDate: string): string {
-  const [year, month, day] = isoDate.split("-").map(Number);
-  return new Date(year, month - 1, day).toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
 }
 
 interface WeekColumn {
@@ -84,6 +78,12 @@ const weekColumn = {
   visible: { opacity: 1, y: 0, transition: TRANSITIONS.fast },
 };
 
+interface HoveredCell {
+  day: ContributionDay;
+  level: ContributionLevel;
+  rect: DOMRect;
+}
+
 export function ContributionHeatmap({
   days,
   totalLastYear,
@@ -93,6 +93,19 @@ export function ContributionHeatmap({
   const contentRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
   const [scaledHeight, setScaledHeight] = useState<number>();
+  const [hoveredCell, setHoveredCell] = useState<HoveredCell | null>(null);
+
+  // A position: fixed tooltip snapshotted from a DOMRect doesn't track the
+  // page scrolling underneath it - dismiss it on scroll rather than
+  // reimplementing live repositioning for a brief hover affordance.
+  useEffect(() => {
+    if (!hoveredCell) return;
+    function dismiss() {
+      setHoveredCell(null);
+    }
+    window.addEventListener("scroll", dismiss, { capture: true, passive: true });
+    return () => window.removeEventListener("scroll", dismiss, { capture: true });
+  }, [hoveredCell]);
 
   // Measures the grid's natural (unscaled) size and shrinks it to fit the
   // available width via a uniform transform - never a horizontal
@@ -123,10 +136,6 @@ export function ContributionHeatmap({
     observer.observe(container);
     return () => observer.disconnect();
   }, []);
-
-  // Counter-scales the tooltip so it stays normal-sized (legible) even when
-  // the grid itself has been shrunk substantially on a narrow card.
-  const tooltipCounterScale = scale > 0 ? 1 / scale : 1;
 
   return (
     <div
@@ -160,7 +169,7 @@ export function ContributionHeatmap({
               {week.map((day) => {
                 const level = getContributionLevel(day.count);
                 const levelLabel = getContributionLabel(level);
-                const fullDate = formatFullDate(day.date);
+                const fullDate = formatContributionDate(day.date);
                 const cellLabel = `${fullDate}, ${day.count} ${day.count === 1 ? "contribution" : "contributions"}, level: ${levelLabel}`;
 
                 return (
@@ -168,29 +177,28 @@ export function ContributionHeatmap({
                     key={day.date}
                     whileHover={{ scale: 1.3 }}
                     transition={TRANSITIONS.fast}
-                    className="group relative"
+                    // React's own onMouseEnter/onMouseLeave, not Motion's
+                    // onHoverStart/onHoverEnd: Motion batches its hover
+                    // callbacks and invokes them after the native event has
+                    // already finished dispatching, by which point
+                    // event.currentTarget is null. React's synthetic mouse
+                    // events keep currentTarget valid for the handler's
+                    // synchronous duration.
+                    onMouseEnter={(event) => {
+                      setHoveredCell({
+                        day,
+                        level,
+                        rect: event.currentTarget.getBoundingClientRect(),
+                      });
+                    }}
+                    onMouseLeave={() => setHoveredCell(null)}
+                    className="relative"
                   >
                     <div
                       role="img"
                       aria-label={cellLabel}
-                      className={`size-2.25 rounded-[2px] transition-[filter] duration-150 group-hover:brightness-125 ${getContributionColor(level)}`}
+                      className={`size-2.25 rounded-[2px] transition-[filter] duration-150 hover:brightness-125 ${getContributionColor(level)}`}
                     />
-                    <div
-                      role="tooltip"
-                      style={{
-                        transform: `scale(${tooltipCounterScale})`,
-                        transformOrigin: "bottom center",
-                      }}
-                      className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-1.5 flex -translate-x-1/2 flex-col gap-1 whitespace-nowrap rounded-md border border-border bg-popover px-2.5 py-1.5 text-xs text-popover-foreground opacity-0 shadow-md transition-opacity duration-150 group-hover:opacity-100"
-                    >
-                      <span className="font-medium">{fullDate}</span>
-                      <span>
-                        {day.count} {day.count === 1 ? "contribution" : "contributions"}
-                      </span>
-                      <span className="text-muted-foreground">
-                        Contribution Level: <span className="text-foreground">{levelLabel}</span>
-                      </span>
-                    </div>
                   </motion.div>
                 );
               })}
@@ -198,6 +206,14 @@ export function ContributionHeatmap({
           ))}
         </motion.div>
       </div>
+
+      {hoveredCell && (
+        <HeatmapTooltip
+          day={hoveredCell.day}
+          level={hoveredCell.level}
+          anchorRect={hoveredCell.rect}
+        />
+      )}
     </div>
   );
 }

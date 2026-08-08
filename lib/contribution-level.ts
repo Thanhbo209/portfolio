@@ -31,14 +31,17 @@ export function getContributionLevel(count: number): ContributionLevel {
   return match?.level ?? ContributionLevel.None;
 }
 
-// Monochrome intensity ramp over the existing --primary token, not GitHub
-// green - empty cells blend into bg-muted, active cells step up in opacity.
+// A fixed green ramp (Tailwind's green-500, stepped by opacity), matching
+// GitHub's own contribution graph convention - intentionally not the
+// theme's --primary token, which is neutral black/white and would read as
+// grayscale rather than "contribution graph" at a glance. Empty cells still
+// blend into bg-muted.
 const LEVEL_COLOR_CLASSES: Record<ContributionLevel, string> = {
   [ContributionLevel.None]: "bg-muted",
-  [ContributionLevel.Low]: "bg-primary/20",
-  [ContributionLevel.Moderate]: "bg-primary/45",
-  [ContributionLevel.High]: "bg-primary/70",
-  [ContributionLevel.VeryHigh]: "bg-primary",
+  [ContributionLevel.Low]: "bg-green-500/25",
+  [ContributionLevel.Moderate]: "bg-green-500/50",
+  [ContributionLevel.High]: "bg-green-500/75",
+  [ContributionLevel.VeryHigh]: "bg-green-500",
 };
 
 export function getContributionColor(level: ContributionLevel): string {
@@ -62,4 +65,16 @@ export function getContributionRangeLabel(level: ContributionLevel): string {
     LEVEL_THRESHOLDS.find((threshold) => threshold.level === level)
       ?.rangeLabel ?? ""
   );
+}
+
+// Reads year/month/day directly out of the "YYYY-MM-DD" string rather than
+// `new Date(isoDate)`, which parses as UTC and can shift the date near a
+// timezone boundary depending on the server's local offset.
+export function formatContributionDate(isoDate: string): string {
+  const [year, month, day] = isoDate.split("-").map(Number);
+  return new Date(year, month - 1, day).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 }
