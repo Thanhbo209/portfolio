@@ -148,10 +148,11 @@ export const PLACEHOLDER_EXAMPLES: string[] = [
   "What technologies do I use?",
 ];
 
-export const EMPTY_STATE = {
-  message: "Hi! I'm a lightweight, keyword-matched assistant for this portfolio - not a full AI. I can answer questions about:",
-  topics: ["Projects", "Internship", "AI experience", "Skills", "Career goals"],
-};
+// The chat's opening message - shown as the first assistant bubble. The
+// bulleted topic list this used to pair with is now redundant with
+// SUGGESTION_CHIPS, which renders right below it in the chat UI.
+export const GREETING_MESSAGE =
+  "Hi! I'm Thanh's portfolio assistant. Ask me about his experience, technical skills, projects, or AI engineering work.";
 
 export const FALLBACK_TOPIC: AssistantTopic = {
   id: "fallback",

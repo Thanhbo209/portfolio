@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowRightIcon } from "@phosphor-icons/react/dist/ssr";
+import { PaperPlaneRightIcon } from "@phosphor-icons/react/dist/ssr";
 
 import { PLACEHOLDER_EXAMPLES } from "@/lib/portfolio-assistant";
 import { buttonHover, buttonPressEffect, TRANSITIONS } from "@/lib/motion/variants";
@@ -35,7 +35,7 @@ export function AssistantInput({ value, onChange, onSubmit }: AssistantInputProp
   }
 
   return (
-    <div className="flex items-center gap-2 border-t border-border pt-3">
+    <div className="flex items-center gap-2 rounded-full border border-border bg-muted/50 py-1.5 pr-1.5 pl-3.5">
       <div className="relative min-w-0 flex-1">
         <input
           type="text"
@@ -70,10 +70,10 @@ export function AssistantInput({ value, onChange, onSubmit }: AssistantInputProp
         disabled={value.trim().length === 0}
         whileHover={value.trim().length > 0 ? buttonHover : undefined}
         whileTap={value.trim().length > 0 ? buttonPressEffect : undefined}
-        aria-label="Ask"
-        className="flex size-7 shrink-0 items-center justify-center rounded-md text-foreground transition-colors duration-200 hover:text-muted-foreground disabled:opacity-40"
+        aria-label="Send message"
+        className="flex size-7 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-opacity duration-200 disabled:opacity-40"
       >
-        <ArrowRightIcon className="size-4" weight="bold" />
+        <PaperPlaneRightIcon className="size-3.5" weight="fill" />
       </motion.button>
     </div>
   );
