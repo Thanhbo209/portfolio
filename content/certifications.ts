@@ -54,7 +54,8 @@ export const certificationProviders: CertificationProvider[] = [
       {
         title: "Python Certificate",
         issueDate: "Jul 2026",
-        verifyUrl: "https://verify.skilljar.com/c/7uptcnob27fa",
+        verifyUrl:
+          "https://www.freecodecamp.org/certification/fccb87e5919-327f-4761-ab13-c6447e0c7e4e/python-v9",
         certificateImage: "/tech/python.svg",
         skills: [
           "Python",
