@@ -20,6 +20,7 @@ const fromTechStack: Record<string, TechIcon> = Object.fromEntries(
 const additionalIcons: Record<string, TechIcon> = {
   YOLOv8: { logo: "/tech/ultralytics.svg" },
   "React Router v7": { logo: "/tech/reactrouter.svg" },
+  "Google Gemini": { logo: "/tech/google.jpg" },
 };
 
 // CVAT, Puter.js, and Zustand have no real brand mark in Simple Icons or

@@ -46,10 +46,20 @@ export const ASSISTANT_TOPICS: AssistantTopic[] = [
     id: "projects",
     keywords: ["project", "projects", "built", "portfolio project", "what have you built"],
     response:
-      "I've built three projects spanning computer vision, backend AI, and full-stack development. Retail Product Detection uses YOLOv8 for shelf-image object detection. FinAI is an expense-intelligence platform that parses natural-language transactions through a Node.js and Python pipeline. AI Resume Analyzer is a serverless app that uses Claude Sonnet to score resumes. Each one reflects a different part of how I like to build: practical, end-to-end, and grounded in real use cases.",
+      "I've built projects spanning algorithmic engineering, backend AI, and computer vision. DSA Tracker is a LeetCode companion with automated Chrome MV3 capture and dual-model Gemini failover. FinAI is an expense-intelligence platform with tiered natural-language parsing. AI Resume Analyzer uses Claude Sonnet for resume scoring. Retail Product Detection uses YOLOv8 for shelf-image object detection. Each reflects a practical, production-oriented approach to system design.",
     actions: [
       { label: "View Projects", href: "#projects" },
       { label: "GitHub", href: GITHUB_HREF, external: true },
+    ],
+  },
+  {
+    id: "dsa-tracker",
+    keywords: ["dsa", "dsa tracker", "leetcode", "algorithm", "algorithms", "gemini", "chrome extension"],
+    response:
+      "DSA Tracker is an algorithmic knowledge platform and LeetCode companion. It uses a Chrome MV3 extension to passively capture LeetCode submissions via GraphQL, runs AI diagnostic reviews with automated failover between Gemini 3.6 Flash and 2.5 Flash, and organizes solutions into a 3-tier Knowledge Vault (Approach → Solution → Code). It's built with Next.js 16, TypeScript, Tailwind CSS v4, PostgreSQL, Prisma ORM 7, and Better Auth.",
+    actions: [
+      { label: "Live Demo", href: "https://dsa-tracking-six.vercel.app", external: true },
+      { label: "GitHub", href: "https://github.com/Thanhbo209/dsa-tracking", external: true },
     ],
   },
   {
@@ -141,6 +151,7 @@ export const SUGGESTION_CHIPS: { label: string; topicId: string }[] = [
 // name rather than the generic "RAG platform" example, which doesn't match
 // anything in content/projects.ts.
 export const PLACEHOLDER_EXAMPLES: string[] = [
+  "Ask about DSA Tracker...",
   "Ask about FinAI...",
   "Ask about FlyRank AI...",
   "What AI projects have I built?",

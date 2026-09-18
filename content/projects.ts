@@ -11,6 +11,24 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "dsa-tracker",
+    title: "DSA Tracker - Algorithmic Knowledge & AI Coaching",
+    thumbnail: "/project-banner/dsa-tracker.png",
+    description:
+      "A full-stack algorithmic coaching platform and Chrome MV3 extension with automated LeetCode capture, resilient dual-model Gemini failover, and a 3-tier Knowledge Vault.",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "Prisma",
+      "Google Gemini",
+    ],
+    githubUrl: "https://github.com/Thanhbo209/dsa-tracking",
+    liveUrl: "https://dsa-tracking-six.vercel.app",
+  },
+  {
     slug: "retail-product-detection",
     title: "Retail Product Detection",
     description:
