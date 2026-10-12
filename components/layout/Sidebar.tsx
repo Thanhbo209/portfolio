@@ -11,12 +11,7 @@ export function Sidebar() {
       <div className="flex h-16 shrink-0 items-center border-b border-sidebar-border px-4">
         <Link
           href="/#overview"
-          className="text-shimmer text-sm font-semibold tracking-tight"
-          style={
-            {
-              "--foreground": "var(--sidebar-foreground)",
-            } as React.CSSProperties
-          }
+          className="text-shimmer text-sm font-semibold tracking-tight [--foreground:var(--sidebar-foreground)]"
         >
           THANH PHAM
         </Link>

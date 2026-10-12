@@ -1,5 +1,4 @@
 import {
-  ArticleIcon,
   BriefcaseIcon,
   CertificateIcon,
   CodeIcon,
@@ -7,7 +6,6 @@ import {
   FileTextIcon,
   FolderIcon,
   HouseIcon,
-  NotebookIcon,
   UserIcon,
 } from "@phosphor-icons/react/dist/ssr";
 

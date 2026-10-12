@@ -26,6 +26,11 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Thanh's Portfolio",
   description: "Pham Viet Thanh porfolio website",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 const sectionIds = primaryNav.map((item) => item.id);
