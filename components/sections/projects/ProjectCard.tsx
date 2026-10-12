@@ -1,95 +1,102 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "motion/react";
 import {
   ArrowSquareOutIcon,
   CodeIcon,
   FileTextIcon,
-  ImageSquareIcon,
 } from "@phosphor-icons/react/dist/ssr";
 
 import { Badge } from "@/components/ui/Badge";
-import { Card } from "@/components/ui/Card";
 import { GithubIcon } from "@/components/ui/icons/GithubIcon";
 import { TECH_ICON_MAP } from "@/constants/techIcons";
 import type { Project } from "@/content/projects";
-import { TRANSITIONS } from "@/lib/motion/variants";
 
 interface ProjectCardProps {
   project: Project;
 }
 
-// Card-wide hover broadcast: hovering anywhere on the card zooms the
-// thumbnail and lifts the tech-badge row together, rather than each
-// reacting to its own, narrower hover region.
-const thumbnailVariants = { rest: { scale: 1 }, hover: { scale: 1.03 } };
-const badgeRowVariants = { rest: { y: 0 }, hover: { y: -2 } };
-// Per-link nudge, scoped to that link's own motion.a ancestor below, not the
-// card-wide state above.
-const linkIconVariants = { rest: { x: 0 }, hover: { x: 3 } };
+function getProjectInitials(title: string): string {
+  if (title.toLowerCase().includes("finai")) return "FAI";
+  const words = title
+    .replace(/[^\w\s]/g, " ")
+    .trim()
+    .split(/\s+/)
+    .filter(
+      (w) =>
+        w.length > 0 &&
+        !["a", "an", "the", "and", "or", "of", "in", "for", "to"].includes(
+          w.toLowerCase(),
+        ),
+    );
+  if (words.length === 0) return "PRJ";
+  if (words.length === 1) return words[0].slice(0, 3).toUpperCase();
+  return words
+    .slice(0, 3)
+    .map((w) => w[0].toUpperCase())
+    .join("");
+}
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const visibleTechs = project.technologies.slice(0, 4);
+  const remainingCount = project.technologies.length - visibleTechs.length;
+
   return (
-    <Card className="h-full">
-      <motion.div
-        initial="rest"
-        whileHover="hover"
-        className="flex h-full flex-col gap-4"
-      >
-        <motion.div
-          variants={thumbnailVariants}
-          transition={TRANSITIONS.normal}
-          className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-md bg-muted"
-        >
-          {project.thumbnail ? (
-            <Image
-              src={project.thumbnail}
-              alt={`${project.title} screenshot`}
-              fill
-              sizes="(min-width: 1024px) 25vw, 50vw"
-              className="object-cover"
-            />
-          ) : (
-            <div className="flex h-full items-center justify-center">
-              <ImageSquareIcon
-                className="size-8 text-muted-foreground"
-                weight="regular"
-              />
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition-colors duration-200 hover:border-foreground/30 motion-reduce:transition-none">
+      {/* Banner: Full bleed flush against card top, left, right */}
+      <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden border-b border-border bg-muted/20">
+        {project.thumbnail ? (
+          <Image
+            src={project.thumbnail}
+            alt={`${project.title} screenshot`}
+            fill
+            sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+            className="object-cover object-top transition-transform duration-200 group-hover:scale-[1.02] motion-reduce:transition-none"
+          />
+        ) : (
+          // TODO(me): add real screenshot
+          <div
+            className="flex size-full items-center justify-center bg-gradient-to-br from-muted/50 via-card to-muted/80 select-none transition-transform duration-200 group-hover:scale-[1.02] motion-reduce:transition-none"
+            aria-hidden
+          >
+            <div className="flex size-14 items-center justify-center rounded-lg border border-border/80 bg-background/80 shadow-xs backdrop-blur-xs">
+              <span className="font-mono text-sm font-medium tracking-wider text-muted-foreground">
+                {getProjectInitials(project.title)}
+              </span>
             </div>
-          )}
-        </motion.div>
+          </div>
+        )}
+      </div>
 
-        <div className="flex flex-1 flex-col gap-2">
-          <p className="text-sm font-semibold text-foreground">
-            {project.title}
-          </p>
-          <p className="line-clamp-2 text-sm text-muted-foreground">
-            {project.description}
-          </p>
-        </div>
-
-        <motion.div
-          variants={badgeRowVariants}
-          transition={TRANSITIONS.fast}
-          className="flex flex-wrap gap-2"
+      {/* Body: denser 16px padding */}
+      <div className="flex flex-1 flex-col gap-3 p-4">
+        <h3
+          className="line-clamp-1 text-lg font-normal text-foreground"
+          title={project.title}
         >
-          {project.technologies.map((tech) => {
+          {project.title}
+        </h3>
+
+        <p className="line-clamp-3 text-sm leading-relaxed text-muted-foreground">
+          {project.description}
+        </p>
+
+        {/* Tech badges: max 4, then +N with full list in title/aria-label */}
+        <div className="flex flex-wrap items-center gap-1.5">
+          {visibleTechs.map((tech) => {
             const icon = TECH_ICON_MAP[tech];
 
             return (
               <Badge
                 key={tech}
                 variant="outline"
-                className="flex items-center gap-1.5"
+                className="flex items-center gap-1.5 px-2 py-0.5 text-xs font-medium"
               >
                 {icon ? (
                   <>
                     <Image
                       src={icon.logo}
                       alt=""
-                      width={14}
-                      height={14}
+                      width={12}
+                      height={12}
                       aria-hidden
                       className={icon.logoDark ? "dark:hidden" : undefined}
                     />
@@ -97,8 +104,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
                       <Image
                         src={icon.logoDark}
                         alt=""
-                        width={14}
-                        height={14}
+                        width={12}
+                        height={12}
                         aria-hidden
                         className="hidden dark:block"
                       />
@@ -106,61 +113,63 @@ export function ProjectCard({ project }: ProjectCardProps) {
                   </>
                 ) : (
                   <CodeIcon
-                    className="size-3.5 shrink-0"
+                    className="size-3 shrink-0"
                     weight="regular"
                     aria-hidden
                   />
                 )}
-                {tech}
+                <span>{tech}</span>
               </Badge>
             );
           })}
-        </motion.div>
 
-        <div className="flex items-center gap-4 text-sm font-medium text-foreground">
-          <motion.a
+          {remainingCount > 0 && (
+            <Badge
+              variant="outline"
+              title={project.technologies.join(", ")}
+              aria-label={`All technologies: ${project.technologies.join(", ")}`}
+              className="cursor-default px-2 py-0.5 text-xs font-medium"
+            >
+              +{remainingCount}
+            </Badge>
+          )}
+        </div>
+
+        {/* Links row pinned to bottom */}
+        <div className="mt-auto flex items-center gap-4 pt-1 text-sm font-medium text-foreground">
+          <a
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            initial="rest"
-            whileHover="hover"
-            className="flex items-center gap-1.5 transition-colors duration-200 hover:text-muted-foreground motion-reduce:transition-none"
+            className="inline-flex items-center gap-1.5 rounded-sm transition-colors duration-200 hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none"
           >
-            <motion.span variants={linkIconVariants} transition={TRANSITIONS.fast}>
-              <GithubIcon className="size-4" />
-            </motion.span>
-            GitHub
-          </motion.a>
+            <GithubIcon className="size-4" />
+            <span>GitHub</span>
+          </a>
+
           {project.liveUrl && (
-            <motion.a
+            <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              initial="rest"
-              whileHover="hover"
-              className="flex items-center gap-1.5 transition-colors duration-200 hover:text-muted-foreground motion-reduce:transition-none"
+              className="inline-flex items-center gap-1.5 rounded-sm transition-colors duration-200 hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none"
             >
-              <motion.span variants={linkIconVariants} transition={TRANSITIONS.fast}>
-                <ArrowSquareOutIcon className="size-4" weight="regular" />
-              </motion.span>
-              Live Demo
-            </motion.a>
+              <ArrowSquareOutIcon className="size-4" weight="regular" />
+              <span>Live Demo</span>
+            </a>
           )}
+
           {project.caseStudyUrl && (
-            <motion.a
+            <a
               href={project.caseStudyUrl}
-              initial="rest"
-              whileHover="hover"
-              className="flex items-center gap-1.5 transition-colors duration-200 hover:text-muted-foreground motion-reduce:transition-none"
+              className="inline-flex items-center gap-1.5 rounded-sm transition-colors duration-200 hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none"
             >
-              <motion.span variants={linkIconVariants} transition={TRANSITIONS.fast}>
-                <FileTextIcon className="size-4" weight="regular" />
-              </motion.span>
-              Case Study
-            </motion.a>
+              <FileTextIcon className="size-4" weight="regular" />
+              <span>Case Study</span>
+            </a>
           )}
         </div>
-      </motion.div>
-    </Card>
+      </div>
+    </div>
   );
 }

@@ -31,6 +31,7 @@ export const projects: Project[] = [
   {
     slug: "retail-product-detection",
     title: "Retail Product Detection",
+    // TODO(me): add real screenshot
     description:
       "A one-class retail product detection pipeline built with YOLOv8, from shelf-image annotation to inference.",
     technologies: ["Python", "YOLOv8", "CVAT", "OpenCV", "Pandas", "NumPy"],
@@ -39,6 +40,7 @@ export const projects: Project[] = [
   {
     slug: "finai-expense-intelligence",
     title: "FinAI - Expense Intelligence Platform",
+    // TODO(me): add real screenshot
     description:
       "A natural-language expense tracker that parses free-text transactions through a tiered Node.js and Python resolution pipeline.",
     technologies: [
