@@ -57,25 +57,7 @@ export const projects: Project[] = [
     technologies: ["Python", "YOLOv8", "CVAT", "OpenCV", "Pandas", "NumPy"],
     githubUrl: "https://github.com/Thanhbo209/retail-product-detection",
   },
-  {
-    slug: "finai-expense-intelligence",
-    title: "FinAI - Expense Intelligence Platform",
-    // TODO(me): add real screenshot
-    description:
-      "A natural-language expense tracker that parses free-text transactions through a tiered Node.js and Python resolution pipeline.",
-    technologies: [
-      "TypeScript",
-      "Node.js",
-      "Express",
-      "PostgreSQL",
-      "Prisma",
-      "Python",
-      "FastAPI",
-      "React",
-      "Docker",
-    ],
-    githubUrl: "https://github.com/Thanhbo209/finAI-assistant",
-  },
+
   {
     slug: "ai-resume-analyzer",
     title: "AI Resume Analyzer",

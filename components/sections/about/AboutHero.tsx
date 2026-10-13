@@ -136,14 +136,16 @@ export function AboutHero() {
 
           {/* Portrait circle with 3px ring and gap */}
           {/* radius-ok: avatar */}
-          <div className="relative aspect-square size-full overflow-hidden rounded-full ring-3 ring-foreground/90 ring-offset-4 ring-offset-background">
+          {/* radius-ok: avatar */}
+          <div className="relative isolate aspect-square size-full overflow-hidden rounded-[50%] ring-3 ring-foreground/90 ring-offset-4 ring-offset-background">
+            {" "}
             <Image
               src="/portrait/portrait1.jpg"
               alt="Portrait of Pham Viet Thanh"
               fill
               priority
               sizes="(min-width: 1024px) 240px, 160px"
-              className="object-cover "
+              className="object-cover rounded-full!"
             />
           </div>
         </div>
