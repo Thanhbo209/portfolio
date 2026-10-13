@@ -10,6 +10,26 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  // content/projects.ts: add as the FIRST entry in the array
+  {
+    slug: "freight-rate-comparison-crm",
+    title: "Freight Rate Comparison CRM",
+    description:
+      "Multi-tenant freight CRM that compares carrier costs against sell prices, ranks profit margin per shipment, and enforces role-based access.",
+
+    thumbnail: "/project-banner/rate-compare.png",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Prisma",
+      "React",
+      "Tailwind CSS",
+      "Supabase",
+    ],
+    githubUrl: "https://github.com/Thanhbo209/Rate-Comparison-Customer-CRM",
+    // liveUrl: "", // TODO(me): add if deployed (same URL as your resume's Live Site link)
+  },
   {
     slug: "dsa-tracker",
     title: "DSA Tracker - Algorithmic Knowledge & AI Coaching",
