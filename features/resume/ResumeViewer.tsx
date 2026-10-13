@@ -64,10 +64,10 @@ export function ResumeViewer({ pdfUrl }: ResumeViewerProps) {
         </motion.button>
       </div>
 
-      <div className="relative min-h-[80vh] w-full overflow-hidden rounded-md border border-border bg-card">
+      <div className="relative min-h-[80vh] w-full overflow-hidden border border-border bg-card">
         {!isLoaded && (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-            <div className="size-8 animate-spin rounded-full border-2 border-muted border-t-foreground" />
+            <div className="size-8 animate-spin border-2 border-muted border-t-foreground" />
             <p className="text-sm text-muted-foreground">
               Loading resume preview...
             </p>

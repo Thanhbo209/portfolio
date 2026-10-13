@@ -1,30 +1,19 @@
-import type { Icon } from "@phosphor-icons/react";
-import {
-  BrainIcon,
-  CodeIcon,
-  DatabaseIcon,
-  HardDrivesIcon,
-  LayoutIcon,
-  WrenchIcon,
-} from "@phosphor-icons/react/dist/ssr";
-
 export interface TechItem {
   name: string;
   logo: string;
   /** Theme-adaptive marks only: shown instead of `logo` under `dark:`. */
   logoDark?: string;
+  showLabel?: boolean;
 }
 
 export interface TechCategory {
   name: string;
-  icon: Icon;
   items: TechItem[];
 }
 
 export const techCategories: TechCategory[] = [
   {
     name: "Languages",
-    icon: CodeIcon,
     items: [
       { name: "TypeScript", logo: "/tech/typescript.svg" },
       { name: "JavaScript", logo: "/tech/javascript.svg" },
@@ -35,7 +24,6 @@ export const techCategories: TechCategory[] = [
   },
   {
     name: "Frontend",
-    icon: LayoutIcon,
     items: [
       { name: "React", logo: "/tech/react.svg" },
       {
@@ -44,32 +32,40 @@ export const techCategories: TechCategory[] = [
         logoDark: "/tech/nextdotjs-dark.svg",
       },
       { name: "Tailwind CSS", logo: "/tech/tailwindcss.svg" },
-      { name: "React Router", logo: "/tech/reactrouter.svg" },
-      { name: "Vite", logo: "/tech/vite.svg" },
+      {
+        name: "React Router",
+        logo: "/tech/reactrouter.svg",
+        showLabel: true,
+      },
+      {
+        name: "Vite",
+        logo: "/tech/vite.svg",
+        showLabel: true,
+      },
     ],
   },
   {
     name: "Backend",
-    icon: HardDrivesIcon,
     items: [
       { name: "Node.js", logo: "/tech/nodedotjs.svg" },
       {
         name: "Express",
         logo: "/tech/express.svg",
         logoDark: "/tech/expressjs-light.svg",
+        showLabel: true,
       },
       { name: "FastAPI", logo: "/tech/fastapi.svg" },
     ],
   },
   {
     name: "Database",
-    icon: DatabaseIcon,
     items: [
       { name: "PostgreSQL", logo: "/tech/postgresql.svg" },
       {
         name: "Prisma",
         logo: "/tech/prisma.svg",
         logoDark: "/tech/prisma-dark.svg",
+        showLabel: true,
       },
       { name: "MongoDB", logo: "/tech/mongodb.svg" },
       { name: "Redis", logo: "/tech/redis.svg" },
@@ -77,17 +73,19 @@ export const techCategories: TechCategory[] = [
   },
   {
     name: "AI / Data",
-    icon: BrainIcon,
     items: [
       { name: "PyTorch", logo: "/tech/PyTorch.svg" },
       { name: "NumPy", logo: "/tech/numpy.svg" },
-      { name: "Pandas", logo: "/tech/pandas.svg" },
+      {
+        name: "Pandas",
+        logo: "/tech/pandas.svg",
+        showLabel: true,
+      },
       { name: "OpenCV", logo: "/tech/opencv.svg" },
     ],
   },
   {
     name: "DevOps & Tools",
-    icon: WrenchIcon,
     items: [
       { name: "Git", logo: "/tech/git.svg" },
       {
@@ -100,6 +98,7 @@ export const techCategories: TechCategory[] = [
       {
         name: "Claude/Agents",
         logo: "/tech/anthropic.svg",
+        showLabel: true,
       },
     ],
   },

@@ -29,7 +29,7 @@ export function LogoTile({
   return (
     <div
       className={cn(
-        "flex shrink-0 items-center justify-center rounded-md",
+        "flex shrink-0 items-center justify-center",
         size === "md" ? "size-12" : "size-10",
         background === "black" ? "bg-black" : "bg-white",
         resolvedPadding,
@@ -41,7 +41,6 @@ export function LogoTile({
         alt={alt}
         width={imageSize}
         height={imageSize}
-        className="rounded-sm"
       />
     </div>
   );

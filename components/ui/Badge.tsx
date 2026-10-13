@@ -15,7 +15,7 @@ export function Badge({
   return (
     <span
       className={cn(
-        "rounded-md px-2 py-0.5 text-xs font-medium",
+        "px-2 py-0.5 text-xs font-medium",
         variant === "outline"
           ? "border border-border text-muted-foreground"
           : "bg-secondary text-secondary-foreground",

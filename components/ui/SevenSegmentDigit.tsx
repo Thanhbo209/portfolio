@@ -35,12 +35,12 @@ export function SevenSegmentDigit({ digit }: SevenSegmentDigitProps) {
   const segments = SEGMENTS_BY_DIGIT[digit] ?? "0000000";
 
   return (
-    <div className="relative aspect-[3/5] h-8 shrink-0 sm:h-11 lg:h-16">
+    <div className="relative aspect-[3/5] h-[clamp(2rem,4.5cqw,2.85rem)] shrink-0">
       {SEGMENT_POSITION.map((position, index) => (
         <span
           key={index}
           className={cn(
-            "absolute rounded-full transition-colors duration-150 motion-reduce:transition-none",
+            "absolute transition-colors duration-150 motion-reduce:transition-none",
             position,
             segments[index] === "1" ? "bg-foreground" : "bg-muted",
           )}

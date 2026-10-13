@@ -3,11 +3,12 @@ import { cn } from "@/lib/utils";
 
 interface SectionProps {
   id: string;
-  heading: string;
+  heading?: string;
   headingLevel?: "h1" | "h2";
   align?: "center" | "start";
   children?: React.ReactNode;
   className?: string;
+  "aria-label"?: string;
 }
 
 export function Section({
@@ -17,31 +18,36 @@ export function Section({
   align = "center",
   children,
   className,
+  "aria-label": ariaLabel,
 }: SectionProps) {
   const Heading = headingLevel;
 
   return (
     <section
       id={id}
-      aria-labelledby={`${id}-heading`}
+      {...(heading
+        ? { "aria-labelledby": `${id}-heading` }
+        : { "aria-label": ariaLabel ?? id })}
       className={cn(
-        "flex flex-col scroll-mt-20 px-6 py-16 lg:px-12",
+        "flex flex-col scroll-mt-20 py-16",
         align === "center" ? "justify-center" : "justify-start",
         className,
       )}
     >
-      <Reveal>
-        <Heading
-          id={`${id}-heading`}
-          className={cn(
-            "font-semibold tracking-tight text-foreground",
-            headingLevel === "h1" ? "text-4xl" : "text-3xl",
-          )}
-        >
-          {heading}
-        </Heading>
-      </Reveal>
-      <div className="mt-4">{children}</div>
+      {heading && (
+        <Reveal>
+          <Heading
+            id={`${id}-heading`}
+            className={cn(
+              "font-semibold tracking-tight text-foreground",
+              headingLevel === "h1" ? "text-4xl" : "text-3xl",
+            )}
+          >
+            {heading}
+          </Heading>
+        </Reveal>
+      )}
+      <div className={heading ? "mt-4" : undefined}>{children}</div>
     </section>
   );
 }

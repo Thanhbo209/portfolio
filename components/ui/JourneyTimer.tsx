@@ -20,8 +20,8 @@ export function JourneyTimer({ startDate }: JourneyTimerProps) {
   const elapsed = useElapsedTime(startDate);
 
   return (
-    <div className="inline-flex flex-col items-center gap-4 rounded-lg bg-sidebar  p-4 shadow-[inset_0_2px_6px_rgba(0,0,0,0.15)] sm:px-30">
-      <div className="flex items-start">
+    <div className="@container inline-flex flex-col items-center justify-center bg-sidebar px-3 py-3 shadow-[inset_0_2px_6px_rgba(0,0,0,0.15)] sm:px-6">
+      <div className="flex items-start justify-center gap-1 sm:gap-2.5">
         {GROUPS.map((group, index) => {
           const digits = String(elapsed[group.key])
             .padStart(group.pad, "0")
@@ -32,18 +32,18 @@ export function JourneyTimer({ startDate }: JourneyTimerProps) {
               {index > 0 && (
                 <span
                   aria-hidden
-                  className="animate-blink px-1 font-mono text-2xl font-bold text-foreground motion-reduce:animate-none sm:text-3xl lg:text-5xl"
+                  className="animate-blink px-0.5 pt-1 font-mono text-lg font-bold text-foreground motion-reduce:animate-none sm:text-2xl"
                 >
                   :
                 </span>
               )}
-              <div className="flex flex-col items-center gap-2">
-                <div className="flex gap-1">
+              <div className="flex flex-col items-center gap-1.5">
+                <div className="flex gap-0.5 sm:gap-1">
                   {digits.map((digit, digitIndex) => (
                     <SevenSegmentDigit key={digitIndex} digit={digit} />
                   ))}
                 </div>
-                <span className="text-[10px] font-medium tracking-wide text-muted-foreground uppercase sm:text-xs">
+                <span className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
                   {group.label}
                 </span>
               </div>

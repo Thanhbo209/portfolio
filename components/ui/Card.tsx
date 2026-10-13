@@ -16,7 +16,7 @@ export function Card({ children, className }: CardProps) {
       whileHover={hoverLift}
       whileTap={pressEffect}
       className={cn(
-        "rounded-md border border-border bg-card p-6 transition-shadow duration-200 hover:border-foreground/20 hover:shadow-lg motion-reduce:transition-none",
+        "border border-border bg-card p-6 transition-shadow duration-200 hover:border-foreground/20 hover:shadow-lg motion-reduce:transition-none",
         className,
       )}
     >

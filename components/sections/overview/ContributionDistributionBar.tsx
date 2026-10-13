@@ -25,7 +25,7 @@ export function ContributionDistributionBar({
     breakdown.commits + breakdown.pullRequests + breakdown.reviews + breakdown.issues;
 
   return (
-    <div className="flex h-1.5 w-full gap-0.5 overflow-hidden rounded-full bg-muted">
+    <div className="flex h-1.5 w-full gap-0.5 overflow-hidden bg-muted">
       {SEGMENTS.map(({ key, className }) => {
         const percentage = total > 0 ? (breakdown[key] / total) * 100 : 0;
 
@@ -39,14 +39,14 @@ export function ContributionDistributionBar({
           <div
             key={key}
             style={{ width: `${percentage}%` }}
-            className="h-full overflow-hidden rounded-full"
+            className="h-full overflow-hidden"
           >
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={TRANSITIONS.reveal}
-              className={`h-full w-full origin-left rounded-full ${className}`}
+              className={`h-full w-full origin-left ${className}`}
             />
           </div>
         );

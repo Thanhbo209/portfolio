@@ -67,7 +67,7 @@ export function MobileNavDrawer() {
           ref={triggerRef}
           type="button"
           onClick={() => setOpen(true)}
-          className="flex size-9 items-center justify-center rounded-md text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring"
+          className="flex size-9 items-center justify-center text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring"
           aria-label="Open navigation menu"
         >
           <ListIcon className="size-5" weight="regular" />
@@ -95,7 +95,7 @@ export function MobileNavDrawer() {
             <button
               type="button"
               onClick={closeDrawer}
-              className="flex size-9 items-center justify-center rounded-md text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring"
+              className="flex size-9 items-center justify-center text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring"
               aria-label="Close navigation menu"
             >
               <XIcon className="size-5" weight="regular" />

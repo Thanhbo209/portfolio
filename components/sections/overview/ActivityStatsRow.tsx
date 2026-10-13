@@ -33,7 +33,7 @@ export function ActivityStatsRow({ breakdown }: ActivityStatsRowProps) {
         return (
           <div key={key} className="flex flex-col gap-1.5">
             <div className="flex items-center gap-1.5">
-              <span className={`size-2 shrink-0 rounded-full ${indicatorClassName}`} />
+              <span className={`size-2 shrink-0 ${indicatorClassName}`} />
               <span className="text-xs text-muted-foreground">{label}</span>
             </div>
             <p className="text-lg font-semibold text-foreground">

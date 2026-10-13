@@ -65,7 +65,7 @@ export function HeatmapTooltip({ day, level, anchorRect }: HeatmapTooltipProps) 
         top: position?.top ?? anchorRect.top,
         left: position?.left ?? anchorRect.left,
       }}
-      className="pointer-events-none z-[100] flex flex-col gap-1 whitespace-nowrap rounded-md border border-border bg-popover px-2.5 py-1.5 text-xs text-popover-foreground shadow-md"
+      className="pointer-events-none z-[100] flex flex-col gap-1 whitespace-nowrap border border-border bg-popover px-2.5 py-1.5 text-xs text-popover-foreground shadow-md"
     >
       <span className="font-medium">{fullDate}</span>
       <span>

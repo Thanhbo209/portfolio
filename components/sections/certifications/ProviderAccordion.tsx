@@ -37,7 +37,7 @@ export function ProviderAccordion({
       >
         <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-6 transition-colors duration-200 hover:bg-accent/50 motion-reduce:transition-none [&::-webkit-details-marker]:hidden [&::marker]:hidden">
           <div className="flex items-center gap-3">
-            <div className="flex size-15 shrink-0 items-center justify-center rounded-md p-1">
+            <div className="flex size-15 shrink-0 items-center justify-center p-1">
               {provider.logo ? (
                 <>
                   <Image

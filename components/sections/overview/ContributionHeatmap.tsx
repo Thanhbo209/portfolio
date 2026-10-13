@@ -17,6 +17,7 @@ import { HeatmapTooltip } from "@/components/sections/overview/HeatmapTooltip";
 interface ContributionHeatmapProps {
   days: ContributionDay[];
   totalLastYear: number;
+  periodLabel?: string;
 }
 
 const MONTH_LABELS = [
@@ -87,6 +88,7 @@ interface HoveredCell {
 export function ContributionHeatmap({
   days,
   totalLastYear,
+  periodLabel = "in the past year",
 }: ContributionHeatmapProps) {
   const weekColumns = withMonthLabels(chunkIntoWeeks(days));
   const containerRef = useRef<HTMLDivElement>(null);
@@ -154,7 +156,7 @@ export function ContributionHeatmap({
           viewport={{ once: true, amount: 0.4 }}
           variants={weekStaggerContainer}
           role="group"
-          aria-label={`GitHub contribution graph, ${totalLastYear.toLocaleString()} contributions in the past year`}
+          aria-label={`GitHub contribution graph, ${totalLastYear.toLocaleString()} contributions ${periodLabel}`}
           className="flex gap-0.75"
         >
           {weekColumns.map(({ week, month, showLabel }, weekIndex) => (
@@ -197,7 +199,7 @@ export function ContributionHeatmap({
                     <div
                       role="img"
                       aria-label={cellLabel}
-                      className={`size-2.25 rounded-[2px] transition-[filter] duration-150 hover:brightness-125 ${getContributionColor(level)}`}
+                      className={`size-2.25 transition-[filter] duration-150 hover:brightness-125 ${getContributionColor(level)}`}
                     />
                   </motion.div>
                 );

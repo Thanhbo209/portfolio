@@ -7,7 +7,7 @@ import { contactMethods, hiringInfo } from "@/content/contact";
 export function Contact() {
   return (
     <Section id="contact" heading="Let's Connect" align="start">
-      <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid grid-cols-1 gap-6 @2xl:grid-cols-2 @4xl:grid-cols-3">
         {contactMethods.map((method, index) => (
           <Reveal key={method.label} delay={index * 60} className="h-full">
             <ContactMethodCard method={method} />
@@ -15,7 +15,7 @@ export function Contact() {
         ))}
         <Reveal
           delay={contactMethods.length * 60}
-          className="sm:col-span-2 lg:col-span-3"
+          className="@2xl:col-span-2 @4xl:col-span-3"
         >
           <HiringInformationCard info={hiringInfo} />
         </Reveal>

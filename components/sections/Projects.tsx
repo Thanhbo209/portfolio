@@ -8,7 +8,7 @@ import { projects } from "@/content/projects";
 export function Projects() {
   return (
     <Section id="projects" heading="Featured Projects" align="start">
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div className="mt-10 grid grid-cols-1 @2xl:grid-cols-2 @4xl:grid-cols-3 gap-4">
         {projects.map((project, index) => (
           <Reveal
             key={project.slug}

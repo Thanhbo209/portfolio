@@ -40,7 +40,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const remainingCount = project.technologies.length - visibleTechs.length;
 
   return (
-    <div className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition-colors duration-200 hover:border-foreground/30 motion-reduce:transition-none">
+    <div className="group relative flex h-full flex-col border border-border bg-card transition-colors duration-200 hover:border-foreground/30 motion-reduce:transition-none">
       {/* Banner: Full bleed flush against card top, left, right */}
       <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden border-b border-border bg-muted/20">
         {project.thumbnail ? (
@@ -57,7 +57,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             className="flex size-full items-center justify-center bg-gradient-to-br from-muted/50 via-card to-muted/80 select-none transition-transform duration-200 group-hover:scale-[1.02] motion-reduce:transition-none"
             aria-hidden
           >
-            <div className="flex size-14 items-center justify-center rounded-lg border border-border/80 bg-background/80 shadow-xs backdrop-blur-xs">
+            <div className="flex size-14 items-center justify-center border border-border/80 bg-background/80 shadow-xs backdrop-blur-xs">
               <span className="font-mono text-sm font-medium tracking-wider text-muted-foreground">
                 {getProjectInitials(project.title)}
               </span>
@@ -141,7 +141,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-sm transition-colors duration-200 hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none"
+            className="inline-flex items-center gap-1.5 transition-colors duration-200 hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none"
           >
             <GithubIcon className="size-4" />
             <span>GitHub</span>
@@ -152,7 +152,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-sm transition-colors duration-200 hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none"
+              className="inline-flex items-center gap-1.5 transition-colors duration-200 hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none"
             >
               <ArrowSquareOutIcon className="size-4" weight="regular" />
               <span>Live Demo</span>
@@ -162,7 +162,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.caseStudyUrl && (
             <a
               href={project.caseStudyUrl}
-              className="inline-flex items-center gap-1.5 rounded-sm transition-colors duration-200 hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none"
+              className="inline-flex items-center gap-1.5 transition-colors duration-200 hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none"
             >
               <FileTextIcon className="size-4" weight="regular" />
               <span>Case Study</span>

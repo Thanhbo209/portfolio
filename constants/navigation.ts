@@ -18,11 +18,11 @@ import type { ExternalLink, NavItem } from "@/types/navigation";
 // `id` matches the corresponding <section id="..."> in app/page.tsx.
 export const primaryNav: NavItem[] = [
   { label: "About", id: "about", icon: UserIcon },
+  { label: "Tech Stack", id: "tech-stack", icon: CodeIcon },
   { label: "Overview", id: "overview", icon: HouseIcon },
   { label: "Experience", id: "experience", icon: BriefcaseIcon },
   { label: "Projects", id: "projects", icon: FolderIcon },
   // { label: "Case Studies", id: "case-studies", icon: NotebookIcon },
-  { label: "Tech Stack", id: "tech-stack", icon: CodeIcon },
   { label: "Certifications", id: "certifications", icon: CertificateIcon },
   // { label: "Blog", id: "blog", icon: ArticleIcon },
   { label: "Contact", id: "contact", icon: EnvelopeSimpleIcon },

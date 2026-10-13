@@ -64,7 +64,7 @@ export function NavItem({
       onMouseLeave={() => setIsHovered(false)}
       aria-current={isActive ? "page" : undefined}
       className={cn(
-        "group relative flex h-12 items-center gap-2 overflow-hidden rounded-md px-3 text-sm font-medium transition-colors duration-250 ease-out motion-reduce:transition-none",
+        "group relative flex h-12 items-center gap-2 overflow-hidden px-3 text-sm font-medium transition-colors duration-250 ease-out motion-reduce:transition-none",
         isActive
           ? "text-background"
           : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",

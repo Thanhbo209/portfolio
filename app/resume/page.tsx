@@ -31,7 +31,7 @@ export default function ResumePage() {
   const lastUpdated = getLastUpdated();
 
   return (
-    <div className="mx-auto flex max-w-full flex-col gap-8 px-6 py-16 lg:px-12">
+    <div className="flex flex-col gap-8 py-16">
       <Reveal>
         <div className="flex flex-col gap-2">
           <h1 className="text-4xl font-semibold tracking-tight text-foreground">

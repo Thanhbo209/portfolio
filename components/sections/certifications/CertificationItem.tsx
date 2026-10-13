@@ -10,11 +10,11 @@ interface CertificationItemProps {
 
 export function CertificationItem({ certification }: CertificationItemProps) {
   return (
-    <div className="flex flex-col gap-2 rounded-md border border-border p-3">
+    <div className="flex flex-col gap-2 border border-border p-3">
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-start gap-3">
           {certification.certificateImage && (
-            <div className="relative size-12 shrink-0 overflow-hidden rounded-md">
+            <div className="relative size-12 shrink-0 overflow-hidden">
               <Image
                 src={certification.certificateImage}
                 alt={`${certification.title} certificate`}

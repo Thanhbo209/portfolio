@@ -27,7 +27,7 @@ export function ExperienceItem({ entry, isLast = false }: ExperienceItemProps) {
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-start gap-4">
           {/* Logo tile: full bleed, no padding, enlarged to 48x48 */}
-          <div className="relative flex size-12 shrink-0 items-center justify-center rounded-md border border-border bg-card overflow-hidden p-0">
+          <div className="relative flex size-12 shrink-0 items-center justify-center border border-border bg-card overflow-hidden p-0">
             {entry.logo ? (
               <Image
                 src={entry.logo}
@@ -83,7 +83,7 @@ export function ExperienceItem({ entry, isLast = false }: ExperienceItemProps) {
             {entry.bullets.map((bullet, idx) => (
               <li
                 key={idx}
-                className="relative pl-4 before:absolute before:left-0 before:top-[0.6em] before:size-[5px] before:rounded-[1px] before:bg-muted-foreground/60 before:content-['']"
+                className="relative pl-4 before:absolute before:left-0 before:top-[0.6em] before:size-[5px] before:bg-muted-foreground/60 before:content-['']"
               >
                 {bullet}
               </li>

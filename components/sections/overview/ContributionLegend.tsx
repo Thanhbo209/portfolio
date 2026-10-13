@@ -26,7 +26,7 @@ export function ContributionLegend() {
           key={level}
           role="img"
           aria-label={`${getContributionLabel(level)}: ${getContributionRangeLabel(level)}`}
-          className={`size-2.25 rounded-[2px] ${getContributionColor(level)}`}
+          className={`size-2.25 ${getContributionColor(level)}`}
         />
       ))}
       <span>More</span>
