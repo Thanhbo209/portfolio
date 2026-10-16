@@ -18,8 +18,6 @@ export const techCategories: TechCategory[] = [
       { name: "TypeScript", logo: "/tech/typescript.svg" },
       { name: "JavaScript", logo: "/tech/javascript.svg" },
       { name: "Python", logo: "/tech/python.svg" },
-      { name: "HTML", logo: "/tech/html5.svg" },
-      { name: "CSS", logo: "/tech/css.svg" },
     ],
   },
   {
@@ -42,6 +40,8 @@ export const techCategories: TechCategory[] = [
         logo: "/tech/vite.svg",
         showLabel: true,
       },
+      { name: "HTML", logo: "/tech/html5.svg" },
+      { name: "CSS", logo: "/tech/css.svg" },
     ],
   },
   {
