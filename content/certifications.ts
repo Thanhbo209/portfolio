@@ -73,6 +73,7 @@ export const certificationProviders: CertificationProvider[] = [
       {
         title: "TOEIC Listening & Reading (Score: 870)",
         issueDate: "Jun 2026",
+        certificateImage: "/tech/iig.jpg",
         skills: ["Professional English Proficiency"],
       },
     ],

@@ -18,7 +18,7 @@ interface ProviderAccordionProps {
 
 export function ProviderAccordion({
   provider,
-  defaultOpen = false,
+  defaultOpen = true,
 }: ProviderAccordionProps) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
@@ -31,7 +31,6 @@ export function ProviderAccordion({
           height/opacity via Motion instead of the old CSS grid-rows trick. */}
       <details
         className="group"
-        name="certifications-accordion"
         open={defaultOpen}
         onToggle={(event) => setIsOpen(event.currentTarget.open)}
       >

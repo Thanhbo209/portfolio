@@ -110,7 +110,7 @@ export function AchievementsList() {
       {/* Header Row: Title + Description on left, Controls aligned right on wide cards */}
       <div className="flex flex-col gap-4 @[45rem]:flex-row @[45rem]:items-center @[45rem]:justify-between">
         <div className="flex flex-col gap-1">
-          <h3 className="font-[family-name:var(--font-role-title,var(--font-heading))] text-xl font-normal text-foreground whitespace-nowrap">
+          <h3 className="font-(family-name:--font-role-title,var(--font-heading)) text-xl font-normal text-foreground whitespace-nowrap">
             Achievements as a Linked List
           </h3>
           <p className="text-xs text-muted-foreground">
@@ -122,22 +122,8 @@ export function AchievementsList() {
         <div className="flex items-center gap-2 shrink-0">
           <button
             type="button"
-            onClick={handleTraverse}
-            disabled={prefersReducedMotion === true}
-            title={
-              prefersReducedMotion
-                ? "Automatic traversal disabled under reduced motion"
-                : undefined
-            }
-            className="flex h-10 min-h-[40px] items-center justify-center border border-border bg-card px-4 text-xs font-medium text-foreground transition-colors hover:border-foreground/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-40"
-          >
-            {isPlaying ? "Pause" : "Traverse"}
-          </button>
-
-          <button
-            type="button"
             onClick={handleStep}
-            className="flex h-10 min-h-[40px] items-center justify-center border border-border bg-card px-4 text-xs font-medium text-foreground transition-colors hover:border-foreground/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="flex h-10 min-h-10 items-center justify-center border border-border bg-card px-4 text-xs font-medium text-foreground transition-colors hover:border-foreground/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             Step
           </button>
@@ -145,7 +131,7 @@ export function AchievementsList() {
           <button
             type="button"
             onClick={handleReset}
-            className="flex h-10 min-h-[40px] items-center justify-center border border-border bg-card px-4 text-xs font-medium text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="flex h-10 min-h-10 items-center justify-center border border-border bg-card px-4 text-xs font-medium text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             Reset
           </button>
@@ -169,10 +155,7 @@ export function AchievementsList() {
               const isVisited = visitedIndices.has(index);
 
               return (
-                <li
-                  key={node.id}
-                  className="flex flex-1 min-w-[7.5rem] items-center"
-                >
+                <li key={node.id} className="flex flex-1 min-w-30 items-center">
                   <div className="relative flex-1 min-w-0">
                     {/* curr pointer tag sitting ABOVE the current node */}
                     {isCurrent && (
@@ -342,7 +325,7 @@ export function AchievementsList() {
                       onClick={() => handleNodeClick(index)}
                       aria-current={isCurrent ? "step" : undefined}
                       className={cn(
-                        "flex min-h-[40px] w-full items-stretch border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                        "flex min-h-10 w-full items-stretch border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                         isCurrent
                           ? "border-foreground bg-foreground text-background"
                           : isVisited
@@ -429,7 +412,7 @@ export function AchievementsList() {
       {/* Fact panel (full width, fixed min-height to prevent layout shift) */}
       <div
         aria-live="polite"
-        className="mt-6 flex min-h-[80px] flex-col justify-center border border-border bg-muted/20 p-4 text-sm"
+        className="mt-6 flex min-h-20 flex-col justify-center border border-border bg-muted/20 p-4 text-sm"
       >
         <motion.div
           key={
@@ -460,7 +443,8 @@ export function AchievementsList() {
           ) : (
             <div className="flex flex-col gap-0.5">
               <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Node {currentIndex + 1} of {facts.length}: {facts[currentIndex].title}
+                Node {currentIndex + 1} of {facts.length}:{" "}
+                {facts[currentIndex].title}
               </p>
               <p className="font-medium text-foreground">
                 {facts[currentIndex].fact}

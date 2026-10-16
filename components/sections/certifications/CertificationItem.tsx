@@ -20,7 +20,7 @@ export function CertificationItem({ certification }: CertificationItemProps) {
                 alt={`${certification.title} certificate`}
                 fill
                 sizes="48px"
-                className="object-cover"
+                className="object-cover p-2"
               />
             </div>
           )}

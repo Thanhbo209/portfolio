@@ -84,7 +84,7 @@ export function TechStack() {
 
                 <ul
                   role="list"
-                  className="flex flex-wrap items-center gap-x-5 gap-y-4"
+                  className="flex  flex-wrap items-center gap-x-5 gap-y-4"
                 >
                   {category.items.map((item) => (
                     <TechIcon key={item.name} item={item} />

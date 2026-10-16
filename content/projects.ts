@@ -51,7 +51,7 @@ export const projects: Project[] = [
   {
     slug: "retail-product-detection",
     title: "Retail Product Detection",
-    // TODO(me): add real screenshot
+    thumbnail: "/project-banner/product-detection.png",
     description:
       "A one-class retail product detection pipeline built with YOLOv8, from shelf-image annotation to inference.",
     technologies: ["Python", "YOLOv8", "CVAT", "OpenCV", "Pandas", "NumPy"],
