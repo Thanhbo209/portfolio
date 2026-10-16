@@ -4,6 +4,7 @@ import { Newsreader } from "next/font/google";
 import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { techCategories, type TechItem } from "@/content/tech-stack";
+import { Card } from "../ui/Card";
 
 const newsreader = Newsreader({
   subsets: ["latin"],
@@ -15,48 +16,44 @@ const newsreader = Newsreader({
 function TechIcon({ item }: { item: TechItem }) {
   return (
     <li className="group relative flex items-center gap-1.5">
-      <div className="relative flex items-center justify-center">
-        {/* CSS-only hover/focus tooltip: square, zero radius */}
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-full left-1/2 z-30 mb-2 -translate-x-1/2 border border-border bg-popover px-2 py-1 text-xs text-popover-foreground opacity-0 shadow-sm transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100 whitespace-nowrap"
-        >
-          {item.name}
-        </span>
+      <Card className="flex items-center justify-center p-0 border-0 bg-background">
+        <div className="relative flex items-center justify-center">
+          {/* CSS-only hover/focus tooltip: square, zero radius */}
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-full left-1/2 z-30 mb-2 font-medium -translate-x-1/2 border border-border bg-popover px-2 py-1 font-sans text-md text-popover-foreground opacity-0 shadow-sm transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100 whitespace-nowrap"
+          >
+            {item.name}
+          </span>
 
-        {item.logoDark ? (
-          <>
+          {item.logoDark ? (
+            <>
+              <Image
+                src={item.logo}
+                alt={item.name}
+                width={32}
+                height={32}
+                className="size-7 object-contain opacity-80 transition-opacity duration-150 group-hover:opacity-100 md:size-8 dark:hidden"
+              />
+              <Image
+                src={item.logoDark}
+                alt={item.name}
+                width={32}
+                height={32}
+                className="hidden size-7 object-contain opacity-80 transition-opacity duration-150 group-hover:opacity-100 md:size-8 dark:block"
+              />
+            </>
+          ) : (
             <Image
               src={item.logo}
               alt={item.name}
               width={32}
               height={32}
-              className="size-7 object-contain opacity-80 transition-opacity duration-150 group-hover:opacity-100 md:size-8 dark:hidden"
+              className="size-7 object-contain opacity-80 transition-opacity duration-150 group-hover:opacity-100 md:size-8"
             />
-            <Image
-              src={item.logoDark}
-              alt={item.name}
-              width={32}
-              height={32}
-              className="hidden size-7 object-contain opacity-80 transition-opacity duration-150 group-hover:opacity-100 md:size-8 dark:block"
-            />
-          </>
-        ) : (
-          <Image
-            src={item.logo}
-            alt={item.name}
-            width={32}
-            height={32}
-            className="size-7 object-contain opacity-80 transition-opacity duration-150 group-hover:opacity-100 md:size-8"
-          />
-        )}
-      </div>
-
-      {item.showLabel && (
-        <span className="select-none font-sans text-xs text-muted-foreground">
-          {item.name}
-        </span>
-      )}
+          )}
+        </div>
+      </Card>
     </li>
   );
 }
