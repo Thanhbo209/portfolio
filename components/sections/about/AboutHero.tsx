@@ -145,7 +145,7 @@ export function AboutHero() {
               fill
               priority
               sizes="(min-width: 1024px) 240px, 160px"
-              className="object-cover rounded-full! rotate-5"
+              className="object-cover rotate-5"
             />
           </div>
         </div>

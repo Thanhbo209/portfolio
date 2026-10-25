@@ -1,5 +1,6 @@
 export interface Certification {
   title: string;
+  /** ISO year-month, e.g. "2026-07" */
   issueDate: string;
   credentialId?: string;
   verifyUrl?: string;
@@ -11,7 +12,7 @@ export interface CertificationProvider {
   name: string;
   logo?: string;
   logoDark?: string;
-  certifications: Certification[];
+  certifications: Certification[]
 }
 
 export const certificationProviders: CertificationProvider[] = [
@@ -21,7 +22,7 @@ export const certificationProviders: CertificationProvider[] = [
     certifications: [
       {
         title: "Google AI Essentials",
-        issueDate: "Jul 2026",
+        issueDate: "2026-07",
         verifyUrl:
           "https://www.credly.com/badges/06f70cad-1b25-4e37-9ef6-c0aad402b72d/linked_in_profile",
         certificateImage: "/certs/google/gg-ai-essentials.png",
@@ -35,7 +36,7 @@ export const certificationProviders: CertificationProvider[] = [
     certifications: [
       {
         title: "Claude Code 101",
-        issueDate: "Jul 2026",
+        issueDate: "2026-07",
         verifyUrl: "https://verify.skilljar.com/c/7uptcnob27fa",
         certificateImage: "/certs/anthropic/anthropic.svg",
         skills: [
@@ -53,7 +54,7 @@ export const certificationProviders: CertificationProvider[] = [
     certifications: [
       {
         title: "Python Certificate",
-        issueDate: "Jul 2026",
+        issueDate: "2026-07",
         verifyUrl:
           "https://www.freecodecamp.org/certification/fccb87e5919-327f-4761-ab13-c6447e0c7e4e/python-v9",
         certificateImage: "/tech/python.svg",
@@ -72,7 +73,7 @@ export const certificationProviders: CertificationProvider[] = [
     certifications: [
       {
         title: "TOEIC Listening & Reading (Score: 870)",
-        issueDate: "Jun 2026",
+        issueDate: "2026-06",
         certificateImage: "/tech/iig.jpg",
         skills: ["Professional English Proficiency"],
       },

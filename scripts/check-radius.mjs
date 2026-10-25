@@ -59,8 +59,17 @@ for (const item of allowedList) {
   console.log(`      ${item.text}`);
 }
 
-if (allowedList.length !== 1 || !allowedList[0].file.includes("AboutHero.tsx")) {
-  console.error(`\n❌ Failed: Expected only 1 allowed avatar exception (AboutHero.tsx), but found ${allowedList.length}.\n`);
+// Two avatar exceptions are allowed:
+//  1. AboutHero.tsx  – portrait avatar (rounded-full)
+//  2. CertificationRow.tsx – circular logo tile (rounded-full)
+const ALLOWED_AVATAR_FILES = ["AboutHero.tsx", "CertificationRow.tsx"];
+const unexpectedAllowed = allowedList.filter(
+  (item) => !ALLOWED_AVATAR_FILES.some((f) => item.file.includes(f)),
+);
+if (unexpectedAllowed.length > 0 || allowedList.length > ALLOWED_AVATAR_FILES.length) {
+  console.error(
+    `\n❌ Failed: Expected only ${ALLOWED_AVATAR_FILES.length} allowed avatar exceptions (${ALLOWED_AVATAR_FILES.join(", ")}), but found ${allowedList.length}.\n`,
+  );
   process.exit(1);
 }
 
