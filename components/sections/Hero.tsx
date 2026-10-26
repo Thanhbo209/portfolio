@@ -1,8 +1,8 @@
 import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/ui/Reveal";
-import { AchievementsList } from "@/components/sections/overview/AchievementsList";
 import { EngineeringJourneyCard } from "@/components/sections/overview/EngineeringJourneyCard";
 import { GitHubActivityCard } from "@/components/sections/overview/GitHubActivityCard";
+import { LeetCodeCard } from "@/components/sections/overview/LeetCodeCard";
 
 export function Hero() {
   return (
@@ -12,7 +12,7 @@ export function Hero() {
           <GitHubActivityCard />
         </Reveal>
         <Reveal delay={120}>
-          <AchievementsList />
+          <LeetCodeCard />
         </Reveal>
         <Reveal delay={180}>
           <EngineeringJourneyCard />
