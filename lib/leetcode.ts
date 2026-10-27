@@ -1,4 +1,4 @@
-export const LEETCODE_USERNAME = "Thanhbo209";
+export const LEETCODE_USERNAME = "oiK3QxlKNt";
 export const LEETCODE_PROFILE_URL = `https://leetcode.com/u/${LEETCODE_USERNAME}/`;
 
 export interface LeetCodeDay {
@@ -31,36 +31,68 @@ export interface LeetCodeStats {
 
 // Fallback snapshot data from LeetCode GraphQL in case network/API is unavailable
 const FALLBACK_CALENDAR: Record<string, number> = {
-  "1772928000": 1, // 2026-03-08
-  "1773014400": 1,
-  "1773273600": 2,
-  "1773360000": 5,
-  "1773446400": 5,
-  "1773532800": 1,
-  "1773619200": 19,
-  "1773705600": 7,
-  "1773792000": 3,
-  "1773878400": 8,
-  "1774051200": 2,
-  "1774137600": 2,
-  "1774224000": 7,
-  "1774483200": 4,
-  "1774915200": 6,
-  "1775001600": 4,
-  "1775088000": 28,
-  "1775174400": 1,
-  "1775260800": 3,
-  "1775347200": 5,
-  "1775606400": 2,
-  "1778976000": 4,
-  "1779062400": 12,
-  "1779235200": 4,
-  "1780099200": 5,
-  "1780185600": 33,
-  "1780272000": 3,
-  "1780444800": 3,
-  "1780617600": 2,
-  "1786752000": 5,
+  "1787011200": 10,
+  "1787097600": 1,
+  "1787270400": 12,
+  "1787356800": 2,
+  "1787616000": 1,
+  "1787702400": 8,
+  "1787788800": 11,
+  "1787875200": 9,
+  "1787961600": 1,
+  "1788048000": 4,
+  "1788134400": 1,
+  "1788307200": 2,
+  "1788480000": 5,
+  "1788566400": 3,
+  "1788652800": 21,
+  "1788739200": 17,
+  "1788825600": 4,
+  "1788912000": 24,
+  "1788998400": 14,
+  "1789084800": 52,
+  "1789171200": 7,
+  "1789257600": 1,
+  "1789344000": 14,
+  "1789430400": 26,
+  "1789516800": 7,
+  "1789603200": 11,
+  "1789689600": 26,
+  "1789862400": 9,
+  "1789948800": 4,
+  "1790035200": 1,
+  "1790121600": 10,
+  "1790208000": 22,
+  "1790294400": 10,
+  "1790380800": 3,
+  "1790467200": 33,
+  "1790553600": 4,
+  "1790640000": 18,
+  "1790726400": 4,
+  "1790812800": 1,
+  "1790899200": 4,
+  "1790985600": 1,
+  "1791072000": 5,
+  "1791158400": 10,
+  "1791244800": 11,
+  "1791331200": 2,
+  "1791417600": 2,
+  "1791504000": 2,
+  "1791590400": 2,
+  "1791763200": 2,
+  "1791849600": 6,
+  "1791936000": 3,
+  "1792022400": 13,
+  "1792108800": 4,
+  "1792195200": 4,
+  "1792281600": 13,
+  "1792368000": 8,
+  "1792454400": 1,
+  "1792540800": 10,
+  "1792713600": 4,
+  "1792800000": 5,
+  "1792886400": 9,
+  "1792972800": 4,
 };
 
 function buildCalendarDays(calendarMap: Record<string, number>): {
@@ -103,16 +135,16 @@ export async function getLeetCodeStats(): Promise<LeetCodeStats> {
   const fallbackBuilt = buildCalendarDays(FALLBACK_CALENDAR);
   const fallbackData: LeetCodeStats = {
     username: LEETCODE_USERNAME,
-    totalSolved: 45,
-    totalQuestions: 4095,
-    easySolved: 45,
+    totalSolved: 98,
+    totalQuestions: 4096,
+    easySolved: 96,
     easyTotal: 974,
-    mediumSolved: 0,
-    mediumTotal: 2135,
+    mediumSolved: 2,
+    mediumTotal: 2136,
     hardSolved: 0,
     hardTotal: 986,
-    streak: 8,
-    totalActiveDays: 30,
+    streak: 21,
+    totalActiveDays: 62,
     totalSubmissionsPastYear: fallbackBuilt.totalSubmissions,
     days: fallbackBuilt.days,
   };
@@ -181,7 +213,7 @@ export async function getLeetCodeStats(): Promise<LeetCodeStats> {
       getCount(submissions, "All") || (easySolved + mediumSolved + hardSolved);
 
     const easyTotal = getCount(questions, "Easy") || 974;
-    const mediumTotal = getCount(questions, "Medium") || 2135;
+    const mediumTotal = getCount(questions, "Medium") || 2136;
     const hardTotal = getCount(questions, "Hard") || 986;
     const totalQuestions =
       getCount(questions, "All") || (easyTotal + mediumTotal + hardTotal);
@@ -207,8 +239,8 @@ export async function getLeetCodeStats(): Promise<LeetCodeStats> {
       mediumTotal,
       hardSolved,
       hardTotal,
-      streak: matchedUser.userCalendar?.streak ?? 8,
-      totalActiveDays: matchedUser.userCalendar?.totalActiveDays ?? 30,
+      streak: matchedUser.userCalendar?.streak ?? 21,
+      totalActiveDays: matchedUser.userCalendar?.totalActiveDays ?? 62,
       totalSubmissionsPastYear: totalSubmissions,
       days,
     };
