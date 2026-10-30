@@ -7,7 +7,7 @@ const HERO_SOCIAL_LABELS = ["GitHub", "LinkedIn", "Email"] as const;
 
 const SOCIAL_ICONS: Record<string, string> = {
   GitHub: "/social/Github.png",
-  LinkedIn: "/social/Linkedin.png",
+  LinkedIn: "/social/LinkedIn.png",
   Email: "/social/Gmail.png",
 };
 
