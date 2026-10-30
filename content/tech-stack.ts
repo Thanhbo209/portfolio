@@ -62,6 +62,7 @@ export const techCategories: TechCategory[] = [
     items: [
       { name: "PostgreSQL", logo: "/tech/postgresql.svg" },
       { name: "MongoDB", logo: "/tech/mongodb.svg" },
+      { name: "SQLAlchemy", logo: "/tech/sqlalchemy.svg" },
       {
         name: "Prisma",
         logo: "/tech/prisma.svg",

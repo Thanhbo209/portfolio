@@ -25,6 +25,8 @@ export const projects: Project[] = [
       "NumPy",
       "Scikit-learn",
       "XGBoost",
+      "Postgres",
+      "SQLAlchemy",
       "Docker",
     ],
     githubUrl: "https://github.com/Thanhbo209/ai-gold-market-prediction",
