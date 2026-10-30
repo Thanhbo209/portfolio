@@ -20,7 +20,7 @@ export function JourneyTimer({ startDate }: JourneyTimerProps) {
   const elapsed = useElapsedTime(startDate);
 
   return (
-    <div className="@container inline-flex flex-col items-center justify-center bg-sidebar px-3 py-3 shadow-[inset_0_2px_6px_rgba(0,0,0,0.15)] sm:px-6">
+    <div className=" inline-flex flex-col items-center justify-center bg-sidebar px-3 py-3 shadow-[inset_0_2px_6px_rgba(0,0,0,0.15)] sm:px-6">
       <div className="flex items-start justify-center gap-1 sm:gap-2.5">
         {GROUPS.map((group, index) => {
           const digits = String(elapsed[group.key])
@@ -28,7 +28,7 @@ export function JourneyTimer({ startDate }: JourneyTimerProps) {
             .split("");
 
           return (
-            <div key={group.key} className="flex items-start">
+            <div key={group.key} className="flex items-start ">
               {index > 0 && (
                 <span
                   aria-hidden

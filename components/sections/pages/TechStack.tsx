@@ -4,7 +4,7 @@ import { Newsreader } from "next/font/google";
 import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { techCategories, type TechItem } from "@/content/tech-stack";
-import { Card } from "../ui/Card";
+import { Card } from "../../ui/Card";
 
 const newsreader = Newsreader({
   subsets: ["latin"],

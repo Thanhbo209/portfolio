@@ -10,7 +10,26 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  // content/projects.ts: add as the FIRST entry in the array
+  {
+    slug: "ai-gold-market-prediction",
+    title: "AI Gold Market Prediction",
+    description:
+      "A machine learning pipeline for forecasting daily XAUUSD price direction using financial feature engineering, chronological validation, baseline comparisons, and XGBoost model optimization.",
+    thumbnail: "/project-banner/gold-prediction.png",
+    technologies: [
+      "Python",
+      "TypeScript",
+      "Next.js",
+      "FastAPI",
+      "Pandas",
+      "NumPy",
+      "Scikit-learn",
+      "XGBoost",
+      "Docker",
+    ],
+    githubUrl: "https://github.com/Thanhbo209/ai-gold-market-prediction",
+  },
+
   {
     slug: "freight-rate-comparison-crm",
     title: "Freight Rate Comparison CRM",

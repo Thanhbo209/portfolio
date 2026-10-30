@@ -61,13 +61,13 @@ export const techCategories: TechCategory[] = [
     name: "Database",
     items: [
       { name: "PostgreSQL", logo: "/tech/postgresql.svg" },
+      { name: "MongoDB", logo: "/tech/mongodb.svg" },
       {
         name: "Prisma",
         logo: "/tech/prisma.svg",
         logoDark: "/tech/prisma-dark.svg",
         showLabel: true,
       },
-      { name: "MongoDB", logo: "/tech/mongodb.svg" },
       { name: "Redis", logo: "/tech/redis.svg" },
     ],
   },
@@ -75,6 +75,8 @@ export const techCategories: TechCategory[] = [
     name: "AI / Data",
     items: [
       { name: "PyTorch", logo: "/tech/PyTorch.svg" },
+      { name: "Scikit-learn", logo: "/tech/scikitlearn.svg" },
+      { name: "XGBoost", logo: "/tech/xgboost.svg" },
       { name: "NumPy", logo: "/tech/numpy.svg" },
       {
         name: "Pandas",

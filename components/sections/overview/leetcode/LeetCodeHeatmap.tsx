@@ -6,11 +6,8 @@ import { motion } from "motion/react";
 import type { LeetCodeDay } from "@/lib/leetcode";
 import { formatContributionDate } from "@/lib/contribution-level";
 import { TRANSITIONS } from "@/lib/motion/variants";
-import { LeetCodeHeatmapTooltip } from "@/components/sections/overview/LeetCodeHeatmapTooltip";
-import {
-  LEETCODE_LEVEL_COLORS,
-  getLeetCodeLevel,
-} from "@/components/sections/overview/LeetCodeLegend";
+import { getLeetCodeLevel, LEETCODE_LEVEL_COLORS } from "./LeetCodeLegend";
+import { LeetCodeHeatmapTooltip } from "./LeetCodeHeatmapTooltip";
 
 interface LeetCodeHeatmapProps {
   days: LeetCodeDay[];
@@ -18,8 +15,18 @@ interface LeetCodeHeatmapProps {
 }
 
 const MONTH_LABELS = [
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
 function chunkIntoWeeks(days: LeetCodeDay[]): LeetCodeDay[][] {
@@ -83,8 +90,12 @@ export function LeetCodeHeatmap({
     function dismiss() {
       setHoveredCell(null);
     }
-    window.addEventListener("scroll", dismiss, { capture: true, passive: true });
-    return () => window.removeEventListener("scroll", dismiss, { capture: true });
+    window.addEventListener("scroll", dismiss, {
+      capture: true,
+      passive: true,
+    });
+    return () =>
+      window.removeEventListener("scroll", dismiss, { capture: true });
   }, [hoveredCell]);
 
   useLayoutEffect(() => {

@@ -7,13 +7,13 @@ import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
 export function Sidebar() {
   return (
-    <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 flex-col border-r border-sidebar-border bg-sidebar lg:flex">
+    <aside className="font-sans fixed inset-y-0 left-0 z-40 hidden w-64 flex-col border-r border-sidebar-border bg-sidebar lg:flex">
       <div className="flex h-16 shrink-0 items-center border-b border-sidebar-border px-4">
         <Link
           href="/#overview"
           className="text-shimmer text-sm font-semibold tracking-tight [--foreground:var(--sidebar-foreground)]"
         >
-          THANH PHAM
+          SOFTWARE ENGINEER
         </Link>
       </div>
 

@@ -23,7 +23,7 @@ export async function GitHubActivityCard() {
 
   return (
     <Card className="@container p-5 md:p-6">
-      <div className="flex flex-col gap-6 @[40rem]:flex-row @[40rem]:items-start @[40rem]:justify-between">
+      <div className="font-sans flex flex-col gap-6 @[40rem]:flex-row @[40rem]:items-start @[40rem]:justify-between">
         {/* Left Info Block (~12-14rem) */}
         <div className="flex shrink-0 flex-col gap-3 @[40rem]:w-52">
           <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">

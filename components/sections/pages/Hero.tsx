@@ -2,7 +2,7 @@ import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { EngineeringJourneyCard } from "@/components/sections/overview/EngineeringJourneyCard";
 import { GitHubActivityCard } from "@/components/sections/overview/GitHubActivityCard";
-import { LeetCodeCard } from "@/components/sections/overview/LeetCodeCard";
+import { LeetCodeCard } from "../overview/leetcode/LeetCodeCard";
 
 export function Hero() {
   return (

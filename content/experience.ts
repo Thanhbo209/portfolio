@@ -39,7 +39,9 @@ export const experiences: ExperienceEntry[] = [
       "PostgreSQL",
       "Docker",
       "React Flow",
-      "Git",
+      "AI Fluency",
+      "Claude Code",
+      "AI Agents",
     ],
   },
   {

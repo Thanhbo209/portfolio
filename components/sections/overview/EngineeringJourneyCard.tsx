@@ -11,7 +11,7 @@ const sinceLabel = new Intl.DateTimeFormat("en-GB", {
 export function EngineeringJourneyCard() {
   return (
     <Card className="@container p-5 md:p-6">
-      <div className="flex flex-col items-center gap-4 text-center @[48rem]:flex-row @[48rem]:items-center @[48rem]:justify-between @[48rem]:text-left">
+      <div className="font-sans flex flex-col items-center gap-4 text-center @[48rem]:flex-row @[48rem]:items-center @[48rem]:justify-between @[48rem]:text-left">
         {/* Left: Title & Since */}
         <div className="flex shrink-0 flex-col gap-1 @[48rem]:w-52">
           <p className="text-sm font-medium text-foreground">

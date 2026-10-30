@@ -22,7 +22,7 @@ export function ContactMethodCard({ method }: ContactMethodCardProps) {
       whileHover="hover"
       className="block h-full"
     >
-      <Card className="flex h-full flex-col gap-3 transition-colors duration-200 hover:border-primary/40">
+      <Card className="flex h-full font-sans flex-col gap-3 transition-colors duration-200 hover:border-primary/40">
         <MotionIcon variants={iconVariants} className="inline-flex">
           <MethodIcon className="size-8 text-foreground" />
         </MotionIcon>
@@ -30,9 +30,7 @@ export function ContactMethodCard({ method }: ContactMethodCardProps) {
           {method.label}
         </p>
         {method.description && (
-          <p className="text-sm text-muted-foreground">
-            {method.description}
-          </p>
+          <p className="text-sm text-muted-foreground">{method.description}</p>
         )}
       </Card>
     </MotionAnchor>

@@ -35,7 +35,7 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  --brand: oklch(0.55 0.20 300);
+  --brand: oklch(0.55 0.2 300);
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
@@ -82,12 +82,12 @@
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.295 0.0038 286);
   --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.360 0.0038 286);
+  --accent: oklch(0.36 0.0038 286);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.340 0.0038 286);
-  --input: oklch(0.340 0.0038 286);
+  --border: oklch(0.34 0.0038 286);
+  --input: oklch(0.34 0.0038 286);
   --ring: oklch(0.556 0 0);
   --chart-1: oklch(0.81 0.1 252);
   --chart-2: oklch(0.62 0.19 260);
@@ -100,7 +100,7 @@
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.295 0.0038 286);
   --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.340 0.0038 286);
+  --sidebar-border: oklch(0.34 0.0038 286);
   --sidebar-ring: oklch(0.439 0 0);
   --brand: oklch(0.74 0.16 305);
   --font-sans:
@@ -222,7 +222,13 @@
      thing that must stay defined in plain CSS, since it's a static shape,
      not an animated value. */
   .nav-highlight {
-    clip-path: polygon(10px 0, 100% 0, 100% 100%, 10px 100%, 0 50%);
+    clip-path: polygon(
+      0 0,
+      calc(100% - 10px) 0,
+      100% 50%,
+      calc(100% - 10px) 100%,
+      0 100%
+    );
   }
 
   @keyframes twinkle {

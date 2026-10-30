@@ -5,6 +5,12 @@ import { externalLinks } from "@/constants/navigation";
 
 const HERO_SOCIAL_LABELS = ["GitHub", "LinkedIn", "Email"] as const;
 
+const SOCIAL_ICONS: Record<string, string> = {
+  GitHub: "/social/Github.png",
+  LinkedIn: "/social/Linkedin.png",
+  Email: "/social/Gmail.png",
+};
+
 export function AboutHero() {
   const socials = HERO_SOCIAL_LABELS.map((label) => {
     const link = externalLinks.find((item) => item.label === label);
@@ -13,7 +19,7 @@ export function AboutHero() {
   });
 
   return (
-    <div className="flex flex-col items-center justify-between gap-12 @4xl:flex-row @4xl:items-center @4xl:gap-16">
+    <div className="flex font-sans flex-col items-center justify-between gap-12 @4xl:flex-row @4xl:items-center @4xl:gap-16">
       {/* Left Column: Heading, Meta, Bio, CTAs, Socials */}
       <div className="order-2 flex w-full flex-1 flex-col items-start gap-6 text-left @4xl:order-1">
         <div className="flex flex-col gap-3">
@@ -25,8 +31,8 @@ export function AboutHero() {
           </h1>
 
           <div className="flex flex-col gap-1.5">
-            <p className="text-lg font-medium text-muted-foreground sm:text-xl">
-              Backend & AI Engineer
+            <p className="text-lg font-medium sm:text-xl text-violet-300">
+              Full-stack | Backend & AI Engineer
             </p>
             <p className="text-sm text-muted-foreground">
               Ho Chi Minh City, Vietnam · B.S. Software Engineering, HUFLIT
@@ -36,12 +42,12 @@ export function AboutHero() {
         </div>
 
         <p className="max-w-[52ch] text-base leading-relaxed text-muted-foreground">
-          Backend & AI Engineer passionate about building production-ready APIs,
-          AI-powered applications, and scalable backend systems. Currently
-          focused on{" "}
+          Backend & AI Engineer passionate about building production-ready
+          projects, AI-powered applications, and scalable backend systems.
+          Currently focused on{" "}
           <strong className="text-foreground">LLM applications</strong>,{" "}
-          <strong className="text-foreground">distributed systems</strong>, and{" "}
-          <strong className="text-foreground">software architecture</strong>.
+          <strong className="text-foreground">Designed systems</strong>, and{" "}
+          <strong className="text-foreground">Software architecture</strong>.
         </p>
 
         {/* Buttons: 1px border, 0 radius */}
@@ -63,8 +69,12 @@ export function AboutHero() {
         {/* Social Row */}
         <div className="flex flex-wrap items-center gap-6 pt-2">
           {socials.map((link) => {
-            const Icon = link.icon;
             const isMail = link.href.startsWith("mailto:");
+            const iconSrc = SOCIAL_ICONS[link.label];
+
+            if (!iconSrc) {
+              throw new Error(`Missing social icon: ${link.label}`);
+            }
 
             return (
               <a
@@ -75,8 +85,14 @@ export function AboutHero() {
                 aria-label={link.label}
                 className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
-                <Icon className="size-4 shrink-0" />
-                <span>{link.label}</span>
+                <Image
+                  src={iconSrc}
+                  alt=""
+                  width={20}
+                  height={20}
+                  className="size-6 shrink-0 object-contain"
+                />
+                <span className="font-semibold">{link.label}</span>
               </a>
             );
           })}

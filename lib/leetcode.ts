@@ -1,5 +1,6 @@
 export const LEETCODE_USERNAME = "oiK3QxlKNt";
 export const LEETCODE_PROFILE_URL = `https://leetcode.com/u/${LEETCODE_USERNAME}/`;
+export const LEETCODE_TRACKER_URL = `https://dsa-tracking-six.vercel.app/u/thanhcow`;
 
 export interface LeetCodeDay {
   date: string; // YYYY-MM-DD
@@ -203,25 +204,31 @@ export async function getLeetCodeStats(): Promise<LeetCodeStats> {
     const questions: { difficulty: string; count: number }[] =
       allQuestions ?? [];
 
-    const getCount = (arr: { difficulty: string; count: number }[], diff: string) =>
-      arr.find((x) => x.difficulty.toLowerCase() === diff.toLowerCase())?.count ?? 0;
+    const getCount = (
+      arr: { difficulty: string; count: number }[],
+      diff: string,
+    ) =>
+      arr.find((x) => x.difficulty.toLowerCase() === diff.toLowerCase())
+        ?.count ?? 0;
 
     const easySolved = getCount(submissions, "Easy");
     const mediumSolved = getCount(submissions, "Medium");
     const hardSolved = getCount(submissions, "Hard");
     const totalSolved =
-      getCount(submissions, "All") || (easySolved + mediumSolved + hardSolved);
+      getCount(submissions, "All") || easySolved + mediumSolved + hardSolved;
 
     const easyTotal = getCount(questions, "Easy") || 974;
     const mediumTotal = getCount(questions, "Medium") || 2136;
     const hardTotal = getCount(questions, "Hard") || 986;
     const totalQuestions =
-      getCount(questions, "All") || (easyTotal + mediumTotal + hardTotal);
+      getCount(questions, "All") || easyTotal + mediumTotal + hardTotal;
 
     let parsedCalendar: Record<string, number> = FALLBACK_CALENDAR;
     try {
       if (matchedUser.userCalendar?.submissionCalendar) {
-        parsedCalendar = JSON.parse(matchedUser.userCalendar.submissionCalendar);
+        parsedCalendar = JSON.parse(
+          matchedUser.userCalendar.submissionCalendar,
+        );
       }
     } catch {
       // Use fallback
